@@ -309,8 +309,8 @@ export default function CreteTrainingCamp() {
               <div className="mb-6 grid gap-4">
                 <div className="relative h-64 overflow-hidden rounded-lg">
                   <Image
-                    src="/images/crete/bruna-santos-hbaZ2hUtz7w-unsplash.jpg"
-                    alt="Majestic Suite with private thermal pool"
+                    src="/images/crete/alsus1.jpg"
+                    alt="Alsus Boutique Hotel - Pool and exterior view"
                     fill
                     className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
                   />
@@ -318,24 +318,24 @@ export default function CreteTrainingCamp() {
                 <div className="grid grid-cols-3 gap-2">
                   <div className="relative h-24 overflow-hidden rounded">
                     <Image
-                      src="/images/crete/pelayo-arbues-k0B719Al7Ks-unsplash.jpg"
-                      alt="Top view of Crete beach near hotel"
+                      src="/images/crete/alsus2.jpg"
+                      alt="Alsus Boutique Hotel - Interior room"
                       fill
                       className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
                     />
                   </div>
                   <div className="relative h-24 overflow-hidden rounded">
                     <Image
-                      src="/images/crete/mircea-solomiea-EdQZ8ErN37k-unsplash.jpg"
-                      alt="Hotel restaurant with Cretan cuisine"
+                      src="/images/crete/alsus3.jpg"
+                      alt="Alsus Boutique Hotel - Pool area and facilities"
                       fill
                       className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
                     />
                   </div>
                   <div className="relative h-24 overflow-hidden rounded">
                     <Image
-                      src="/images/crete/eugene-chystiakov-w4qMW_XDbYA-unsplash.jpg"
-                      alt="Hotel interior and facilities"
+                      src="/images/crete/alsus4.jpg"
+                      alt="Alsus Boutique Hotel - Restaurant and common areas"
                       fill
                       className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
                     />
