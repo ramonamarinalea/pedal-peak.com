@@ -26,6 +26,12 @@ const HomePage = () => {
               routes
             </Link>
             <Link
+              href="#adventures"
+              className="text-sm text-gray-900 transition-colors hover:text-black"
+            >
+              adventures
+            </Link>
+            <Link
               href="#rides"
               className="text-sm text-gray-900 transition-colors hover:text-black"
             >
@@ -69,7 +75,7 @@ const HomePage = () => {
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
-        <div className="relative z-10 container text-center">
+        <div className="container relative z-10 text-center">
           <h1 className="mb-8 text-6xl font-bold tracking-tighter md:text-8xl">
             <span>Ride.</span> <span>Explore.</span> <span>Repeat.</span>
           </h1>
@@ -100,6 +106,89 @@ const HomePage = () => {
             >
               View Upcoming Rides
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Cycling Adventures Section */}
+      <section id="adventures" className="bg-gray-50 py-24">
+        <div className="container">
+          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+            Cycling Adventures
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Piedmont Adventure */}
+            <div className="group">
+              <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
+                <Image
+                  src="/images/piedmont/andrea-cairone-lzM3pbQim70-unsplash.jpg"
+                  alt="Piedmont cycling adventure"
+                  fill
+                  className="object-cover grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <div className="mb-2 inline-block bg-white px-3 py-1 text-xs font-medium uppercase tracking-wider text-black">
+                    AUGUST 11-15, 2025
+                  </div>
+                  <h3 className="text-2xl font-bold">Piedmont Adventure</h3>
+                  <p className="text-sm opacity-90">
+                    4-day gravel cycling through Italy
+                  </p>
+                </div>
+              </div>
+              <p className="mb-6 leading-relaxed text-gray-600">
+                Join us for our personal cycling adventure through
+                Piedmont&apos;s UNESCO World Heritage vineyards, historic Alpine
+                roads, and stunning rice fields around Vercelli.
+              </p>
+              <Link
+                href="/piedmont"
+                className={buttonVariants({
+                  variant: "outline",
+                  className:
+                    "border-black text-black transition-all hover:bg-black hover:text-white",
+                })}
+              >
+                Follow Our Journey
+              </Link>
+            </div>
+
+            {/* Crete Training Camp */}
+            <div className="group">
+              <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
+                <Image
+                  src="/images/crete/crete_hairpins.jpg"
+                  alt="Crete cycling training camp"
+                  fill
+                  className="object-cover grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <div className="mb-2 inline-block bg-white px-3 py-1 text-xs font-medium uppercase tracking-wider text-black">
+                    OCTOBER 19-26, 2025
+                  </div>
+                  <h3 className="text-2xl font-bold">Crete Training Camp</h3>
+                  <p className="text-sm opacity-90">
+                    7-day guided cycling experience
+                  </p>
+                </div>
+              </div>
+              <p className="mb-6 leading-relaxed text-gray-600">
+                Join our guided training camp in Crete with professional
+                support, stunning mountain roads, coastal routes, and perfect
+                October weather. Limited spaces available.
+              </p>
+              <Link
+                href="/crete"
+                className={buttonVariants({
+                  className:
+                    "bg-black text-white transition-all hover:bg-gray-800",
+                })}
+              >
+                Book Your Spot - €220
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -433,6 +522,18 @@ const HomePage = () => {
                 className="text-gray-600 transition-colors hover:text-black"
               >
                 Routes
+              </Link>
+              <Link
+                href="/piedmont"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Piedmont
+              </Link>
+              <Link
+                href="/crete"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Crete
               </Link>
               <Link
                 href="/#rides"
