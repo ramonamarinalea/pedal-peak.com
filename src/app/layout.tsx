@@ -1,13 +1,23 @@
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { fonts } from "@/lib/fonts";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+
+const satoshi = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Satoshi-Variable.woff2",
+      weight: "300 900",
+    },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -45,11 +55,11 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen font-sans", fonts)}>
-        <ThemeProvider attribute="class">
-          {children}
-          <ThemeSwitcher className="absolute right-5 bottom-5 z-10" />
-        </ThemeProvider>
+      <body
+        className={cn("min-h-screen", satoshi.variable)}
+        style={{ fontFamily: "var(--font-satoshi), system-ui, sans-serif" }}
+      >
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
       </body>
     </html>
   );

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedal Peak Design System</title>
+    <link rel="stylesheet" href="/designsystem/pedal-peak-design-system.css">
+    <style>
+        .design-system-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+        .design-system-section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--neutral-900);
+        }
+        .section-description {
+            color: var(--neutral-600);
+            margin-bottom: 2rem;
+        }
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .color-swatch {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .color-swatch:hover {
+            transform: translateY(-2px);
+        }
+        .color-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+        .color-value {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            font-family: monospace;
+        }
+        .component-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .component-example {
+            padding: 2rem;
+            background: var(--neutral-50);
+            border-radius: 0.5rem;
+        }
+        .component-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--neutral-600);
+            margin-bottom: 1rem;
+        }
+        .spacing-demo {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .spacing-box {
+            background: var(--primary-100);
+            border: 2px solid var(--primary-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-700);
+        }
+        .typography-demo > * {
+            margin-bottom: 1rem;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+        .icon-box {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--neutral-100);
+            border-radius: 0.5rem;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="design-system-section">
+            <h1 class="heading-1">Pedal Peak Design System</h1>
+            <p class="body-large">A comprehensive design system for the Pedal Peak cycling platform, featuring components, colors, typography, and utilities optimized for cycling enthusiasts.</p>
+        </header>
+
+        <!-- Colors -->
+        <section class="design-system-section">
+            <h2 class="section-title">Colors</h2>
+            <p class="section-description">Our color palette is inspired by nature and cycling, with a vibrant green primary color representing energy and the outdoors.</p>
+            
+            <h3 class="heading-3">Primary Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: var(--primary-50); color: var(--primary-900);">
+                    <div class="color-name">Primary 50</div>
+                    <div class="color-value">#f0fdf4</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-100); color: var(--primary-900);">
+                    <div class="color-name">Primary 100</div>
+                    <div class="color-value">#dcfce7</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-200); color: var(--primary-900);">
+                    <div class="color-name">Primary 200</div>
+                    <div class="color-value">#bbf7d0</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-300); color: var(--primary-900);">
+                    <div class="color-name">Primary 300</div>
+                    <div class="color-value">#86efac</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-400); color: white;">
+                    <div class="color-name">Primary 400</div>
+                    <div class="color-value">#4ade80</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-500); color: white;">
+                    <div class="color-name">Primary 500</div>
+                    <div class="color-value">#22c55e</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-600); color: white;">
+                    <div class="color-name">Primary 600</div>
+                    <div class="color-value">#16a34a</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-700); color: white;">
+                    <div class="color-name">Primary 700</div>
+                    <div class="color-value">#15803d</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-800); color: white;">
+                    <div class="color-name">Primary 800</div>
+                    <div class="color-value">#166534</div>
+                </div>
+                <div class="color-swatch" style="background: var(--primary-900); color: white;">
+                    <div class="color-name">Primary 900</div>
+                    <div class="color-value">#14532d</div>
+                </div>
+            </div>
+
+            <h3 class="heading-3">Neutral Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: var(--neutral-50); color: var(--neutral-900);">
+                    <div class="color-name">Neutral 50</div>
+                    <div class="color-value">#f9fafb</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-100); color: var(--neutral-900);">
+                    <div class="color-name">Neutral 100</div>
+                    <div class="color-value">#f3f4f6</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-200); color: var(--neutral-900);">
+                    <div class="color-name">Neutral 200</div>
+                    <div class="color-value">#e5e7eb</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-300); color: var(--neutral-900);">
+                    <div class="color-name">Neutral 300</div>
+                    <div class="color-value">#d1d5db</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-400); color: white;">
+                    <div class="color-name">Neutral 400</div>
+                    <div class="color-value">#9ca3af</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-500); color: white;">
+                    <div class="color-name">Neutral 500</div>
+                    <div class="color-value">#6b7280</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-600); color: white;">
+                    <div class="color-name">Neutral 600</div>
+                    <div class="color-value">#4b5563</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-700); color: white;">
+                    <div class="color-name">Neutral 700</div>
+                    <div class="color-value">#374151</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-800); color: white;">
+                    <div class="color-name">Neutral 800</div>
+                    <div class="color-value">#1f2937</div>
+                </div>
+                <div class="color-swatch" style="background: var(--neutral-900); color: white;">
+                    <div class="color-name">Neutral 900</div>
+                    <div class="color-value">#111827</div>
+                </div>
+            </div>
+
+            <h3 class="heading-3">Status Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: var(--success); color: white;">
+                    <div class="color-name">Success</div>
+                    <div class="color-value">#10b981</div>
+                </div>
+                <div class="color-swatch" style="background: var(--warning); color: white;">
+                    <div class="color-name">Warning</div>
+                    <div class="color-value">#f59e0b</div>
+                </div>
+                <div class="color-swatch" style="background: var(--error); color: white;">
+                    <div class="color-name">Error</div>
+                    <div class="color-value">#ef4444</div>
+                </div>
+                <div class="color-swatch" style="background: var(--info); color: white;">
+                    <div class="color-name">Info</div>
+                    <div class="color-value">#3b82f6</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="design-system-section">
+            <h2 class="section-title">Typography</h2>
+            <p class="section-description">Clean, modern typography that ensures excellent readability across all devices.</p>
+            
+            <div class="component-example">
+                <div class="typography-demo">
+                    <h1 class="heading-1">Heading 1 - Bold, 3rem</h1>
+                    <h2 class="heading-2">Heading 2 - Bold, 2rem</h2>
+                    <h3 class="heading-3">Heading 3 - Semibold, 1.5rem</h3>
+                    <h4 class="heading-4">Heading 4 - Semibold, 1.25rem</h4>
+                    <p class="body-large">Body Large - Used for introductory text and emphasis. 1.125rem with relaxed line height.</p>
+                    <p class="body">Body Regular - The standard paragraph text used throughout the application. 1rem with comfortable spacing.</p>
+                    <p class="body-small">Body Small - For secondary information and fine print. 0.875rem size.</p>
+                    <p class="caption">Caption - Used for labels and metadata. 0.75rem with tighter spacing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buttons -->
+        <section class="design-system-section">
+            <h2 class="section-title">Buttons</h2>
+            <p class="section-description">Interactive button components with multiple variants and sizes.</p>
+            
+            <div class="component-grid">
+                <div class="component-example">
+                    <div class="component-label">Button Variants</div>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button class="btn btn-primary">Primary Button</button>
+                        <button class="btn btn-secondary">Secondary Button</button>
+                        <button class="btn btn-ghost">Ghost Button</button>
+                    </div>
+                </div>
+                
+                <div class="component-example">
+                    <div class="component-label">Button Sizes</div>
+                    <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <button class="btn btn-primary btn-sm">Small</button>
+                        <button class="btn btn-primary">Medium</button>
+                        <button class="btn btn-primary btn-lg">Large</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="design-system-section">
+            <h2 class="section-title">Cards</h2>
+            <p class="section-description">Versatile card components for displaying content.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="heading-3">Basic Card</h3>
+                    <p class="body">This is a basic card component with padding and subtle shadow. Perfect for grouping related content.</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Learn More</button>
+                </div>
+                
+                <div class="card card-hover">
+                    <h3 class="heading-3">Hover Card</h3>
+                    <p class="body">This card has a hover effect that elevates it when you mouse over. Great for interactive elements.</p>
+                    <button class="btn btn-secondary" style="margin-top: 1rem;">Explore</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges -->
+        <section class="design-system-section">
+            <h2 class="section-title">Badges</h2>
+            <p class="section-description">Small components for labeling and categorization.</p>
+            
+            <div class="component-example">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span class="badge">Default</span>
+                    <span class="badge badge-success">Success</span>
+                    <span class="badge badge-warning">Warning</span>
+                    <span class="badge badge-error">Error</span>
+                    <span class="badge badge-info">Info</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing -->
+        <section class="design-system-section">
+            <h2 class="section-title">Spacing</h2>
+            <p class="section-description">Consistent spacing scale for margins and padding.</p>
+            
+            <div class="component-example">
+                <div class="spacing-demo">
+                    <div class="spacing-box" style="width: 8px; height: 48px;">1</div>
+                    <div class="spacing-box" style="width: 16px; height: 48px;">2</div>
+                    <div class="spacing-box" style="width: 24px; height: 48px;">3</div>
+                    <div class="spacing-box" style="width: 32px; height: 48px;">4</div>
+                    <div class="spacing-box" style="width: 48px; height: 48px;">6</div>
+                    <div class="spacing-box" style="width: 64px; height: 48px;">8</div>
+                    <div class="spacing-box" style="width: 96px; height: 48px;">12</div>
+                    <div class="spacing-box" style="width: 128px; height: 48px;">16</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid System -->
+        <section class="design-system-section">
+            <h2 class="section-title">Grid System</h2>
+            <p class="section-description">Responsive grid layouts for organizing content.</p>
+            
+            <div class="component-example">
+                <div class="component-label">2 Column Grid</div>
+                <div class="grid-2" style="margin-bottom: 2rem;">
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Column 1</div>
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Column 2</div>
+                </div>
+                
+                <div class="component-label">3 Column Grid</div>
+                <div class="grid-3" style="margin-bottom: 2rem;">
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Col 1</div>
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Col 2</div>
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Col 3</div>
+                </div>
+                
+                <div class="component-label">4 Column Grid</div>
+                <div class="grid-4">
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">1</div>
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">2</div>
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">3</div>
+                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">4</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animations -->
+        <section class="design-system-section">
+            <h2 class="section-title">Animations</h2>
+            <p class="section-description">Smooth animations and transitions for enhanced user experience.</p>
+            
+            <div class="component-grid">
+                <div class="component-example">
+                    <div class="component-label">Fade In Animation</div>
+                    <div class="card fade-in">
+                        <p>This element fades in when it appears.</p>
+                    </div>
+                </div>
+                
+                <div class="component-example">
+                    <div class="component-label">Slide Up Animation</div>
+                    <div class="card slide-up">
+                        <p>This element slides up when it appears.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icons -->
+        <section class="design-system-section">
+            <h2 class="section-title">Icons</h2>
+            <p class="section-description">Cycling-themed icons and symbols.</p>
+            
+            <div class="icon-grid">
+                <div class="icon-box">🚴</div>
+                <div class="icon-box">⛰️</div>
+                <div class="icon-box">🗺️</div>
+                <div class="icon-box">📍</div>
+                <div class="icon-box">⏱️</div>
+                <div class="icon-box">🏆</div>
+                <div class="icon-box">👥</div>
+                <div class="icon-box">📊</div>
+            </div>
+        </section>
+
+        <!-- Utilities -->
+        <section class="design-system-section">
+            <h2 class="section-title">Utility Classes</h2>
+            <p class="section-description">Helper classes for common styling needs.</p>
+            
+            <div class="component-example">
+                <div class="component-label">Text Utilities</div>
+                <p class="text-center">Center aligned text</p>
+                <p class="text-right">Right aligned text</p>
+                <p class="text-muted">Muted text color</p>
+                <p class="font-bold">Bold text weight</p>
+                
+                <div class="component-label" style="margin-top: 2rem;">Display Utilities</div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="badge">flex</div>
+                    <div class="badge">flex-col</div>
+                    <div class="badge">items-center</div>
+                    <div class="badge">justify-center</div>
+                    <div class="badge">gap-1 to gap-8</div>
+                </div>
+                
+                <div class="component-label" style="margin-top: 2rem;">Spacing Utilities</div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="badge badge-info">m-1 to m-8</div>
+                    <div class="badge badge-info">p-1 to p-8</div>
+                    <div class="badge badge-info">mt, mb, ml, mr</div>
+                    <div class="badge badge-info">pt, pb, pl, pr</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="design-system-section text-center">
+            <p class="text-muted">© 2025 Pedal Peak Design System</p>
+            <p class="caption">Built with passion for cycling enthusiasts</p>
+        </footer>
+    </div>
+</body>
+</html>

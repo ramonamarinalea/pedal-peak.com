@@ -1,69 +1,463 @@
+import { ArrowRight, Bike, Mail, MessageCircle, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-import { AuthControls } from "@/components/auth-controls";
-import { Icons } from "@/components/icons";
-import { StripeButton } from "@/components/stripe-button";
+import { Logo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
-import { auth } from "@/lib/auth";
 
-const HomePage = async () => {
-  const session = await auth();
-
+const HomePage = () => {
   return (
-    <>
-      <header className="w-full border-b">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/" className="font-mono text-lg font-bold">
-            next-starter
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
+        <div className="container flex h-20 items-center justify-between">
+          <Link
+            href="/"
+            className="flex items-center gap-3 text-2xl font-bold tracking-tight"
+          >
+            <Logo className="h-8 w-8 text-black" />
+            <span className="lowercase">pedal peak</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <AuthControls session={session} />
-          </div>
+          <nav className="hidden items-center gap-8 md:flex">
+            <Link
+              href="/routes"
+              className="text-sm text-gray-900 transition-colors hover:text-black"
+            >
+              routes
+            </Link>
+            <Link
+              href="#rides"
+              className="text-sm text-gray-900 transition-colors hover:text-black"
+            >
+              rides
+            </Link>
+            <Link
+              href="/bikebox"
+              className="text-sm text-gray-900 transition-colors hover:text-black"
+            >
+              bike box
+            </Link>
+            <Link
+              href="#community"
+              className="text-sm text-gray-900 transition-colors hover:text-black"
+            >
+              community
+            </Link>
+          </nav>
+          <Link
+            href="https://www.strava.com/clubs/pedal-peak"
+            target="_blank"
+            className={buttonVariants({
+              size: "sm",
+              className: "bg-black text-white transition-all hover:bg-gray-800",
+            })}
+          >
+            join strava club
+          </Link>
         </div>
       </header>
-      <section className="container mt-10 flex flex-col items-center gap-3 text-center md:absolute md:top-1/2 md:left-1/2 md:mt-0 md:-translate-x-1/2 md:-translate-y-1/2">
-        <h1 className="mb-1 font-mono text-4xl leading-tight font-extrabold tracking-tighter [word-spacing:-0.5rem] md:text-5xl">
-          <span className="bg-gradient-to-r from-rose-700 to-pink-600 bg-clip-text text-transparent">
-            Next.js
-          </span>{" "}
-          starter template
-        </h1>
-        <p className="text-muted-foreground max-w-2xl md:text-lg">
-          A Next.js starter template, packed with features like TypeScript,
-          Tailwind CSS, Next-auth, Eslint, Stripe, testing tools and more.
-          Jumpstart your project with efficiency and style.
-        </p>
-        <div className="mt-2 flex gap-4">
-          {session ? (
-            <StripeButton />
-          ) : (
+
+      {/* Hero Section with Image */}
+      <section className="relative mt-20 flex min-h-screen items-center justify-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/IMG_8151.jpeg"
+            alt="Cyclists on mountain road"
+            fill
+            className="object-cover grayscale"
+            priority
+          />
+          <div className="absolute inset-0 bg-white/60" />
+        </div>
+        <div className="relative z-10 container text-center">
+          <h1 className="mb-8 text-6xl font-bold tracking-tighter md:text-8xl">
+            <span>Ride.</span> <span>Explore.</span> <span>Repeat.</span>
+          </h1>
+          <p className="mx-auto mb-12 max-w-3xl text-xl font-light text-gray-700 md:text-2xl">
+            Come ride with us. No egos, just good vibes.
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="https://github.com/Skolaczk/next-starter/blob/main/README.md#getting-started"
+              href="https://www.strava.com/clubs/pedal-peak"
               target="_blank"
-              className={buttonVariants({ size: "lg" })}
+              className={buttonVariants({
+                size: "lg",
+                className:
+                  "bg-black px-8 text-white transition-all hover:bg-gray-800",
+              })}
             >
-              Get started
+              Join the Community
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-          )}
-          <Link
-            href="https://github.com/Skolaczk/next-starter"
-            target="_blank"
-            className={buttonVariants({ variant: "outline", size: "lg" })}
-          >
-            <Icons.github /> Github
-          </Link>
+            <Link
+              href="#rides"
+              className={buttonVariants({
+                variant: "outline",
+                size: "lg",
+                className:
+                  "border-black bg-white px-8 transition-all hover:bg-black hover:text-white",
+              })}
+            >
+              View Upcoming Rides
+            </Link>
+          </div>
         </div>
       </section>
-      <footer className="text-muted-foreground absolute bottom-3 w-full text-center text-sm">
-        © {new Date().getFullYear()} By{" "}
-        <Link
-          href="https://michalskolak.pl"
-          className={buttonVariants({ variant: "link", className: "!p-0" })}
+
+      {/* Rides & Events Section with Image */}
+      <section id="rides" className="container py-24">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div>
+            <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
+              Rides & Events
+            </h2>
+            <p className="mb-8 text-lg leading-relaxed text-gray-600">
+              Join our regular group rides and special events. We organize
+              weekly rides for all skill levels, from casual coffee spins to
+              epic mountain adventures. Check our Strava club for the latest
+              updates.
+            </p>
+            <Link
+              href="#signup"
+              className={buttonVariants({
+                variant: "outline",
+                className:
+                  "border-black text-black transition-all hover:bg-black hover:text-white",
+              })}
+            >
+              Sign up for a ride
+            </Link>
+          </div>
+          <div className="relative h-[400px] overflow-hidden rounded-lg">
+            <Image
+              src="/images/IMG_2289.jpeg"
+              alt="Group ride event"
+              fill
+              className="object-cover grayscale"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="bg-gray-50 py-24">
+        <div className="container">
+          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+            Our Routes
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/tarmac.jpeg"
+                alt="Tarmac road cycling route"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/gravel.jpeg"
+                alt="Gravel cycling route"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/bikepacking.jpeg"
+                alt="Bikepacking route adventure"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/IMG_8025.jpeg"
+                alt="Mountain cycling route"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/IMG_0132.jpeg"
+                alt="Scenic cycling route"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/IMG_3149.jpeg"
+                alt="Road cycling adventure"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/IMG_1879.jpeg"
+                alt="Group cycling route"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden">
+              <Image
+                src="/images/IMG_5945.jpeg"
+                alt="Cycling route landscape"
+                fill
+                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Route Types Section with Images */}
+      <section id="routes" className="container py-24">
+        <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+          Route Types
+        </h2>
+        <div className="grid gap-8 md:grid-cols-3">
+          <div className="group cursor-pointer">
+            <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
+              <Image
+                src="/images/tarmac.jpeg"
+                alt="Tarmac route"
+                fill
+                className="object-cover object-bottom grayscale transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <h3 className="mb-4 text-2xl font-bold">Tarmac Routes</h3>
+            <p className="leading-relaxed text-gray-600">
+              Smooth roads, epic climbs, and stunning scenery. Perfect for road
+              bikes and long-distance riding.
+            </p>
+          </div>
+          <div className="group cursor-pointer">
+            <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
+              <Image
+                src="/images/gravel.jpeg"
+                alt="Gravel trail"
+                fill
+                className="object-cover grayscale transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <h3 className="mb-4 text-2xl font-bold">Gravel Routes</h3>
+            <p className="leading-relaxed text-gray-600">
+              Off-road adventures through forests and mountains. Perfect for
+              gravel bikes.
+            </p>
+          </div>
+          <div className="group cursor-pointer">
+            <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
+              <Image
+                src="/images/bikepacking.jpeg"
+                alt="Bikepacking adventure"
+                fill
+                className="object-cover grayscale transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <h3 className="mb-4 text-2xl font-bold">Bikepacking</h3>
+            <p className="leading-relaxed text-gray-600">
+              Multi-day journeys combining cycling with camping. Ultimate
+              freedom and adventure.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Animated Divider with moving bike */}
+      <div className="relative h-16 overflow-hidden">
+        <div className="absolute inset-0 flex items-center">
+          <hr className="w-full border-gray-200" />
+        </div>
+        <div
+          className="bike-animation absolute top-1/2 -translate-y-1/2"
+          style={{ animationDelay: "7.5s" }}
         >
-          Michał Skolak
-        </Link>
+          <Bike className="h-8 w-8 text-black" />
+        </div>
+      </div>
+
+      {/* Bike Box Section with Image */}
+      <section id="bikebox" className="py-24">
+        <div className="container">
+          <div className="grid items-center gap-16 lg:grid-cols-2">
+            <div className="relative h-[500px] overflow-hidden rounded-lg">
+              <Image
+                src="/images/bikeboxreal.jpeg"
+                alt="Bike Box Alan - Professional bike transport case"
+                fill
+                className="object-cover grayscale"
+              />
+            </div>
+            <div>
+              <h2 className="mb-8 text-4xl font-bold tracking-tight md:text-5xl">
+                Bike Box Rental
+              </h2>
+              <p className="mb-8 text-lg leading-relaxed text-gray-600">
+                Travel with your bike safely and easily. We offer the{" "}
+                <span className="font-semibold">
+                  Bike Box Alan Triathlon Easyfit
+                </span>{" "}
+                for rent. Perfect for cycling holidays, events, or relocations.
+              </p>
+              <div className="mb-12 grid grid-cols-3 gap-8">
+                <div>
+                  <h4 className="mb-2 font-semibold">Protection</h4>
+                  <p className="text-sm text-gray-600">Hard case protection</p>
+                </div>
+                <div>
+                  <h4 className="mb-2 font-semibold">Easy Setup</h4>
+                  <p className="text-sm text-gray-600">Simple instructions</p>
+                </div>
+                <div>
+                  <h4 className="mb-2 font-semibold">Fair Rates</h4>
+                  <p className="text-sm text-gray-600">Affordable prices</p>
+                </div>
+              </div>
+              <Link
+                href="/bikebox"
+                className={buttonVariants({
+                  size: "lg",
+                  className:
+                    "bg-black px-8 text-white transition-all hover:bg-gray-800",
+                })}
+              >
+                Book the Box
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full Width Image Section */}
+      <section className="relative h-96">
+        <Image
+          src="/images/FullSizeRender.jpeg"
+          alt="Cycling landscape"
+          fill
+          className="object-cover grayscale"
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+          <h2 className="text-center text-4xl font-bold text-white md:text-6xl">
+            Your Adventure Awaits
+          </h2>
+        </div>
+      </section>
+
+      {/* Animated Divider with moving bike */}
+      <div className="relative h-16 overflow-hidden">
+        <div className="absolute inset-0 flex items-center">
+          <hr className="w-full border-gray-200" />
+        </div>
+        <div
+          className="bike-animation absolute top-1/2 -translate-y-1/2"
+          style={{ animationDelay: "3s" }}
+        >
+          <Bike className="h-8 w-8 text-black" />
+        </div>
+      </div>
+
+      {/* Community Section */}
+      <section id="community" className="container py-24">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+            Join Our Community
+          </h2>
+          <div className="grid gap-8 text-center md:grid-cols-3">
+            <div className="group">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-black transition-all group-hover:bg-black">
+                <Users className="h-8 w-8 transition-colors group-hover:text-white" />
+              </div>
+              <h3 className="mb-3 text-lg font-semibold">Strava Club</h3>
+              <p className="mb-6 text-sm text-gray-600">
+                Track rides and join challenges
+              </p>
+              <Link
+                href="https://www.strava.com/clubs/pedal-peak"
+                target="_blank"
+                className="font-semibold text-black transition-colors hover:text-gray-600"
+              >
+                Join Strava →
+              </Link>
+            </div>
+            <div className="group">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-black transition-all group-hover:bg-black">
+                <MessageCircle className="h-8 w-8 transition-colors group-hover:text-white" />
+              </div>
+              <h3 className="mb-3 text-lg font-semibold">WhatsApp Group</h3>
+              <p className="mb-6 text-sm text-gray-600">
+                Real-time ride coordination
+              </p>
+              <Link
+                href="https://chat.whatsapp.com/pedal-peak"
+                target="_blank"
+                className="font-semibold text-black transition-colors hover:text-gray-600"
+              >
+                Join WhatsApp →
+              </Link>
+            </div>
+            <div className="group">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-black transition-all group-hover:bg-black">
+                <Mail className="h-8 w-8 transition-colors group-hover:text-white" />
+              </div>
+              <h3 className="mb-3 text-lg font-semibold">Get in Touch</h3>
+              <p className="mb-6 text-sm text-gray-600">
+                Questions or suggestions?
+              </p>
+              <Link
+                href="mailto:hello@pedal-peak.com"
+                className="font-semibold text-black transition-colors hover:text-gray-600"
+              >
+                Email Us →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-200 bg-gray-50">
+        <div className="container py-8">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-sm text-gray-600">
+              © {new Date().getFullYear()} Pedal Peak. Built for cyclists, by
+              cyclists.
+            </p>
+            <div className="flex gap-6 text-sm">
+              <Link
+                href="/routes"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Routes
+              </Link>
+              <Link
+                href="/#rides"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Rides
+              </Link>
+              <Link
+                href="/#bikebox"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Bike Box
+              </Link>
+              <Link
+                href="https://www.strava.com/clubs/pedal-peak"
+                target="_blank"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Strava
+              </Link>
+            </div>
+          </div>
+        </div>
       </footer>
-    </>
+    </div>
   );
 };
 

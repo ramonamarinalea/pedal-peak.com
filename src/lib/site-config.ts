@@ -1,10 +1,19 @@
 import { env } from "@/env.mjs";
 
 export const siteConfig = {
-  title: "Next.js Starter",
+  title: "Pedal Peak - Cycling Community & Adventures",
   description:
-    "A Next.js starter template, packed with features like TypeScript, Tailwind CSS, Next-auth, Eslint, testing tools and more. Jumpstart your project with efficiency and style.",
-  keywords: ["Next.js", "TypeScript", "Tailwind CSS", "Next-auth"],
+    "Join Pedal Peak's cycling community for epic rides, bikepacking adventures, and good vibes. Explore tarmac routes, dirt trails, and connect with fellow cyclists. No egos, just pure cycling joy.",
+  keywords: [
+    "cycling",
+    "bike rides",
+    "cycling community",
+    "bikepacking",
+    "Strava",
+    "cycling events",
+    "bike rental",
+    "Switzerland cycling",
+  ],
   url: env.APP_URL,
   googleSiteVerificationId: env.GOOGLE_SITE_VERIFICATION_ID || "",
 };
