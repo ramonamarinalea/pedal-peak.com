@@ -118,8 +118,8 @@ const HomePage = () => {
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             {/* Piedmont Adventure */}
-            <div className="group">
-              <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
+            <Link href="/piedmont" className="group block">
+              <div className="relative mb-6 h-64 cursor-pointer overflow-hidden rounded-lg">
                 <Image
                   src="/images/piedmont/andrea-cairone-lzM3pbQim70-unsplash.jpg"
                   alt="Piedmont cycling adventure"
@@ -137,26 +137,25 @@ const HomePage = () => {
                   </p>
                 </div>
               </div>
-              <p className="mb-6 leading-relaxed text-gray-600">
+              <p className="mb-6 leading-relaxed text-gray-600 transition-colors group-hover:text-gray-900">
                 Join us for our personal cycling adventure through
                 Piedmont&apos;s UNESCO World Heritage vineyards, historic Alpine
                 roads, and stunning rice fields around Vercelli.
               </p>
-              <Link
-                href="/piedmont"
+              <div
                 className={buttonVariants({
                   variant: "outline",
                   className:
-                    "border-black text-black transition-all hover:bg-black hover:text-white",
+                    "w-fit border-black text-black transition-all hover:bg-black hover:text-white",
                 })}
               >
                 Follow Our Journey
-              </Link>
-            </div>
+              </div>
+            </Link>
 
             {/* Crete Training Camp */}
-            <div className="group">
-              <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
+            <Link href="/crete" className="group block">
+              <div className="relative mb-6 h-64 cursor-pointer overflow-hidden rounded-lg">
                 <Image
                   src="/images/crete/crete_hairpins.jpg"
                   alt="Crete cycling training camp"
@@ -174,21 +173,20 @@ const HomePage = () => {
                   </p>
                 </div>
               </div>
-              <p className="mb-6 leading-relaxed text-gray-600">
+              <p className="mb-6 leading-relaxed text-gray-600 transition-colors group-hover:text-gray-900">
                 Join our guided training camp in Crete with professional
                 support, stunning mountain roads, coastal routes, and perfect
                 October weather. Limited spaces available.
               </p>
-              <Link
-                href="/crete"
+              <div
                 className={buttonVariants({
                   className:
-                    "bg-black text-white transition-all hover:bg-gray-800",
+                    "w-fit bg-black text-white transition-all hover:bg-gray-800",
                 })}
               >
                 Book Your Spot - €220
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
