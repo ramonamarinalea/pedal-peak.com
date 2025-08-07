@@ -45,18 +45,18 @@ export default function CreteTrainingCamp() {
     },
     {
       day: "Day 5 - Oct 23",
-      name: "South Coast Epic",
-      distance: "100km",
-      elevation: "1800m",
-      description: "Challenging ride to the dramatic south coast and back",
-    },
-    {
-      day: "Day 6 - Oct 24",
       name: "Rest Day",
       distance: "-",
       elevation: "-",
       description:
         "Recovery day with optional easy spin, beach time, or cultural exploration",
+    },
+    {
+      day: "Day 6 - Oct 24",
+      name: "South Coast Epic",
+      distance: "100km",
+      elevation: "1800m",
+      description: "Challenging ride to the dramatic south coast and back",
     },
     {
       day: "Day 7 - Oct 25",
@@ -67,10 +67,11 @@ export default function CreteTrainingCamp() {
     },
     {
       day: "Day 8 - Oct 26",
-      name: "Farewell Ride",
+      name: "Farewell Ride (Optional)",
       distance: "60km",
       elevation: "500m",
-      description: "Easy-paced group ride to wrap up an amazing week",
+      description: "Optional easy-paced group ride to wrap up an amazing week",
+      optional: true,
     },
   ];
 
@@ -186,7 +187,7 @@ export default function CreteTrainingCamp() {
                 Full Experience
               </p>
               <p className="mt-2 text-sm text-gray-500">
-                6 guided rides + 1 rest day + 1 optional ride
+                5 guided rides + 1 rest day + 2 optional rides
               </p>
             </div>
 
