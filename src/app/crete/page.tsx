@@ -304,25 +304,66 @@ export default function CreteTrainingCamp() {
               <h3 className="mb-4 text-xl font-semibold uppercase tracking-wide text-black">
                 Alsus Boutique Hotel - Adults Only
               </h3>
-              <div className="relative mb-4 h-64 overflow-hidden">
-                <Image
-                  src="/images/crete/bruna-santos-hbaZ2hUtz7w-unsplash.jpg"
-                  alt="Crete hotel view"
-                  fill
-                  className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
-                />
+
+              {/* Hotel Image Gallery */}
+              <div className="mb-6 grid gap-4">
+                <div className="relative h-64 overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/crete/bruna-santos-hbaZ2hUtz7w-unsplash.jpg"
+                    alt="Majestic Suite with private thermal pool"
+                    fill
+                    className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
+                  />
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="relative h-24 overflow-hidden rounded">
+                    <Image
+                      src="/images/crete/pelayo-arbues-k0B719Al7Ks-unsplash.jpg"
+                      alt="Top view of Crete beach near hotel"
+                      fill
+                      className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
+                    />
+                  </div>
+                  <div className="relative h-24 overflow-hidden rounded">
+                    <Image
+                      src="/images/crete/mircea-solomiea-EdQZ8ErN37k-unsplash.jpg"
+                      alt="Hotel restaurant with Cretan cuisine"
+                      fill
+                      className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
+                    />
+                  </div>
+                  <div className="relative h-24 overflow-hidden rounded">
+                    <Image
+                      src="/images/crete/eugene-chystiakov-w4qMW_XDbYA-unsplash.jpg"
+                      alt="Hotel interior and facilities"
+                      fill
+                      className="object-cover grayscale transition-all duration-300 hover:grayscale-0"
+                    />
+                  </div>
+                </div>
               </div>
+
+              <p className="mb-2 text-sm font-medium text-gray-700">
+                <strong>Location:</strong> Amoudara Herakliou, Crete • Perfect
+                for cyclists with secure bike storage
+              </p>
+
               <p className="mb-4 text-gray-600">
                 Adults-only boutique hotel with modern amenities, ideal for our
-                cycling group. Perfect location in Amoudara Herakliou with
-                secure bike storage.
+                cycling group.
               </p>
+
               <div className="mb-4 border-l-4 border-black bg-gray-100 p-4">
                 <p className="text-sm font-medium text-gray-900">
                   <strong>Important:</strong> Hotel booking is separate from the
                   guiding fee.
                 </p>
+                <p className="mt-2 text-sm text-gray-700">
+                  <strong>Optional Service:</strong> I can book hotel and
+                  flights for you via prepayment if preferred.
+                </p>
               </div>
+
               <Button variant="outline" asChild>
                 <a
                   href="https://www.booking.com/Share-VpAdDUX"
