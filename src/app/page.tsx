@@ -116,43 +116,7 @@ const HomePage = () => {
           <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
             Cycling Adventures
           </h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Piedmont Adventure */}
-            <Link href="/piedmont" className="group block">
-              <div className="relative mb-6 h-64 cursor-pointer overflow-hidden rounded-lg">
-                <Image
-                  src="/images/piedmont/andrea-cairone-lzM3pbQim70-unsplash.jpg"
-                  alt="Piedmont cycling adventure"
-                  fill
-                  className="object-cover grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <div className="mb-2 inline-block bg-white px-3 py-1 text-xs font-medium uppercase tracking-wider text-black">
-                    AUGUST 11-15, 2025
-                  </div>
-                  <h3 className="text-2xl font-bold">Piedmont Adventure</h3>
-                  <p className="text-sm opacity-90">
-                    4-day gravel cycling through Italy
-                  </p>
-                </div>
-              </div>
-              <p className="mb-6 leading-relaxed text-gray-600 transition-colors group-hover:text-gray-900">
-                Join us for our personal cycling adventure through
-                Piedmont&apos;s UNESCO World Heritage vineyards, historic Alpine
-                roads, and stunning rice fields around Vercelli.
-              </p>
-              <div
-                className={buttonVariants({
-                  variant: "outline",
-                  className:
-                    "w-fit border-black text-black transition-all hover:bg-black hover:text-white",
-                })}
-              >
-                Follow Our Journey
-              </div>
-            </Link>
-
+          <div className="mx-auto max-w-2xl">
             {/* Crete Training Camp */}
             <Link href="/crete" className="group block">
               <div className="relative mb-6 h-64 cursor-pointer overflow-hidden rounded-lg">

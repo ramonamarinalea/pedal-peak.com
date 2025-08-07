@@ -12,11 +12,12 @@ export default function CreteTrainingCamp() {
   const rides = [
     {
       day: "Day 1 - Oct 19",
-      name: "Arrival & Easy Spin",
+      name: "Welcome Ride (Optional)",
       distance: "30km",
       elevation: "300m",
       description:
-        "Gentle ride to shake off travel fatigue and get acquainted with the group",
+        "Optional gentle ride to shake off travel fatigue and get acquainted with the group",
+      optional: true,
     },
     {
       day: "Day 2 - Oct 20",
@@ -36,14 +37,6 @@ export default function CreteTrainingCamp() {
     },
     {
       day: "Day 4 - Oct 22",
-      name: "Rest Day",
-      distance: "-",
-      elevation: "-",
-      description:
-        "Recovery day with optional easy spin, beach time, or cultural exploration",
-    },
-    {
-      day: "Day 5 - Oct 23",
       name: "Plateau Adventure",
       distance: "85km",
       elevation: "1200m",
@@ -51,14 +44,29 @@ export default function CreteTrainingCamp() {
         "Explore the famous Lasithi Plateau with its unique landscape",
     },
     {
-      day: "Day 6 - Oct 24",
+      day: "Day 5 - Oct 23",
       name: "South Coast Epic",
       distance: "100km",
       elevation: "1800m",
       description: "Challenging ride to the dramatic south coast and back",
     },
     {
+      day: "Day 6 - Oct 24",
+      name: "Rest Day",
+      distance: "-",
+      elevation: "-",
+      description:
+        "Recovery day with optional easy spin, beach time, or cultural exploration",
+    },
+    {
       day: "Day 7 - Oct 25",
+      name: "Mountain Roads Adventure",
+      distance: "95km",
+      elevation: "1400m",
+      description: "Explore Crete's spectacular mountain roads and villages",
+    },
+    {
+      day: "Day 8 - Oct 26",
       name: "Farewell Ride",
       distance: "60km",
       elevation: "500m",
@@ -171,14 +179,14 @@ export default function CreteTrainingCamp() {
 
             <div className="card p-8 text-center transition-all duration-300 hover:shadow-lg">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-black text-white">
-                <span className="text-2xl font-bold">7</span>
+                <span className="text-2xl font-bold">8</span>
               </div>
               <h3 className="mb-2 text-4xl font-bold text-black">Days</h3>
               <p className="text-sm font-medium uppercase tracking-wide text-gray-600">
                 Full Experience
               </p>
               <p className="mt-2 text-sm text-gray-500">
-                5 guided rides + 1 rest day
+                6 guided rides + 1 rest day + 1 optional ride
               </p>
             </div>
 
@@ -227,7 +235,7 @@ export default function CreteTrainingCamp() {
                 key={index}
                 className={`border-b border-gray-200 p-6 transition-colors hover:bg-gray-50 ${
                   ride.name === "Rest Day" ? "bg-green-50" : ""
-                }`}
+                } ${ride.optional ? "bg-blue-50" : ""}`}
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                   <div className="flex-1">
@@ -235,6 +243,11 @@ export default function CreteTrainingCamp() {
                       <div className="bg-black px-3 py-1 text-sm font-medium uppercase tracking-wide text-white">
                         {ride.day}
                       </div>
+                      {ride.optional && (
+                        <div className="bg-blue-500 px-2 py-1 text-xs font-medium uppercase tracking-wide text-white">
+                          OPTIONAL
+                        </div>
+                      )}
                       {ride.distance !== "-" && (
                         <div className="flex gap-2 text-sm text-gray-500">
                           <span>{ride.distance}</span>
