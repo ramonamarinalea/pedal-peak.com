@@ -49,6 +49,14 @@ export default function PiedmontAdventure() {
               className="border-white bg-white/10 text-white hover:bg-white hover:text-black"
               asChild
             >
+              <Link href="#packing">Packing List</Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white bg-white/10 text-white hover:bg-white hover:text-black"
+              asChild
+            >
               <Link href="#details">Learn More</Link>
             </Button>
           </div>
@@ -180,6 +188,189 @@ export default function PiedmontAdventure() {
         </div>
       </section>
 
+      {/* Packing List Section */}
+      <section className="py-16" id="packing">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-bold uppercase tracking-tight">
+              Packing List
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-gray-600">
+              Everything we need for our 4-day cycling adventure through
+              Piedmont
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {/* Bike Category */}
+              <div className="card p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                    <span className="text-xl">🚴</span>
+                  </div>
+                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
+                    Bike
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "bottles",
+                    "Reparation",
+                    "pump",
+                    "Multitool",
+                    "Zip ties",
+                    "spare brake pads",
+                    "Inner tubes",
+                    "Tire lifters",
+                    "chain links",
+                    "Tubeless repair",
+                    "Dynaplug",
+                    "Toptube bag",
+                    "Helmet",
+                    "sunglasses",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
+                      <span className="text-sm text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Electronics Category */}
+              <div className="card p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                    <span className="text-xl">🔌</span>
+                  </div>
+                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
+                    Electronics
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "iPhone charger + cable",
+                    "Wahoo/garmin",
+                    "Bike lights",
+                    "powerbank",
+                    "Airpods",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
+                      <span className="text-sm text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Documents Category */}
+              <div className="card p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                    <span className="text-xl">📄</span>
+                  </div>
+                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
+                    Documents
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {["credit cards", "Cash euros/creditcard", "Passport"].map(
+                    (item, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
+                        <span className="text-sm text-gray-700">{item}</span>
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+
+              {/* Toiletries Category */}
+              <div className="card p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                    <span className="text-xl">🧴</span>
+                  </div>
+                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
+                    Toiletries & Co
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "Toothbrush + paste",
+                    "Sun cream",
+                    "Hair brush",
+                    "Microfiber towel",
+                    "chamois cream",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
+                      <span className="text-sm text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Clothes Category */}
+              <div className="card p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                    <span className="text-xl">👕</span>
+                  </div>
+                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
+                    Clothes
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    "Bike shorts 1x",
+                    "jersey 1x",
+                    "Windjacket",
+                    "Socks",
+                    "Glasses",
+                    "Gloves",
+                    "base layer",
+                    "Bike shoes",
+                    "Shoes/flipflops",
+                    "T-shirt",
+                    "Normal pants",
+                    "Bikini",
+                    "Underwear",
+                    "Sports bra's",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
+                      <span className="text-sm text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Food Category */}
+              <div className="card p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                    <span className="text-xl">🍫</span>
+                  </div>
+                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
+                    Food & Snacks
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {["Snacks"].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
+                      <span className="text-sm text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Daily Itinerary Section */}
       <section className="bg-gray-50 py-16" id="itinerary">
         <div className="container mx-auto px-4">
@@ -191,57 +382,116 @@ export default function PiedmontAdventure() {
               A perfect mix of challenging rides, stunning scenery, and
               authentic Italian experiences
             </p>
+
+            {/* Trip Stats Summary */}
+            <div className="mx-auto mt-8 max-w-3xl">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-black">4 Days</div>
+                  <div className="text-sm uppercase tracking-wide text-gray-500">
+                    Duration
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-black">466km</div>
+                  <div className="text-sm uppercase tracking-wide text-gray-500">
+                    Total Distance
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-black">5,526m</div>
+                  <div className="text-sm uppercase tracking-wide text-gray-500">
+                    Total Elevation
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="mx-auto max-w-4xl space-y-0 border-t border-gray-200">
             {[
               {
-                day: "Day 1 - Aug 11",
-                name: "Arrival & Barolo Discovery",
-                distance: "77km",
+                day: "Day 1 - Monday, Aug 11",
+                name: "Zurich to Asigliano Vercellese",
+                distance: "124km",
+                elevation: "1,190m+",
                 description:
-                  "Start our adventure in the heart of Barolo wine country",
+                  "Cross Swiss-Italian border, descend into Lombardy plains, and enter UNESCO rice fields of Vercelli",
+                accommodation: "Amy Casetta di Charme (CHF 85)",
+                transportation:
+                  "Train from Zurich HB to Chiasso (6:05-8:26 AM)",
               },
               {
-                day: "Day 2 - Aug 12",
-                name: "Barbaresco & Military Roads",
-                distance: "95km",
+                day: "Day 2 - Tuesday, Aug 12",
+                name: "Asigliano Vercellese to San Martino",
+                distance: "125km",
+                elevation: "2,488m+",
                 description:
-                  "Explore historic Alpine military roads and Barbaresco vineyards",
+                  "Climb through Barolo wine region, visit historic hilltop villages, and enjoy stunning vineyard panoramas",
+                accommodation: "Agriturismo San Martino (CHF 117)",
               },
               {
-                day: "Day 3 - Aug 13",
-                name: "Vercelli Rice Fields",
+                day: "Day 3 - Wednesday, Aug 13",
+                name: "San Martino to Santa Giuletta",
                 distance: "140km",
+                elevation: "1,690m+",
                 description:
-                  "Our longest ride through the stunning rice fields around Vercelli",
+                  "Traverse Oltrepò Pavese wine region along historic military roads through rolling hills and vineyards",
+                accommodation: "Borgo Santuletta (CHF 180)",
               },
               {
-                day: "Day 4 - Aug 14",
-                name: "Final Gravel Adventure",
-                distance: "89km",
+                day: "Day 4 - Thursday, Aug 14",
+                name: "Santa Giuletta to Milano",
+                distance: "77km",
+                elevation: "158m+",
                 description:
-                  "Complete our journey with beautiful gravel paths and countryside views",
+                  "Final ride through Lombardy with our approach to Milan",
+                transportation:
+                  "Evening train from Milano Centrale to Zurich HB (6:05-9:22 PM)",
               },
             ].map((ride, index) => (
               <div
                 key={index}
                 className="border-b border-gray-200 p-6 transition-colors hover:bg-gray-100"
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="flex-1">
-                    <div className="mb-2 flex items-center gap-4">
-                      <div className="bg-black px-3 py-1 text-sm font-medium uppercase tracking-wide text-white">
-                        {ride.day}
-                      </div>
-                      <div className="flex gap-2 text-sm text-gray-500">
-                        <span>{ride.distance}</span>
-                      </div>
+                <div className="flex flex-col">
+                  <div className="mb-4 flex items-center gap-4">
+                    <div className="bg-black px-3 py-1 text-sm font-medium uppercase tracking-wide text-white">
+                      {ride.day}
                     </div>
-                    <h3 className="mb-2 text-xl font-semibold uppercase tracking-wide text-black">
-                      {ride.name}
-                    </h3>
-                    <p className="text-gray-600">{ride.description}</p>
+                    <div className="flex gap-4 text-sm text-gray-500">
+                      <span>{ride.distance}</span>
+                      {ride.elevation && <span>{ride.elevation}</span>}
+                    </div>
+                  </div>
+
+                  <h3 className="mb-3 text-xl font-semibold uppercase tracking-wide text-black">
+                    {ride.name}
+                  </h3>
+
+                  <p className="mb-4 text-gray-600">{ride.description}</p>
+
+                  <div className="space-y-2">
+                    {ride.accommodation && (
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm font-medium text-gray-700">
+                          🏨 Accommodation:
+                        </span>
+                        <span className="text-sm text-gray-600">
+                          {ride.accommodation}
+                        </span>
+                      </div>
+                    )}
+                    {ride.transportation && (
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm font-medium text-gray-700">
+                          🚂 Transportation:
+                        </span>
+                        <span className="text-sm text-gray-600">
+                          {ride.transportation}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
