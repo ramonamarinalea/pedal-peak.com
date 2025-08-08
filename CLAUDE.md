@@ -22,10 +22,20 @@ This is **Pedal Peak**, a cycling community website built with Next.js 15 and Re
 - `npm run format:write` - Auto-format with Prettier
 
 ### Testing
-- `npm test` - Run Jest unit tests
+- `npm test` - Run Jest unit tests (config in config/jest.config.js)
 - `npm test:watch` - Run tests in watch mode
-- `npm run e2e` - Run Playwright end-to-end tests
+- `npm run e2e` - Run Playwright end-to-end tests (config in config/playwright.config.ts)
 - `npm run e2e:ui` - Run e2e tests with UI
+
+### Configuration
+All configuration files are organized in the `config/` directory:
+- `config/eslint.config.mjs` - ESLint configuration
+- `config/prettier.config.js` - Prettier formatting
+- `config/jest.config.js` & `config/jest.setup.js` - Testing setup
+- `config/playwright.config.ts` - E2E testing
+- `config/commitlint.config.cjs` - Commit message linting
+- `config/components.json` - Shadcn/UI components
+- `config/drizzle.config.ts` - Database configuration
 
 ## Architecture
 

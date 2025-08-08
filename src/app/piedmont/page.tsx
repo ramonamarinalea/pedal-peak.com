@@ -9,7 +9,7 @@ export default function PiedmontAdventure() {
     "Historic Alpine military roads and gravel paths",
     "Stunning rice fields around Vercelli",
     "Amazing Italian cuisine and local wines",
-    "Cozy B&Bs and agriturismos we've picked",
+    "Cozy B&Bs and agriturismos we&apos;ve picked",
     "Just the two of us exploring together",
   ];
 
@@ -36,7 +36,7 @@ export default function PiedmontAdventure() {
             <span className="text-white/80">Adventure</span>
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-xl font-light md:text-2xl">
-            Our 4-day gravel cycling adventure through Piedmont's
+            Our 4-day gravel cycling adventure through Piedmont&apos;s
             countryside
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -116,15 +116,15 @@ export default function PiedmontAdventure() {
               </h2>
 
               <p className="mb-8 text-lg text-gray-600">
-                We'll spend 4 days cycling through one of Italy's most
+                We&apos;ll spend 4 days cycling through one of Italy&apos;s most
                 beautiful regions. From rolling hills covered in vineyards to
                 the rice fields around Vercelli, every kilometer will show us
-                something new about Piedmont's amazing landscapes.
+                something new about Piedmont&apos;s amazing landscapes.
               </p>
 
               <div className="mb-8">
                 <h3 className="mb-4 text-xl font-semibold uppercase tracking-wide text-black">
-                  What We'll Experience
+                  What We&apos;ll Experience
                 </h3>
                 <ul className="space-y-3">
                   {features.map((feature, index) => (
@@ -139,7 +139,7 @@ export default function PiedmontAdventure() {
               <div className="border-l-4 border-black bg-gray-100 p-6">
                 <p className="text-sm font-medium text-gray-900">
                   <strong>Our pace:</strong> Daily distances of 77-140km with
-                  significant climbs. We'll take our time to enjoy the
+                  significant climbs. We&apos;ll take our time to enjoy the
                   views and stop for coffee whenever we want!
                 </p>
               </div>
@@ -222,7 +222,7 @@ export default function PiedmontAdventure() {
                   Daily Itinerary
                 </h3>
                 <p className="mb-4 text-gray-600">
-                  Detailed breakdown of each day's route, accommodations, and highlights. 
+                  Detailed breakdown of each day&apos;s route, accommodations, and highlights. 
                   Including transportation details and Strava links.
                 </p>
                 <Button 

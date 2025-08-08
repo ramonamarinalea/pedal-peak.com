@@ -73,7 +73,7 @@ export default function PiedmontPacking() {
         { name: "Normal pants", id: "normal-pants" },
         { name: "Bikini", id: "bikini" },
         { name: "Underwear", id: "underwear" },
-        { name: "Sports bra's", id: "sports-bras" },
+        { name: "Sports bra&apos;s", id: "sports-bras" },
       ],
     },
     {
@@ -246,7 +246,7 @@ export default function PiedmontPacking() {
                     Weight Distribution
                   </h4>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Pack heavier items low and close to the bike's center of gravity for better stability on long rides.
+                    Pack heavier items low and close to the bike&apos;s center of gravity for better stability on long rides.
                   </p>
                 </div>
                 <div className="text-center">

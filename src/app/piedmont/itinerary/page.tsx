@@ -29,7 +29,7 @@ export default function PiedmontItinerary() {
             <span className="text-white/80">Itinerary</span>
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-xl font-light md:text-2xl">
-            4 days of cycling through Piedmont's most beautiful landscapes
+            4 days of cycling through Piedmont&apos;s most beautiful landscapes
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" variant="secondary" asChild>
@@ -211,7 +211,7 @@ export default function PiedmontItinerary() {
                   stravaId: "3388109641554180676",
                   highlights: [
                     "Final ride through Lombardy",
-                    "Approach to Italy's fashion capital",
+                    "Approach to Italy&apos;s fashion capital",
                     "Mix of countryside and urban landscapes",
                     "Celebration finish in Milano",
                   ],
