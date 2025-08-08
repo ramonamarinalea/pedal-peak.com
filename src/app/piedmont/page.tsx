@@ -9,7 +9,7 @@ export default function PiedmontAdventure() {
     "Historic Alpine military roads and gravel paths",
     "Stunning rice fields around Vercelli",
     "Amazing Italian cuisine and local wines",
-    "Cozy B&Bs and agriturismos we&apos;ve picked",
+    "Cozy B&Bs and agriturismos we've picked",
     "Just the two of us exploring together",
   ];
 
@@ -36,12 +36,12 @@ export default function PiedmontAdventure() {
             <span className="text-white/80">Adventure</span>
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-xl font-light md:text-2xl">
-            Our 4-day gravel cycling adventure through Piedmont&apos;s
+            Our 4-day gravel cycling adventure through Piedmont's
             countryside
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" variant="secondary" asChild>
-              <Link href="#itinerary">View Our Itinerary</Link>
+              <Link href="/piedmont/itinerary">View Our Itinerary</Link>
             </Button>
             <Button
               size="lg"
@@ -49,7 +49,7 @@ export default function PiedmontAdventure() {
               className="border-white bg-white/10 text-white hover:bg-white hover:text-black"
               asChild
             >
-              <Link href="#packing">Packing List</Link>
+              <Link href="/piedmont/packing">Packing List</Link>
             </Button>
             <Button
               size="lg"
@@ -116,15 +116,15 @@ export default function PiedmontAdventure() {
               </h2>
 
               <p className="mb-8 text-lg text-gray-600">
-                We&apos;ll spend 4 days cycling through one of Italy&apos;s most
+                We'll spend 4 days cycling through one of Italy's most
                 beautiful regions. From rolling hills covered in vineyards to
                 the rice fields around Vercelli, every kilometer will show us
-                something new about Piedmont&apos;s amazing landscapes.
+                something new about Piedmont's amazing landscapes.
               </p>
 
               <div className="mb-8">
                 <h3 className="mb-4 text-xl font-semibold uppercase tracking-wide text-black">
-                  What We&apos;ll Experience
+                  What We'll Experience
                 </h3>
                 <ul className="space-y-3">
                   {features.map((feature, index) => (
@@ -139,7 +139,7 @@ export default function PiedmontAdventure() {
               <div className="border-l-4 border-black bg-gray-100 p-6">
                 <p className="text-sm font-medium text-gray-900">
                   <strong>Our pace:</strong> Daily distances of 77-140km with
-                  significant climbs. We&apos;ll take our time to enjoy the
+                  significant climbs. We'll take our time to enjoy the
                   views and stop for coffee whenever we want!
                 </p>
               </div>
@@ -188,314 +188,90 @@ export default function PiedmontAdventure() {
         </div>
       </section>
 
-      {/* Packing List Section */}
-      <section className="py-16" id="packing">
+      {/* Action Cards Section */}
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-4xl font-bold uppercase tracking-tight">
-              Packing List
+              Plan Your Adventure
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              Everything we need for our 4-day cycling adventure through
-              Piedmont
+              Everything you need to prepare for our Piedmont cycling adventure
             </p>
           </div>
 
-          <div className="mx-auto max-w-6xl">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {/* Bike Category */}
-              <div className="card p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
-                    <span className="text-xl">🚴</span>
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
+            {/* Itinerary Card */}
+            <div className="card group overflow-hidden transition-all duration-300 hover:shadow-xl">
+              <div className="relative h-64">
+                <Image
+                  src="/images/piedmont/day1.jpeg"
+                  alt="Daily itinerary"
+                  fill
+                  className="object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <div className="inline-block bg-white px-3 py-1 text-xs font-medium uppercase tracking-wide text-black">
+                    4 DAYS • 466KM
                   </div>
-                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
-                    Bike
-                  </h3>
                 </div>
-                <ul className="space-y-2">
-                  {[
-                    "bottles",
-                    "Reparation",
-                    "pump",
-                    "Multitool",
-                    "Zip ties",
-                    "spare brake pads",
-                    "Inner tubes",
-                    "Tire lifters",
-                    "chain links",
-                    "Tubeless repair",
-                    "Dynaplug",
-                    "Toptube bag",
-                    "Helmet",
-                    "sunglasses",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
-                      <span className="text-sm text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-
-              {/* Electronics Category */}
-              <div className="card p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
-                    <span className="text-xl">🔌</span>
-                  </div>
-                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
-                    Electronics
-                  </h3>
-                </div>
-                <ul className="space-y-2">
-                  {[
-                    "iPhone charger + cable",
-                    "Wahoo/garmin",
-                    "Bike lights",
-                    "powerbank",
-                    "Airpods",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
-                      <span className="text-sm text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Documents Category */}
-              <div className="card p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
-                    <span className="text-xl">📄</span>
-                  </div>
-                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
-                    Documents
-                  </h3>
-                </div>
-                <ul className="space-y-2">
-                  {["credit cards", "Cash euros/creditcard", "Passport"].map(
-                    (item, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
-                        <span className="text-sm text-gray-700">{item}</span>
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-
-              {/* Toiletries Category */}
-              <div className="card p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
-                    <span className="text-xl">🧴</span>
-                  </div>
-                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
-                    Toiletries & Co
-                  </h3>
-                </div>
-                <ul className="space-y-2">
-                  {[
-                    "Toothbrush + paste",
-                    "Sun cream",
-                    "Hair brush",
-                    "Microfiber towel",
-                    "chamois cream",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
-                      <span className="text-sm text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Clothes Category */}
-              <div className="card p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
-                    <span className="text-xl">👕</span>
-                  </div>
-                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
-                    Clothes
-                  </h3>
-                </div>
-                <ul className="space-y-2">
-                  {[
-                    "Bike shorts 1x",
-                    "jersey 1x",
-                    "Windjacket",
-                    "Socks",
-                    "Glasses",
-                    "Gloves",
-                    "base layer",
-                    "Bike shoes",
-                    "Shoes/flipflops",
-                    "T-shirt",
-                    "Normal pants",
-                    "Bikini",
-                    "Underwear",
-                    "Sports bra's",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
-                      <span className="text-sm text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Food Category */}
-              <div className="card p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
-                    <span className="text-xl">🍫</span>
-                  </div>
-                  <h3 className="text-xl font-semibold uppercase tracking-wide text-black">
-                    Food & Snacks
-                  </h3>
-                </div>
-                <ul className="space-y-2">
-                  {["Snacks"].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black"></div>
-                      <span className="text-sm text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="p-6">
+                <h3 className="mb-3 text-2xl font-bold uppercase tracking-wide text-black">
+                  Daily Itinerary
+                </h3>
+                <p className="mb-4 text-gray-600">
+                  Detailed breakdown of each day's route, accommodations, and highlights. 
+                  Including transportation details and Strava links.
+                </p>
+                <Button 
+                  size="lg" 
+                  className="w-full bg-black hover:bg-gray-800 text-white" 
+                  asChild
+                >
+                  <Link href="/piedmont/itinerary">
+                    View Itinerary →
+                  </Link>
+                </Button>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Daily Itinerary Section */}
-      <section className="bg-gray-50 py-16" id="itinerary">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold uppercase tracking-tight">
-              Our 4-Day Itinerary
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              A perfect mix of challenging rides, stunning scenery, and
-              authentic Italian experiences
-            </p>
-
-            {/* Trip Stats Summary */}
-            <div className="mx-auto mt-8 max-w-3xl">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-black">4 Days</div>
-                  <div className="text-sm uppercase tracking-wide text-gray-500">
-                    Duration
+            {/* Packing Card */}
+            <div className="card group overflow-hidden transition-all duration-300 hover:shadow-xl">
+              <div className="relative h-64">
+                <Image
+                  src="/images/piedmont/day2.jpg"
+                  alt="Packing list"
+                  fill
+                  className="object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <div className="inline-block bg-white px-3 py-1 text-xs font-medium uppercase tracking-wide text-black">
+                    INTERACTIVE LIST
                   </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-black">466km</div>
-                  <div className="text-sm uppercase tracking-wide text-gray-500">
-                    Total Distance
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-black">5,526m</div>
-                  <div className="text-sm uppercase tracking-wide text-gray-500">
-                    Total Elevation
-                  </div>
-                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="mb-3 text-2xl font-bold uppercase tracking-wide text-black">
+                  Packing List
+                </h3>
+                <p className="mb-4 text-gray-600">
+                  Interactive checklist of everything you need. Check off items as you pack 
+                  with helpful tips for bike touring.
+                </p>
+                <Button 
+                  size="lg" 
+                  className="w-full bg-black hover:bg-gray-800 text-white" 
+                  asChild
+                >
+                  <Link href="/piedmont/packing">
+                    Start Packing →
+                  </Link>
+                </Button>
               </div>
             </div>
-          </div>
-
-          <div className="mx-auto max-w-4xl space-y-0 border-t border-gray-200">
-            {[
-              {
-                day: "Day 1 - Monday, Aug 11",
-                name: "Zurich to Asigliano Vercellese",
-                distance: "124km",
-                elevation: "1,190m+",
-                description:
-                  "Cross Swiss-Italian border, descend into Lombardy plains, and enter UNESCO rice fields of Vercelli",
-                accommodation: "Amy Casetta di Charme (CHF 85)",
-                transportation:
-                  "Train from Zurich HB to Chiasso (6:05-8:26 AM)",
-              },
-              {
-                day: "Day 2 - Tuesday, Aug 12",
-                name: "Asigliano Vercellese to San Martino",
-                distance: "125km",
-                elevation: "2,488m+",
-                description:
-                  "Climb through Barolo wine region, visit historic hilltop villages, and enjoy stunning vineyard panoramas",
-                accommodation: "Agriturismo San Martino (CHF 117)",
-              },
-              {
-                day: "Day 3 - Wednesday, Aug 13",
-                name: "San Martino to Santa Giuletta",
-                distance: "140km",
-                elevation: "1,690m+",
-                description:
-                  "Traverse Oltrepò Pavese wine region along historic military roads through rolling hills and vineyards",
-                accommodation: "Borgo Santuletta (CHF 180)",
-              },
-              {
-                day: "Day 4 - Thursday, Aug 14",
-                name: "Santa Giuletta to Milano",
-                distance: "77km",
-                elevation: "158m+",
-                description:
-                  "Final ride through Lombardy with our approach to Milan",
-                transportation:
-                  "Evening train from Milano Centrale to Zurich HB (6:05-9:22 PM)",
-              },
-            ].map((ride, index) => (
-              <div
-                key={index}
-                className="border-b border-gray-200 p-6 transition-colors hover:bg-gray-100"
-              >
-                <div className="flex flex-col">
-                  <div className="mb-4 flex items-center gap-4">
-                    <div className="bg-black px-3 py-1 text-sm font-medium uppercase tracking-wide text-white">
-                      {ride.day}
-                    </div>
-                    <div className="flex gap-4 text-sm text-gray-500">
-                      <span>{ride.distance}</span>
-                      {ride.elevation && <span>{ride.elevation}</span>}
-                    </div>
-                  </div>
-
-                  <h3 className="mb-3 text-xl font-semibold uppercase tracking-wide text-black">
-                    {ride.name}
-                  </h3>
-
-                  <p className="mb-4 text-gray-600">{ride.description}</p>
-
-                  <div className="space-y-2">
-                    {ride.accommodation && (
-                      <div className="flex items-start gap-2">
-                        <span className="text-sm font-medium text-gray-700">
-                          🏨 Accommodation:
-                        </span>
-                        <span className="text-sm text-gray-600">
-                          {ride.accommodation}
-                        </span>
-                      </div>
-                    )}
-                    {ride.transportation && (
-                      <div className="flex items-start gap-2">
-                        <span className="text-sm font-medium text-gray-700">
-                          🚂 Transportation:
-                        </span>
-                        <span className="text-sm text-gray-600">
-                          {ride.transportation}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
