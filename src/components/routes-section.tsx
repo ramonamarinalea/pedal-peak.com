@@ -8,21 +8,21 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function RoutesSection() {
-  const [filter, setFilter] = useState<"all" | "short" | "medium" | "long" | "epic">("all");
-  const [showCount, setShowCount] = useState(12);
+  const [filter, setFilter] = useState<"all" | "short" | "medium" | "long">("all");
+  const [showCount, setShowCount] = useState(20); // Show all 20 routes by default
 
   const filterRoutes = () => {
     let filtered = [...stravaRoutes];
     
     switch (filter) {
       case "short":
-        filtered = filtered.filter(r => r.distance < 100);
+        filtered = filtered.filter(r => r.distance < 200);
         break;
       case "medium":
-        filtered = filtered.filter(r => r.distance >= 100 && r.distance < 200);
+        filtered = filtered.filter(r => r.distance >= 200 && r.distance < 300);
         break;
       case "long":
-        filtered = filtered.filter(r => r.distance >= 200);
+        filtered = filtered.filter(r => r.distance >= 300);
         break;
       default:
         break;
@@ -36,9 +36,9 @@ export function RoutesSection() {
     ? stravaRoutes.length 
     : stravaRoutes.filter(r => {
         switch (filter) {
-          case "short": return r.distance < 100;
-          case "medium": return r.distance >= 100 && r.distance < 200;
-          case "long": return r.distance >= 200;
+          case "short": return r.distance < 200;
+          case "medium": return r.distance >= 200 && r.distance < 300;
+          case "long": return r.distance >= 300;
           default: return true;
         }
       }).length;
@@ -60,17 +60,17 @@ export function RoutesSection() {
   return (
     <section id="routes" className="container py-24">
       <h2 className="mb-8 text-center text-4xl font-bold tracking-tight md:text-5xl">
-        Curated Routes
+        Swiss Routes
       </h2>
       <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-gray-600">
-        Explore our collection of {stravaRoutes.length} hand-picked cycling routes. 
-        From weekend adventures to epic multi-day journeys.
+        Discover our top {stravaRoutes.length} Swiss cycling routes. 
+        From Alpine climbs to lake loops, explore the best of Switzerland by bike.
       </p>
 
       {/* Filter Buttons */}
       <div className="mb-12 flex flex-wrap justify-center gap-2">
         <button
-          onClick={() => { setFilter("all"); setShowCount(12); }}
+          onClick={() => { setFilter("all"); setShowCount(20); }}
           className={cn(
             "rounded-full px-6 py-2 text-sm font-medium transition-all",
             filter === "all"
@@ -81,7 +81,7 @@ export function RoutesSection() {
           All Routes
         </button>
         <button
-          onClick={() => { setFilter("short"); setShowCount(12); }}
+          onClick={() => { setFilter("short"); setShowCount(20); }}
           className={cn(
             "rounded-full px-6 py-2 text-sm font-medium transition-all",
             filter === "short"
@@ -89,10 +89,10 @@ export function RoutesSection() {
               : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           )}
         >
-          Short (&lt;100km)
+          Short (&lt;200km)
         </button>
         <button
-          onClick={() => { setFilter("medium"); setShowCount(12); }}
+          onClick={() => { setFilter("medium"); setShowCount(20); }}
           className={cn(
             "rounded-full px-6 py-2 text-sm font-medium transition-all",
             filter === "medium"
@@ -100,10 +100,10 @@ export function RoutesSection() {
               : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           )}
         >
-          Medium (100-200km)
+          Medium (200-300km)
         </button>
         <button
-          onClick={() => { setFilter("long"); setShowCount(12); }}
+          onClick={() => { setFilter("long"); setShowCount(20); }}
           className={cn(
             "rounded-full px-6 py-2 text-sm font-medium transition-all",
             filter === "long"
@@ -111,7 +111,7 @@ export function RoutesSection() {
               : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           )}
         >
-          Long (200km+)
+          Epic (300km+)
         </button>
       </div>
 
@@ -166,30 +166,6 @@ export function RoutesSection() {
         ))}
       </div>
 
-      {/* Load More Button */}
-      {showCount < totalFiltered && (
-        <div className="mt-12 text-center">
-          <button
-            onClick={() => setShowCount(prev => prev + 12)}
-            className={buttonVariants({
-              variant: "outline",
-              className: "border-black text-black hover:bg-black hover:text-white"
-            })}
-          >
-            Load More Routes ({totalFiltered - showCount} remaining)
-          </button>
-        </div>
-      )}
-
-      {/* View All Routes Link */}
-      <div className="mt-12 text-center">
-        <Link
-          href="/routes"
-          className="text-sm font-medium text-gray-600 transition-colors hover:text-black"
-        >
-          View All Routes on Dedicated Page →
-        </Link>
-      </div>
     </section>
   );
 }
