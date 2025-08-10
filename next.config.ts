@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Remove output: "export" to enable serverless functions for route builder
   allowedDevOrigins: ["127.0.0.1"],
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for static export but removed since we need API routes
     remotePatterns: [
       {
         protocol: "https",

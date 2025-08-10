@@ -27,6 +27,12 @@ const HomePage = () => {
               routes
             </Link>
             <Link
+              href="/route-builder"
+              className="text-sm text-gray-900 transition-colors hover:text-black"
+            >
+              route builder
+            </Link>
+            <Link
               href="#adventures"
               className="text-sm text-gray-900 transition-colors hover:text-black"
             >
@@ -87,19 +93,19 @@ const HomePage = () => {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="https://www.strava.com/clubs/pedal-peak"
-              target="_blank"
+              href="/route-builder"
               className={buttonVariants({
                 size: "lg",
                 className:
                   "bg-black px-8 text-white transition-all hover:bg-gray-800",
               })}
             >
-              Join the Community
+              Build Your Route
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
             <Link
-              href="#rides"
+              href="https://www.strava.com/clubs/pedal-peak"
+              target="_blank"
               className={buttonVariants({
                 variant: "outline",
                 size: "lg",
@@ -107,7 +113,7 @@ const HomePage = () => {
                   "border-black bg-white px-8 transition-all hover:bg-black hover:text-white",
               })}
             >
-              View Upcoming Rides
+              Join the Community
             </Link>
           </div>
         </div>
@@ -369,6 +375,12 @@ const HomePage = () => {
                 className="text-gray-600 transition-colors hover:text-black"
               >
                 Routes
+              </Link>
+              <Link
+                href="/route-builder"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Route Builder
               </Link>
               <Link
                 href="/piedmont"
