@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Logo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
+import { RoutesSection } from "@/components/routes-section";
 
 const HomePage = () => {
   return (
@@ -196,65 +197,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Route Types Section with Images */}
-      <section id="routes" className="container py-24">
-        <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
-          Route Types
-        </h2>
-        <div className="grid gap-8 md:grid-cols-3">
-          <div className="group cursor-pointer">
-            <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
-              <Image
-                src="/images/tarmac.jpeg"
-                alt="Tarmac route"
-                fill
-                className="object-cover object-bottom grayscale transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-            <h3 className="mb-4 text-2xl font-bold">Tarmac Routes</h3>
-            <p className="leading-relaxed text-gray-600">
-              Smooth roads, epic climbs, and stunning scenery. Perfect for road
-              bikes and long-distance riding.
-            </p>
-          </div>
-          <div className="group cursor-pointer">
-            <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
-              <Image
-                src="/images/gravel.jpeg"
-                alt="Gravel trail"
-                fill
-                className="object-cover grayscale transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-            <h3 className="mb-4 text-2xl font-bold">Gravel Routes</h3>
-            <p className="leading-relaxed text-gray-600">
-              Off-road adventures through forests and mountains. Perfect for
-              gravel bikes.
-            </p>
-          </div>
-          <div className="group cursor-pointer">
-            <div className="relative mb-6 h-64 overflow-hidden rounded-lg">
-              <Image
-                src="/images/bikepacking.jpeg"
-                alt="Bikepacking adventure"
-                fill
-                className="object-cover grayscale transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-            <h3 className="mb-4 text-2xl font-bold">Bikepacking</h3>
-            <p className="leading-relaxed text-gray-600">
-              Multi-day journeys combining cycling with camping. Ultimate
-              freedom and adventure.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Routes Section */}
+      <RoutesSection />
 
       {/* Animated Divider with moving bike */}
       <div className="relative h-16 overflow-hidden">
