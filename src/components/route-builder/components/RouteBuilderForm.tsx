@@ -32,6 +32,13 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit(e as any);
+    }
+  };
+
   const handleBlur = (field: string) => {
     setTouched(prev => ({ ...prev, [field]: true }));
     validateField(field);
@@ -102,17 +109,17 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
   };
 
   return (
-    <div className="card">
-      <div className="card-header">
-        <h2 className="heading-3">Create Your Route</h2>
-        <p className="body-regular text-gray-600">
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+      <div className="px-6 py-4 border-b border-gray-200">
+        <h2 className="text-2xl font-bold text-gray-900">Create Your Route</h2>
+        <p className="text-gray-600 mt-2">
           Generate an optimized cycling route based on your preferences
         </p>
       </div>
       
-      <form onSubmit={handleSubmit} className="card-content space-y-6">
+      <form onSubmit={handleSubmit} className="px-6 py-6 space-y-6">
         {/* Location Inputs */}
-        <div className="grid-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="startLocation" className="block text-sm font-medium text-gray-700 mb-2">
               Start Location
@@ -123,12 +130,13 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
               value={formData.startLocation}
               onChange={(e) => handleInputChange('startLocation', e.target.value)}
               onBlur={() => handleBlur('startLocation')}
-              placeholder="Enter starting point..."
+              onKeyDown={handleKeyDown}
+              placeholder="Enter starting point (e.g., Zurich, Switzerland)..."
               className={cn(
-                "w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent",
+                "w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all",
                 errors.startLocation && touched.startLocation 
                   ? "border-red-500" 
-                  : "border-gray-300"
+                  : "border-gray-300 hover:border-gray-400"
               )}
               disabled={isLoading}
             />
@@ -147,12 +155,13 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
               value={formData.endLocation}
               onChange={(e) => handleInputChange('endLocation', e.target.value)}
               onBlur={() => handleBlur('endLocation')}
-              placeholder="Enter destination..."
+              onKeyDown={handleKeyDown}
+              placeholder="Enter destination (e.g., Geneva, Switzerland)..."
               className={cn(
-                "w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent",
+                "w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all",
                 errors.endLocation && touched.endLocation 
                   ? "border-red-500" 
-                  : "border-gray-300"
+                  : "border-gray-300 hover:border-gray-400"
               )}
               disabled={isLoading}
             />
@@ -167,31 +176,33 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-3">
             Ride Type
           </label>
-          <div className="flex gap-4">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="rideType"
-                value="road"
-                checked={formData.rideType === 'road'}
-                onChange={(e) => handleInputChange('rideType', e.target.value)}
-                className="mr-2"
-                disabled={isLoading}
-              />
-              <span className="body-regular">Road Cycling</span>
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="rideType"
-                value="gravel"
-                checked={formData.rideType === 'gravel'}
-                onChange={(e) => handleInputChange('rideType', e.target.value)}
-                className="mr-2"
-                disabled={isLoading}
-              />
-              <span className="body-regular">Gravel Cycling</span>
-            </label>
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => handleInputChange('rideType', 'road')}
+              className={cn(
+                "flex-1 px-4 py-3 rounded-lg border-2 transition-all text-sm font-medium",
+                formData.rideType === 'road'
+                  ? "border-black bg-black text-white"
+                  : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+              )}
+              disabled={isLoading}
+            >
+              🚴 Road Cycling
+            </button>
+            <button
+              type="button"
+              onClick={() => handleInputChange('rideType', 'gravel')}
+              className={cn(
+                "flex-1 px-4 py-3 rounded-lg border-2 transition-all text-sm font-medium",
+                formData.rideType === 'gravel'
+                  ? "border-black bg-black text-white"
+                  : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+              )}
+              disabled={isLoading}
+            >
+              🚵 Gravel Cycling
+            </button>
           </div>
         </div>
 
@@ -200,7 +211,7 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-3">
             Distance Range (km)
           </label>
-          <div className="grid-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="minDistance" className="block text-xs text-gray-500 mb-1">
                 Minimum
@@ -215,7 +226,8 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
                   ...formData.distance,
                   min: parseInt(e.target.value) || 0
                 })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                onKeyDown={handleKeyDown}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black hover:border-gray-400 transition-all"
                 disabled={isLoading}
               />
             </div>
@@ -233,7 +245,8 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
                   ...formData.distance,
                   max: parseInt(e.target.value) || 0
                 })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                onKeyDown={handleKeyDown}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black hover:border-gray-400 transition-all"
                 disabled={isLoading}
               />
             </div>
@@ -253,7 +266,8 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
           <select
             value={formData.elevation}
             onChange={(e) => handleInputChange('elevation', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+            onKeyDown={handleKeyDown}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black hover:border-gray-400 transition-all cursor-pointer"
             disabled={isLoading}
           >
             <option value="flat">Flat - Minimal elevation changes</option>
@@ -267,16 +281,18 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
           <div className="flex justify-between items-center mb-3">
             <label className="block text-sm font-medium text-gray-700">
               Points of Interest
+              <span className="text-xs text-gray-500 block font-normal mt-1">
+                Add stops like cafes, restaurants, or viewpoints along your route
+              </span>
             </label>
-            <Button
+            <button
               type="button"
-              variant="outline"
-              size="sm"
               onClick={addPOI}
               disabled={isLoading}
+              className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
             >
-              Add Stop
-            </Button>
+              + Add Stop
+            </button>
           </div>
           
           {formData.pointsOfInterest.length === 0 ? (
@@ -334,15 +350,24 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
         </div>
 
         {/* Submit Button */}
-        <div className="pt-4">
-          <Button
+        <div className="pt-6">
+          <button
             type="submit"
-            size="lg"
             disabled={isLoading}
-            className="w-full"
+            className="w-full px-8 py-4 bg-black text-white text-lg font-medium rounded-lg hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
-            {isLoading ? 'Generating Route...' : 'Generate Route'}
-          </Button>
+            {isLoading ? (
+              <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" opacity="0.25" />
+                  <path fill="currentColor" opacity="0.75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                Generating Route...
+              </span>
+            ) : (
+              'Generate Route 🚀'
+            )}
+          </button>
         </div>
       </form>
     </div>
