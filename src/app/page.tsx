@@ -72,6 +72,8 @@ const HomePage = () => {
             fill
             className="object-cover grayscale"
             priority
+            sizes="100vw"
+            quality={75}
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
@@ -125,6 +127,8 @@ const HomePage = () => {
                   alt="Crete cycling training camp"
                   fill
                   className="object-cover grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 text-white">
@@ -185,82 +189,9 @@ const HomePage = () => {
               alt="Group ride event"
               fill
               className="object-cover grayscale"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="bg-gray-50 py-24">
-        <div className="container">
-          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
-            Our Routes
-          </h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/tarmac.jpeg"
-                alt="Tarmac road cycling route"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/gravel.jpeg"
-                alt="Gravel cycling route"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/bikepacking.jpeg"
-                alt="Bikepacking route adventure"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/IMG_8025.jpeg"
-                alt="Mountain cycling route"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/IMG_0132.jpeg"
-                alt="Scenic cycling route"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/IMG_3149.jpeg"
-                alt="Road cycling adventure"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/IMG_1879.jpeg"
-                alt="Group cycling route"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src="/images/IMG_5945.jpeg"
-                alt="Cycling route landscape"
-                fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -278,6 +209,8 @@ const HomePage = () => {
                 alt="Tarmac route"
                 fill
                 className="object-cover object-bottom grayscale transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
             <h3 className="mb-4 text-2xl font-bold">Tarmac Routes</h3>
@@ -293,6 +226,8 @@ const HomePage = () => {
                 alt="Gravel trail"
                 fill
                 className="object-cover grayscale transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
             <h3 className="mb-4 text-2xl font-bold">Gravel Routes</h3>
@@ -308,6 +243,8 @@ const HomePage = () => {
                 alt="Bikepacking adventure"
                 fill
                 className="object-cover grayscale transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
             <h3 className="mb-4 text-2xl font-bold">Bikepacking</h3>
@@ -342,6 +279,8 @@ const HomePage = () => {
                 alt="Bike Box Alan - Professional bike transport case"
                 fill
                 className="object-cover grayscale"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
             <div>
@@ -391,6 +330,8 @@ const HomePage = () => {
           alt="Cycling landscape"
           fill
           className="object-cover grayscale"
+          loading="lazy"
+          sizes="100vw"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black/40">
           <h2 className="text-center text-4xl font-bold text-white md:text-6xl">

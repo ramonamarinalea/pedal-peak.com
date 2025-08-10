@@ -1,7 +1,9 @@
-import { ArrowRight, Check, Mail, Shield, Truck, Zap } from "lucide-react";
+import { ArrowRight, Check, Shield, Truck, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { BikeBoxBooking } from "@/components/bike-box-booking";
+import { BikeBoxContact } from "@/components/bike-box-contact";
 import { Logo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -66,10 +68,12 @@ const BikeBoxPage = () => {
             fill
             className="object-cover grayscale"
             priority
+            sizes="100vw"
+            quality={75}
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative z-10 container text-center">
+        <div className="container relative z-10 text-center">
           <h1 className="mb-8 text-5xl font-bold tracking-tighter text-white md:text-7xl">
             Bike Box Rental
           </h1>
@@ -153,6 +157,8 @@ const BikeBoxPage = () => {
               alt="Bike Box Alan details"
               fill
               className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>
@@ -211,16 +217,7 @@ const BikeBoxPage = () => {
                 <span>CHF 200 deposit</span>
               </li>
             </ul>
-            <Link
-              href="mailto:ramona.furter@icloud.com?subject=Bike Box Daily Rental"
-              className={buttonVariants({
-                variant: "outline",
-                className:
-                  "w-full border-black text-black hover:bg-black hover:text-white",
-              })}
-            >
-              Book Daily Rental
-            </Link>
+            <BikeBoxBooking type="daily" variant="outline" />
           </div>
 
           <div className="relative rounded-lg border-2 border-black p-8">
@@ -248,14 +245,7 @@ const BikeBoxPage = () => {
                 <span>CHF 200 deposit</span>
               </li>
             </ul>
-            <Link
-              href="mailto:ramona.furter@icloud.com?subject=Bike Box Weekly Rental"
-              className={buttonVariants({
-                className: "w-full bg-black text-white hover:bg-gray-800",
-              })}
-            >
-              Book Weekly Rental
-            </Link>
+            <BikeBoxBooking type="weekly" />
           </div>
         </div>
       </section>
@@ -324,15 +314,7 @@ const BikeBoxPage = () => {
                 <p className="text-gray-600">CHF 200 (fully refundable)</p>
               </div>
             </div>
-            <Link
-              href="mailto:ramona@pedal-peak.com?subject=Bike Box Rental Inquiry"
-              className={buttonVariants({
-                className: "bg-black text-white hover:bg-gray-800",
-              })}
-            >
-              <Mail className="mr-2 h-4 w-4" />
-              Get in Touch
-            </Link>
+            <BikeBoxContact />
           </div>
 
           <div className="relative h-[400px] overflow-hidden rounded-lg">
@@ -341,6 +323,8 @@ const BikeBoxPage = () => {
               alt="Bike box at location"
               fill
               className="object-cover grayscale"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>
