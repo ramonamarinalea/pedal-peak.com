@@ -45,16 +45,17 @@ export function RouteCard({ route }: RouteCardProps) {
     }
   };
 
-  const getStravaRouteImageUrl = (stravaUrl: string) => {
-    // Extract route ID from Strava URL
-    const routeIdMatch = stravaUrl.match(/routes\/(\d+)/);
-    if (routeIdMatch) {
-      const routeId = routeIdMatch[1];
-      // Use Strava's route image API endpoint
-      return `https://d3nn82uaxijpm6.cloudfront.net/routes/${routeId}/image_sqr`;
+  const getRouteImageUrl = (route: SwissRoute) => {
+    // For now, use type-based images while we work on Strava integration
+    // TODO: Implement proper Strava route preview integration
+    switch (route.type) {
+      case "gravel":
+        return "/images/gravel.jpeg";
+      case "mtb":
+        return "/images/bikepacking.jpeg";
+      default:
+        return "/images/tarmac.jpeg";
     }
-    // Fallback to a generic cycling image if route ID can't be extracted
-    return "/images/tarmac.jpeg";
   };
 
   const getTypeIcon = (type?: string) => {
@@ -98,10 +99,10 @@ export function RouteCard({ route }: RouteCardProps) {
       {/* Route Image */}
       <div className="relative h-48 overflow-hidden">
         <Image
-          src={getStravaRouteImageUrl(route.stravaUrl)}
-          alt={`${route.name} - Strava route map`}
+          src={getRouteImageUrl(route)}
+          alt={`${route.name} - ${route.type} route`}
           fill
-          className="object-cover transition-all duration-500 group-hover:scale-105"
+          className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
         />
 
         {/* Overlays */}

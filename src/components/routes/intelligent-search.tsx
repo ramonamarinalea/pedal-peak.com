@@ -8,6 +8,13 @@ import {
   searchRoutes,
   SwissRoute,
 } from "@/lib/swiss-routes-data";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface IntelligentSearchProps {
   routes: SwissRoute[];
@@ -148,55 +155,59 @@ export function IntelligentSearch({
       {/* Filters */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {/* City Filter */}
-        <select
-          value={selectedCity}
-          onChange={(e) => setSelectedCity(e.target.value)}
-          className="rounded-lg border border-gray-200 px-3 py-2 transition-colors focus:border-black focus:outline-none"
-        >
-          <option value="all">All Cities</option>
-          {cities.map((city) => (
-            <option key={city} value={city}>
-              📍 {city}
-            </option>
-          ))}
-        </select>
+        <Select value={selectedCity} onValueChange={setSelectedCity}>
+          <SelectTrigger>
+            <SelectValue placeholder="All Cities" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Cities</SelectItem>
+            {cities.map((city) => (
+              <SelectItem key={city} value={city}>
+                📍 {city}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
 
         {/* Difficulty Filter */}
-        <select
-          value={selectedDifficulty}
-          onChange={(e) => setSelectedDifficulty(e.target.value)}
-          className="rounded-lg border border-gray-200 px-3 py-2 transition-colors focus:border-black focus:outline-none"
-        >
-          <option value="all">All Levels</option>
-          <option value="easy">🟢 Easy</option>
-          <option value="medium">🟡 Medium</option>
-          <option value="hard">🔴 Hard</option>
-        </select>
+        <Select value={selectedDifficulty} onValueChange={setSelectedDifficulty}>
+          <SelectTrigger>
+            <SelectValue placeholder="All Levels" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Levels</SelectItem>
+            <SelectItem value="easy">🟢 Easy</SelectItem>
+            <SelectItem value="medium">🟡 Medium</SelectItem>
+            <SelectItem value="hard">🔴 Hard</SelectItem>
+          </SelectContent>
+        </Select>
 
         {/* Type Filter */}
-        <select
-          value={selectedType}
-          onChange={(e) => setSelectedType(e.target.value)}
-          className="rounded-lg border border-gray-200 px-3 py-2 transition-colors focus:border-black focus:outline-none"
-        >
-          <option value="all">🚴‍♀️ All Types</option>
-          <option value="road">🛣️ Road</option>
-          <option value="gravel">🛤️ Gravel</option>
-          <option value="mtb">🏔️ Mountain</option>
-        </select>
+        <Select value={selectedType} onValueChange={setSelectedType}>
+          <SelectTrigger>
+            <SelectValue placeholder="All Types" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">🚴‍♀️ All Types</SelectItem>
+            <SelectItem value="road">🛣️ Road</SelectItem>
+            <SelectItem value="gravel">🛤️ Gravel</SelectItem>
+            <SelectItem value="mtb">🏔️ Mountain</SelectItem>
+          </SelectContent>
+        </Select>
 
         {/* Sort Options */}
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="rounded-lg border border-gray-200 px-3 py-2 transition-colors focus:border-black focus:outline-none"
-        >
-          <option value="distance">📏 Sort by Distance</option>
-          <option value="elevation">⛰️ Sort by Elevation</option>
-          <option value="difficulty">💪 Sort by Difficulty</option>
-          <option value="city">📍 Sort by City</option>
-          <option value="recent">📅 Recently Added</option>
-        </select>
+        <Select value={sortBy} onValueChange={setSortBy}>
+          <SelectTrigger>
+            <SelectValue placeholder="Sort by Distance" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="distance">📏 Sort by Distance</SelectItem>
+            <SelectItem value="elevation">⛰️ Sort by Elevation</SelectItem>
+            <SelectItem value="difficulty">💪 Sort by Difficulty</SelectItem>
+            <SelectItem value="city">📍 Sort by City</SelectItem>
+            <SelectItem value="recent">📅 Recently Added</SelectItem>
+          </SelectContent>
+        </Select>
 
         {/* Clear Filters Button */}
         <button
