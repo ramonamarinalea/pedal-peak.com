@@ -44,6 +44,19 @@ export function IntelligentSearch({
     }
   };
 
+  const getDifficultyColorBadge = (difficulty?: string) => {
+    switch (difficulty) {
+      case "easy":
+        return <span className="inline-block h-3 w-3 rounded-full bg-green-500"></span>;
+      case "medium":
+        return <span className="inline-block h-3 w-3 rounded-full bg-yellow-500"></span>;
+      case "hard":
+        return <span className="inline-block h-3 w-3 rounded-full bg-red-500"></span>;
+      default:
+        return <span className="inline-block h-3 w-3 rounded-full bg-gray-400"></span>;
+    }
+  };
+
   const cities = useMemo(() => getCitiesFromRoutes(), []);
 
   // Intelligent search with multiple filters
@@ -188,10 +201,26 @@ export function IntelligentSearch({
             <SelectValue placeholder="All Levels" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Levels</SelectItem>
-            <SelectItem value="easy">🟢 Easy</SelectItem>
-            <SelectItem value="medium">🟡 Medium</SelectItem>
-            <SelectItem value="hard">🔴 Hard</SelectItem>
+            <SelectItem value="all">
+              <span className="flex items-center gap-2">
+                {getDifficultyColorBadge()} All Levels
+              </span>
+            </SelectItem>
+            <SelectItem value="easy">
+              <span className="flex items-center gap-2">
+                {getDifficultyColorBadge("easy")} Easy
+              </span>
+            </SelectItem>
+            <SelectItem value="medium">
+              <span className="flex items-center gap-2">
+                {getDifficultyColorBadge("medium")} Medium
+              </span>
+            </SelectItem>
+            <SelectItem value="hard">
+              <span className="flex items-center gap-2">
+                {getDifficultyColorBadge("hard")} Hard
+              </span>
+            </SelectItem>
           </SelectContent>
         </Select>
 
