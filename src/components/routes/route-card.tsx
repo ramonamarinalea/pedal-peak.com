@@ -45,17 +45,16 @@ export function RouteCard({ route }: RouteCardProps) {
     }
   };
 
-  const getImageForType = (type?: string) => {
-    switch (type) {
-      case "road":
-        return "tarmac.jpeg";
-      case "gravel":
-        return "gravel.jpeg";
-      case "mtb":
-        return "bikepacking.jpeg";
-      default:
-        return "tarmac.jpeg";
+  const getStravaRouteImageUrl = (stravaUrl: string) => {
+    // Extract route ID from Strava URL
+    const routeIdMatch = stravaUrl.match(/routes\/(\d+)/);
+    if (routeIdMatch) {
+      const routeId = routeIdMatch[1];
+      // Use Strava's route image API endpoint
+      return `https://d3nn82uaxijpm6.cloudfront.net/routes/${routeId}/image_sqr`;
     }
+    // Fallback to a generic cycling image if route ID can't be extracted
+    return "/images/tarmac.jpeg";
   };
 
   const getTypeIcon = (type?: string) => {
@@ -99,10 +98,10 @@ export function RouteCard({ route }: RouteCardProps) {
       {/* Route Image */}
       <div className="relative h-48 overflow-hidden">
         <Image
-          src={`/images/${getImageForType(route.type)}`}
-          alt={route.name}
+          src={getStravaRouteImageUrl(route.stravaUrl)}
+          alt={`${route.name} - Strava route map`}
           fill
-          className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+          className="object-cover transition-all duration-500 group-hover:scale-105"
         />
 
         {/* Overlays */}
