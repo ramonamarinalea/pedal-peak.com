@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import { Logo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
-import { RoutesSection } from "@/components/routes-section";
 
 const HomePage = () => {
   return (
@@ -25,12 +24,6 @@ const HomePage = () => {
               className="text-sm text-gray-900 transition-colors hover:text-black"
             >
               routes
-            </Link>
-            <Link
-              href="/route-builder"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              route builder
             </Link>
             <Link
               href="#adventures"
@@ -92,17 +85,6 @@ const HomePage = () => {
             Come ride with us. No egos, just good vibes.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="/route-builder"
-              className={buttonVariants({
-                size: "lg",
-                className:
-                  "bg-black px-8 text-white transition-all hover:bg-gray-800",
-              })}
-            >
-              Build Your Route
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
             <Link
               href="https://www.strava.com/clubs/Pedalpeak"
               target="_blank"
@@ -204,21 +186,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Routes Section */}
-      <RoutesSection />
-
-      {/* Animated Divider with moving bike */}
-      <div className="relative h-16 overflow-hidden">
-        <div className="absolute inset-0 flex items-center">
-          <hr className="w-full border-gray-200" />
-        </div>
-        <div
-          className="bike-animation absolute top-1/2 -translate-y-1/2"
-          style={{ animationDelay: "7.5s" }}
-        >
-          <Bike className="h-8 w-8 text-black" />
-        </div>
-      </div>
 
       {/* Bike Box Section with Image */}
       <section id="bikebox" className="py-24">
@@ -376,12 +343,6 @@ const HomePage = () => {
                 className="text-gray-600 transition-colors hover:text-black"
               >
                 Routes
-              </Link>
-              <Link
-                href="/route-builder"
-                className="text-gray-600 transition-colors hover:text-black"
-              >
-                Route Builder
               </Link>
               <Link
                 href="/piedmont"
