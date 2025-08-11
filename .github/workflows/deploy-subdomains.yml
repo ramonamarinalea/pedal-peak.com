@@ -40,8 +40,8 @@ jobs:
       
     - name: Create subdomain structure
       run: |
-        # Create subdomain directories in out folder
-        mkdir -p out/piedmont out/crete out/routes
+        # Create subdomain directories in out folder (routes already exists)
+        mkdir -p out/piedmont out/crete
         
         # Copy piedmont page and assets
         cp out/piedmont.html out/piedmont/index.html
@@ -57,8 +57,7 @@ jobs:
         cp -r public/fonts out/crete/
         echo "crete.pedal-peak.com" > out/crete/CNAME
         
-        # Copy routes page and assets
-        cp out/routes.html out/routes/index.html
+        # Copy routes page and assets (routes already exists as directory)
         cp -r out/_next out/routes/
         cp -r public/images out/routes/
         cp -r public/fonts out/routes/
