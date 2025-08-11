@@ -1,9 +1,18 @@
 "use client";
 
-import { MapPin, Mountain, Route, Calendar, ExternalLink } from "lucide-react";
+import {
+  Calendar,
+  Car,
+  ExternalLink,
+  MapPin,
+  Mountain,
+  Route,
+  TreePine,
+} from "lucide-react";
 import Image from "next/image";
-import { SwissRoute } from "@/lib/swiss-routes-data";
+
 import { buttonVariants } from "@/components/ui/button";
+import { SwissRoute } from "@/lib/swiss-routes-data";
 
 interface RouteCardProps {
   route: SwissRoute;
@@ -49,12 +58,25 @@ export function RouteCard({ route }: RouteCardProps) {
     }
   };
 
+  const getTypeIcon = (type?: string) => {
+    switch (type) {
+      case "road":
+        return <Car className="mr-1 h-3 w-3" />;
+      case "gravel":
+        return <Mountain className="mr-1 h-3 w-3" />;
+      case "mtb":
+        return <TreePine className="mr-1 h-3 w-3" />;
+      default:
+        return <Route className="mr-1 h-3 w-3" />;
+    }
+  };
+
   const getEstimatedDuration = (distance: number, elevation: number) => {
     // Rough estimate: 25km/h average speed + 10 minutes per 100m elevation
     const baseTime = distance / 25; // hours
-    const elevationTime = elevation / 100 * (10 / 60); // convert to hours
+    const elevationTime = (elevation / 100) * (10 / 60); // convert to hours
     const totalHours = baseTime + elevationTime;
-    
+
     if (totalHours < 1.5) return "1-2 hours";
     if (totalHours < 3) return "2-3 hours";
     if (totalHours < 4.5) return "3-5 hours";
@@ -65,10 +87,10 @@ export function RouteCard({ route }: RouteCardProps) {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      year: 'numeric'
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
     });
   };
 
@@ -82,9 +104,9 @@ export function RouteCard({ route }: RouteCardProps) {
           fill
           className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
         />
-        
+
         {/* Overlays */}
-        <div className="absolute top-4 left-4 flex gap-2">
+        <div className="absolute left-4 top-4 flex gap-2">
           {route.difficulty && (
             <span
               className={`rounded-full px-3 py-1 text-xs font-semibold ${getDifficultyColor(route.difficulty)}`}
@@ -93,10 +115,13 @@ export function RouteCard({ route }: RouteCardProps) {
             </span>
           )}
         </div>
-        
-        <div className="absolute top-4 right-4">
+
+        <div className="absolute right-4 top-4">
           {route.type && (
-            <span className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${getTypeColor(route.type)}`}>
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${getTypeColor(route.type)} flex items-center`}
+            >
+              {getTypeIcon(route.type)}
               {route.type}
             </span>
           )}
@@ -147,7 +172,8 @@ export function RouteCard({ route }: RouteCardProps) {
 
         {/* Coordinates (for technical users) */}
         <div className="mb-4 rounded bg-gray-50 px-3 py-2 text-xs text-gray-600">
-          <strong>Start:</strong> {route.startLat.toFixed(4)}, {route.startLng.toFixed(4)}
+          <strong>Start:</strong> {route.startLat.toFixed(4)},{" "}
+          {route.startLng.toFixed(4)}
         </div>
 
         {/* Creation Date */}
@@ -161,7 +187,7 @@ export function RouteCard({ route }: RouteCardProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={buttonVariants({
-            className: "w-full bg-black text-white hover:bg-gray-800 group",
+            className: "group w-full bg-black text-white hover:bg-gray-800",
           })}
         >
           <span className="flex items-center justify-center gap-2">
