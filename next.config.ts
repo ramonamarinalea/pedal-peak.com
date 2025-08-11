@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Remove output: "export" to enable serverless functions for route builder
+  output: "export", // Enable static export for GitHub Pages
+  trailingSlash: true, // Add trailing slashes for GitHub Pages
   allowedDevOrigins: ["127.0.0.1"],
   images: {
-    unoptimized: true, // Required for static export but removed since we need API routes
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: "https",
