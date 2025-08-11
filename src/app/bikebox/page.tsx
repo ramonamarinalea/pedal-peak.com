@@ -4,60 +4,13 @@ import Link from "next/link";
 
 import { BikeBoxBooking } from "@/components/bike-box-booking";
 import { BikeBoxContact } from "@/components/bike-box-contact";
-import { Logo } from "@/components/logo";
+import { MobileNavigation } from "@/components/mobile-navigation";
 import { buttonVariants } from "@/components/ui/button";
 
 const BikeBoxPage = () => {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
-        <div className="container flex h-20 items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-2xl font-bold tracking-tight"
-          >
-            <Logo className="h-8 w-8 text-black" />
-            <span className="lowercase">pedal peak</span>
-          </Link>
-          <nav className="hidden items-center gap-8 md:flex">
-            <Link
-              href="/#routes"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              routes
-            </Link>
-            <Link
-              href="/#rides"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              rides
-            </Link>
-            <Link
-              href="/bikebox"
-              className="text-sm font-semibold text-black transition-colors"
-            >
-              bike box
-            </Link>
-            <Link
-              href="/#community"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              community
-            </Link>
-          </nav>
-          <Link
-            href="https://www.strava.com/clubs/pedal-peak"
-            target="_blank"
-            className={buttonVariants({
-              size: "sm",
-              className: "bg-black text-white transition-all hover:bg-gray-800",
-            })}
-          >
-            join strava club
-          </Link>
-        </div>
-      </header>
+      <MobileNavigation />
 
       {/* Hero Section */}
       <section className="relative mt-20 flex min-h-[60vh] items-center justify-center">
@@ -73,11 +26,11 @@ const BikeBoxPage = () => {
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="container relative z-10 text-center">
-          <h1 className="mb-8 text-5xl font-bold tracking-tighter text-white md:text-7xl">
+        <div className="container relative z-10 px-4 text-center">
+          <h1 className="mb-8 text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-7xl">
             Bike Box Rental
           </h1>
-          <p className="mx-auto mb-12 max-w-3xl text-xl font-light text-white/90 md:text-2xl">
+          <p className="mx-auto mb-12 max-w-3xl text-lg font-light text-white/90 sm:text-xl md:text-2xl">
             Travel with your bike safely and easily. Professional protection for
             your cycling adventures.
           </p>
@@ -101,7 +54,7 @@ const BikeBoxPage = () => {
       <section className="container py-24">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <h2 className="mb-8 text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Bike Box Alan Triathlon Easyfit
             </h2>
             <p className="mb-8 text-lg leading-relaxed text-gray-600">
@@ -111,7 +64,7 @@ const BikeBoxPage = () => {
               destination.
             </p>
 
-            <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="flex items-start gap-3">
                 <Shield className="mt-1 h-6 w-6 text-black" />
                 <div>
@@ -167,10 +120,10 @@ const BikeBoxPage = () => {
       {/* Specifications */}
       <section className="bg-gray-50 py-24">
         <div className="container">
-          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-4xl md:text-5xl">
             Specifications
           </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
               <div className="mb-2 text-3xl font-bold">133cm</div>
               <p className="text-gray-600">Length</p>
@@ -193,7 +146,7 @@ const BikeBoxPage = () => {
 
       {/* Pricing */}
       <section id="pricing" className="container py-24">
-        <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-4xl md:text-5xl">
           Rental Pricing
         </h2>
         <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
@@ -253,10 +206,10 @@ const BikeBoxPage = () => {
       {/* Compatibility */}
       <section className="bg-gray-50 py-24">
         <div className="container">
-          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-4xl md:text-5xl">
             Compatible Bikes
           </h2>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-3">
             <div className="text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border-2 border-black">
                 <span className="text-2xl">🚴</span>
@@ -292,7 +245,7 @@ const BikeBoxPage = () => {
       <section className="container py-24">
         <div className="grid items-center gap-16 md:grid-cols-2">
           <div>
-            <h2 className="mb-8 text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Pickup & Return
             </h2>
             <p className="mb-8 text-lg leading-relaxed text-gray-600">
@@ -338,9 +291,9 @@ const BikeBoxPage = () => {
               © {new Date().getFullYear()} Pedal Peak. Built for cyclists, by
               cyclists.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 text-sm md:gap-6">
               <Link
-                href="/#routes"
+                href="/routes"
                 className="text-gray-600 transition-colors hover:text-black"
               >
                 Routes

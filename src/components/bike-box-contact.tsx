@@ -15,17 +15,11 @@ I am interested in renting the Bike Box Alan.
 
 Planned rental dates:
 Pickup Date: [Please specify]
-Return Date: [Please specify]
-
-Questions/Comments: 
-
-Name: 
-Phone: 
-Email: 
+Dropoff Date: [Please specify]
 
 Thank you!`;
 
-    const mailtoLink = `mailto:ramona@pedal-peak.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:box@pedal-peak.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
   };
 

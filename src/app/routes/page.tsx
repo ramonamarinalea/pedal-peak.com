@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 
-import { Logo } from "@/components/logo";
+import { MobileNavigation } from "@/components/mobile-navigation";
 import { IntelligentSearch } from "@/components/routes/intelligent-search";
 import { RouteCard } from "@/components/routes/route-card";
 import { buttonVariants } from "@/components/ui/button";
@@ -20,54 +20,7 @@ const RoutesPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
-        <div className="container flex h-20 items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-2xl font-bold tracking-tight"
-          >
-            <Logo className="h-8 w-8 text-black" />
-            <span className="lowercase">pedal peak</span>
-          </Link>
-          <nav className="hidden items-center gap-8 md:flex">
-            <Link
-              href="/routes"
-              className="text-sm font-semibold text-black transition-colors"
-            >
-              routes
-            </Link>
-            <Link
-              href="/#rides"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              rides
-            </Link>
-            <Link
-              href="/bikebox"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              bike box
-            </Link>
-            <Link
-              href="/#community"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              community
-            </Link>
-          </nav>
-          <Link
-            href="https://www.strava.com/clubs/pedal-peak"
-            target="_blank"
-            className={buttonVariants({
-              size: "sm",
-              className: "bg-black text-white transition-all hover:bg-gray-800",
-            })}
-          >
-            join strava club
-          </Link>
-        </div>
-      </header>
+      <MobileNavigation />
 
       {/* Hero Section */}
       <section className="relative mt-20 flex h-[40vh] items-center justify-center">
@@ -82,10 +35,10 @@ const RoutesPage = () => {
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="container relative z-10 text-center">
-          <h1 className="mb-4 text-5xl font-bold tracking-tighter text-white md:text-7xl">
+          <h1 className="mb-4 text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-7xl">
             Our Routes
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-white/90">
+          <p className="mx-auto max-w-2xl px-4 text-lg text-white/90 sm:text-xl">
             Discover {swissRoutesData.length}+ curated cycling routes around
             Switzerland
           </p>
@@ -104,7 +57,7 @@ const RoutesPage = () => {
 
       {/* Routes Grid */}
       <section className="container py-12">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredRoutes.map((route) => (
             <RouteCard key={route.id} route={route} />
           ))}
@@ -114,7 +67,7 @@ const RoutesPage = () => {
       {/* CTA Section */}
       <section className="container py-24">
         <div className="rounded-lg bg-black p-12 text-center text-white">
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
             Want to suggest a route?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80">
@@ -142,7 +95,7 @@ const RoutesPage = () => {
               © {new Date().getFullYear()} Pedal Peak. Built for cyclists, by
               cyclists.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 text-sm md:gap-6">
               <Link
                 href="/routes"
                 className="text-gray-600 transition-colors hover:text-black"

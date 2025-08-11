@@ -1,70 +1,17 @@
-import { ArrowRight, Bike, Mail, MessageCircle, Users } from "lucide-react";
+import { Bike, Mail, MessageCircle, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Logo } from "@/components/logo";
+import { MobileNavigation } from "@/components/mobile-navigation";
 import { buttonVariants } from "@/components/ui/button";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
-        <div className="container flex h-20 items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-2xl font-bold tracking-tight"
-          >
-            <Logo className="h-8 w-8 text-black" />
-            <span className="lowercase">pedal peak</span>
-          </Link>
-          <nav className="hidden items-center gap-8 md:flex">
-            <Link
-              href="/routes"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              routes
-            </Link>
-            <Link
-              href="#adventures"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              adventures
-            </Link>
-            <Link
-              href="#rides"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              rides
-            </Link>
-            <Link
-              href="/bikebox"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              bike box
-            </Link>
-            <Link
-              href="#community"
-              className="text-sm text-gray-900 transition-colors hover:text-black"
-            >
-              community
-            </Link>
-          </nav>
-          <Link
-            href="https://www.strava.com/clubs/Pedalpeak"
-            target="_blank"
-            className={buttonVariants({
-              size: "sm",
-              className: "bg-black text-white transition-all hover:bg-gray-800",
-            })}
-          >
-            join strava club
-          </Link>
-        </div>
-      </header>
+      <MobileNavigation />
 
       {/* Hero Section with Image */}
-      <section className="relative mt-20 flex min-h-screen items-center justify-center">
+      <section className="relative mt-20 flex min-h-screen items-center justify-center px-4">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/IMG_8151.jpeg"
@@ -78,10 +25,10 @@ const HomePage = () => {
           <div className="absolute inset-0 bg-white/60" />
         </div>
         <div className="container relative z-10 text-center">
-          <h1 className="mb-8 text-6xl font-bold tracking-tighter md:text-8xl">
+          <h1 className="mb-8 text-4xl font-bold tracking-tighter sm:text-6xl md:text-8xl">
             <span>Ride.</span> <span>Explore.</span> <span>Repeat.</span>
           </h1>
-          <p className="mx-auto mb-12 max-w-3xl text-xl font-light text-gray-700 md:text-2xl">
+          <p className="mx-auto mb-12 max-w-3xl text-lg font-light text-gray-700 sm:text-xl md:text-2xl">
             Come ride with us. No egos, just good vibes.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
@@ -104,7 +51,7 @@ const HomePage = () => {
       {/* Cycling Adventures Section */}
       <section id="adventures" className="bg-gray-50 py-24">
         <div className="container">
-          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-4xl md:text-5xl">
             Cycling Adventures
           </h2>
           <div className="mx-auto max-w-2xl">
@@ -152,7 +99,7 @@ const HomePage = () => {
       <section id="rides" className="container py-24">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Rides & Events
             </h2>
             <p className="mb-8 text-lg leading-relaxed text-gray-600">
@@ -202,7 +149,7 @@ const HomePage = () => {
               />
             </div>
             <div>
-              <h2 className="mb-8 text-4xl font-bold tracking-tight md:text-5xl">
+              <h2 className="mb-8 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Bike Box Rental
               </h2>
               <p className="mb-8 text-lg leading-relaxed text-gray-600">
@@ -252,13 +199,13 @@ const HomePage = () => {
           sizes="100vw"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-          <h2 className="text-center text-4xl font-bold text-white md:text-6xl">
+          <h2 className="text-center text-3xl font-bold text-white sm:text-4xl md:text-6xl">
             Your Adventure Awaits
           </h2>
         </div>
       </section>
 
-      {/* Animated Divider with moving bike */}
+      {/* Animated Divider with moving bike - Enhanced for mobile */}
       <div className="relative h-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center">
           <hr className="w-full border-gray-200" />
@@ -267,14 +214,14 @@ const HomePage = () => {
           className="bike-animation absolute top-1/2 -translate-y-1/2"
           style={{ animationDelay: "3s" }}
         >
-          <Bike className="h-8 w-8 text-black" />
+          <Bike className="h-6 w-6 text-black sm:h-8 sm:w-8" />
         </div>
       </div>
 
       {/* Community Section */}
       <section id="community" className="container py-24">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-4xl md:text-5xl">
             Join Our Community
           </h2>
           <div className="grid gap-8 text-center md:grid-cols-3">
@@ -337,7 +284,7 @@ const HomePage = () => {
               © {new Date().getFullYear()} Pedal Peak. Built for cyclists, by
               cyclists.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 text-sm md:gap-6">
               <Link
                 href="/routes"
                 className="text-gray-600 transition-colors hover:text-black"

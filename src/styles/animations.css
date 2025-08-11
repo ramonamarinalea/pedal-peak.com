@@ -9,6 +9,7 @@
 
 .bike-animation {
   animation: bikeRide 15s linear infinite;
+  will-change: transform;
 }
 
 @keyframes float {
