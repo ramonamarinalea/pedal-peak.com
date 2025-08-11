@@ -4,15 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 
+import { ErrorBoundary } from "@/components/error-boundary";
 import { MobileNavigation } from "@/components/mobile-navigation";
 import { IntelligentSearch } from "@/components/routes/intelligent-search";
 import { RouteCard } from "@/components/routes/route-card";
 import { buttonVariants } from "@/components/ui/button";
 import { SwissRoute, swissRoutesData } from "@/lib/swiss-routes-data";
+import { safeLoadRoutes } from "@/lib/validate-routes";
 
 const RoutesPage = () => {
+  // Validate routes data on load
+  const validatedRoutes = safeLoadRoutes(swissRoutesData);
   const [filteredRoutes, setFilteredRoutes] =
-    useState<SwissRoute[]>(swissRoutesData);
+    useState<SwissRoute[]>(validatedRoutes);
 
   const handleSearchResults = useCallback((results: SwissRoute[]) => {
     setFilteredRoutes(results);
@@ -49,20 +53,28 @@ const RoutesPage = () => {
       <section className="sticky top-20 z-40 border-b border-gray-200 bg-white">
         <div className="container py-6">
           <IntelligentSearch
-            routes={swissRoutesData}
+            routes={validatedRoutes}
             onResults={handleSearchResults}
           />
         </div>
       </section>
 
       {/* Routes Grid */}
-      <section className="container py-12">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredRoutes.map((route) => (
-            <RouteCard key={route.id} route={route} />
-          ))}
-        </div>
-      </section>
+      <ErrorBoundary>
+        <section className="container py-12">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredRoutes && filteredRoutes.length > 0 ? (
+              filteredRoutes.map((route) => (
+                <RouteCard key={route.id} route={route} />
+              ))
+            ) : (
+              <div className="col-span-full py-20 text-center">
+                <p className="text-gray-600">No routes found matching your criteria.</p>
+              </div>
+            )}
+          </div>
+        </section>
+      </ErrorBoundary>
 
       {/* CTA Section */}
       <section className="container py-24">

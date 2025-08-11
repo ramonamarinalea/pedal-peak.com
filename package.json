@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "validate": "node scripts/validate-build.js",
+    "build": "npm run validate && next build",
     "start": "next start",
     "lint": "next lint -c config/eslint.config.mjs",
     "preview": "next build && next start",

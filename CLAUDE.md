@@ -88,6 +88,15 @@ Built with Tailwind CSS 4 using utility classes throughout. No custom CSS except
 ### Contact Information
 All contact forms and booking links use `ramona.furter@icloud.com` as the primary contact email.
 
+## CSS Import Rules (CRITICAL)
+
+**IMPORTANT**: To prevent CSS parsing errors that break the entire site:
+
+1. **Never add @import statements to globals.css** after Tailwind directives
+2. **Use src/styles/vendor.css** for any third-party CSS imports
+3. **@import rules must be at the very top** of any CSS file, before all other rules
+4. **If you see "Parsing css source code failed" errors**, check for misplaced @import statements
+
 ## Development Notes
 
 **Server Issues**: If localhost connection fails, there are static HTML preview files available in the root directory for testing designs.
