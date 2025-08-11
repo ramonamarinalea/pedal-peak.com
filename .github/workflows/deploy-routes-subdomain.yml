@@ -37,21 +37,28 @@ jobs:
         # Create a temp directory for routes subdomain
         mkdir -p routes-deploy
         
-        # Copy routes page and assets
-        cp -r out/routes/* routes-deploy/ 2>/dev/null || true
-        cp -r out/_next routes-deploy/
-        cp -r public/images routes-deploy/
-        cp -r public/fonts routes-deploy/
+        # Copy the entire built site first
+        cp -r out/* routes-deploy/
         
         # Create CNAME for routes subdomain
         echo "routes.pedal-peak.com" > routes-deploy/CNAME
         
-        # Fix asset paths
-        if [ -f routes-deploy/index.html ]; then
-          sed -i 's|/_next/|_next/|g' routes-deploy/index.html
-          sed -i 's|/images/|images/|g' routes-deploy/index.html
-          sed -i 's|/fonts/|fonts/|g' routes-deploy/index.html
-        fi
+        # Create a simple redirect from the root to /routes
+        cat > routes-deploy/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Redirecting to Routes...</title>
+          <meta http-equiv="refresh" content="0; url=/routes/">
+          <link rel="canonical" href="/routes/">
+        </head>
+        <body>
+          <script>window.location.replace("/routes/");</script>
+          <p>If you are not redirected automatically, <a href="/routes/">click here</a>.</p>
+        </body>
+        </html>
+        EOF
         
     - name: Deploy to gh-pages-routes branch
       uses: JamesIves/github-pages-deploy-action@v4
