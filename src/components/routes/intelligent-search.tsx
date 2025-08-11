@@ -31,6 +31,19 @@ export function IntelligentSearch({
   const [selectedType, setSelectedType] = useState("all");
   const [sortBy, setSortBy] = useState("distance");
 
+  const getTypeColorBadge = (type?: string) => {
+    switch (type) {
+      case "road":
+        return <span className="inline-block h-3 w-3 rounded-full bg-black"></span>;
+      case "gravel":
+        return <span className="inline-block h-3 w-3 rounded-full bg-[#8B8680]"></span>;
+      case "mtb":
+        return <span className="inline-block h-3 w-3 rounded-full bg-[#E5E7EB]"></span>;
+      default:
+        return <span className="inline-block h-3 w-3 rounded-full bg-gray-600"></span>;
+    }
+  };
+
   const cities = useMemo(() => getCitiesFromRoutes(), []);
 
   // Intelligent search with multiple filters
@@ -188,10 +201,26 @@ export function IntelligentSearch({
             <SelectValue placeholder="All Types" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">🚴‍♀️ All Types</SelectItem>
-            <SelectItem value="road">🛣️ Road</SelectItem>
-            <SelectItem value="gravel">🛤️ Gravel</SelectItem>
-            <SelectItem value="mtb">🏔️ Mountain</SelectItem>
+            <SelectItem value="all">
+              <span className="flex items-center gap-2">
+                {getTypeColorBadge()} All Types
+              </span>
+            </SelectItem>
+            <SelectItem value="road">
+              <span className="flex items-center gap-2">
+                {getTypeColorBadge("road")} Road
+              </span>
+            </SelectItem>
+            <SelectItem value="gravel">
+              <span className="flex items-center gap-2">
+                {getTypeColorBadge("gravel")} Gravel
+              </span>
+            </SelectItem>
+            <SelectItem value="mtb">
+              <span className="flex items-center gap-2">
+                {getTypeColorBadge("mtb")} MTB
+              </span>
+            </SelectItem>
           </SelectContent>
         </Select>
 
