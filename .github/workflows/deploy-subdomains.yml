@@ -41,7 +41,7 @@ jobs:
     - name: Create subdomain structure
       run: |
         # Create subdomain directories in out folder
-        mkdir -p out/piedmont out/crete
+        mkdir -p out/piedmont out/crete out/routes
         
         # Copy piedmont page and assets
         cp out/piedmont.html out/piedmont/index.html
@@ -57,6 +57,13 @@ jobs:
         cp -r public/fonts out/crete/
         echo "crete.pedal-peak.com" > out/crete/CNAME
         
+        # Copy routes page and assets
+        cp out/routes.html out/routes/index.html
+        cp -r out/_next out/routes/
+        cp -r public/images out/routes/
+        cp -r public/fonts out/routes/
+        echo "routes.pedal-peak.com" > out/routes/CNAME
+        
         # Fix asset paths in HTML files
         sed -i 's|/_next/|_next/|g' out/piedmont/index.html
         sed -i 's|/images/|images/|g' out/piedmont/index.html
@@ -65,6 +72,10 @@ jobs:
         sed -i 's|/_next/|_next/|g' out/crete/index.html
         sed -i 's|/images/|images/|g' out/crete/index.html
         sed -i 's|/fonts/|fonts/|g' out/crete/index.html
+        
+        sed -i 's|/_next/|_next/|g' out/routes/index.html
+        sed -i 's|/images/|images/|g' out/routes/index.html
+        sed -i 's|/fonts/|fonts/|g' out/routes/index.html
         
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
