@@ -38,7 +38,7 @@ export class POIService {
     // Convert string types to POIPreference format
     const preferences: POIPreference[] = poiTypes.map(type => ({
       type: type as POIPreference['type'],
-      intervalDistance: maxDistance
+      distanceKm: maxDistance
     }));
 
     return this.findPOIsAlongRoute(route, preferences);
@@ -50,18 +50,15 @@ export class POIService {
   ): Promise<POILocation[]> {
     const pois: POILocation[] = [];
     const routeDistance = this.calculateRouteDistance(routePath);
-    const intervalKm = preference.intervalDistance;
+    const targetDistance = preference.distanceKm;
     
-    // Calculate how many POIs we need based on interval
-    const numPOIs = Math.floor(routeDistance / intervalKm);
-    
-    for (let i = 1; i <= numPOIs; i++) {
-      const targetDistance = i * intervalKm;
+    // Only add POI if the target distance is within the route
+    if (targetDistance > 0 && targetDistance < routeDistance) {
       const targetPoint = this.getPointAtDistance(routePath, targetDistance);
       
       if (targetPoint) {
         try {
-          const poi = await this.findNearestPOI(targetPoint, preference.type, targetDistance);
+          const poi = await this.findNearestPOI(targetPoint, preference.type, targetDistance, preference.name);
           if (poi) {
             pois.push(poi);
           }
@@ -77,7 +74,8 @@ export class POIService {
   private async findNearestPOI(
     location: LatLng,
     poiType: POIPreference['type'],
-    distanceFromStart: number
+    distanceFromStart: number,
+    customName?: string
   ): Promise<POILocation | null> {
     try {
       // Use Overpass API (OpenStreetMap) to find POIs
@@ -99,7 +97,7 @@ export class POIService {
 
       if (elements.length === 0) {
         // Return mock POI if no real data found
-        return this.createMockPOI(location, poiType, distanceFromStart);
+        return this.createMockPOI(location, poiType, distanceFromStart, customName);
       }
 
       // Find the closest POI
@@ -130,7 +128,7 @@ export class POIService {
 
     } catch (error) {
       console.warn('Failed to find POI via Overpass API, using mock data:', error);
-      return this.createMockPOI(location, poiType, distanceFromStart);
+      return this.createMockPOI(location, poiType, distanceFromStart, customName);
     }
   }
 
@@ -281,7 +279,8 @@ out center meta;`;
   private createMockPOI(
     location: LatLng,
     poiType: POIPreference['type'],
-    distanceFromStart: number
+    distanceFromStart: number,
+    customName?: string
   ): POILocation {
     const mockNames: Record<POIPreference['type'], string[]> = {
       'cafe': ['Mountain View Cafe', 'Cyclist\'s Rest', 'Peak Coffee', 'Trail Side Cafe'],
@@ -292,7 +291,7 @@ out center meta;`;
     };
 
     const names = mockNames[poiType];
-    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomName = customName || names[Math.floor(Math.random() * names.length)];
     const estimatedArrivalTime = this.calculateArrivalTime(distanceFromStart);
     const openingHours = this.getDefaultOpeningHours();
 

@@ -18,7 +18,7 @@ import {
   estimateRideTime,
   calculateDifficulty
 } from '../utils/route-helpers';
-import { calculatePathDistance, calculateCenter, calculateBounds } from '../utils/geo';
+import { calculatePathDistance } from '../utils/geo';
 
 export interface RoutePreferences {
   avoidHighways: boolean;
@@ -243,7 +243,7 @@ export class RouteGenerationService {
     };
   }
 
-  private async addDetours(path: LatLng[], additionalDistance: number, rideType: 'road' | 'gravel'): Promise<LatLng[]> {
+  private async addDetours(path: LatLng[], additionalDistance: number, _rideType: 'road' | 'gravel'): Promise<LatLng[]> {
     // Simple implementation: add loops at the midpoint
     const midIndex = Math.floor(path.length / 2);
     const midPoint = path[midIndex];
@@ -270,7 +270,7 @@ export class RouteGenerationService {
     return newPath;
   }
 
-  private async findShortcuts(path: LatLng[], excessDistance: number): Promise<LatLng[]> {
+  private async findShortcuts(path: LatLng[], _excessDistance: number): Promise<LatLng[]> {
     // Simple implementation: remove some intermediate points
     const targetPoints = Math.max(5, Math.floor(path.length * 0.8));
     const step = Math.floor(path.length / targetPoints);
@@ -300,13 +300,13 @@ export class RouteGenerationService {
     return path;
   }
 
-  private async avoidHighways(path: LatLng[], rideType: 'road' | 'gravel'): Promise<LatLng[]> {
+  private async avoidHighways(path: LatLng[], _rideType: 'road' | 'gravel'): Promise<LatLng[]> {
     // This would typically involve re-routing through smaller roads
     // For now, return the original path
     return path;
   }
 
-  private async preferScenicRoutes(path: LatLng[], rideType: 'road' | 'gravel'): Promise<LatLng[]> {
+  private async preferScenicRoutes(path: LatLng[], _rideType: 'road' | 'gravel'): Promise<LatLng[]> {
     // This would involve finding routes through parks, along rivers, etc.
     // For now, return the original path
     return path;

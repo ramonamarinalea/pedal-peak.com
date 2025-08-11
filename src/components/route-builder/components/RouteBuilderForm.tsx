@@ -83,7 +83,8 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
   const addPOI = () => {
     const newPOI: POIPreference = {
       type: 'cafe',
-      intervalDistance: 25
+      distanceKm: 20,
+      name: ''
     };
     
     setFormData(prev => ({
@@ -280,9 +281,9 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
         <div>
           <div className="flex justify-between items-center mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              Points of Interest
+              Route Waypoints
               <span className="text-xs text-gray-500 block font-normal mt-1">
-                Add stops like cafes, restaurants, or viewpoints along your route
+                Add specific stops at exact distances along your route
               </span>
             </label>
             <button
@@ -297,7 +298,7 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
           
           {formData.pointsOfInterest.length === 0 ? (
             <p className="text-gray-500 text-sm italic">
-              No stops added. Click "Add Stop" to include cafes, restaurants, or other points of interest.
+              No waypoints added. Click "Add Stop" to include specific stops along your route.
             </p>
           ) : (
             <div className="space-y-3">
@@ -322,14 +323,28 @@ const RouteBuilderForm: React.FC<RouteBuilderFormProps> = ({
                   </div>
                   <div className="flex-1">
                     <label className="block text-xs text-gray-500 mb-1">
-                      Every (km)
+                      At distance (km)
                     </label>
                     <input
                       type="number"
-                      min="5"
-                      max="100"
-                      value={poi.intervalDistance}
-                      onChange={(e) => updatePOI(index, 'intervalDistance', parseInt(e.target.value) || 25)}
+                      min="1"
+                      max="500"
+                      value={poi.distanceKm}
+                      onChange={(e) => updatePOI(index, 'distanceKm', parseInt(e.target.value) || 20)}
+                      placeholder="20"
+                      className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
+                      disabled={isLoading}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label className="block text-xs text-gray-500 mb-1">
+                      Name (optional)
+                    </label>
+                    <input
+                      type="text"
+                      value={poi.name || ''}
+                      onChange={(e) => updatePOI(index, 'name', e.target.value)}
+                      placeholder="Custom name..."
                       className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
                       disabled={isLoading}
                     />

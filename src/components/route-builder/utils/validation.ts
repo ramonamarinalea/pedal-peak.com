@@ -74,10 +74,10 @@ export function validateRouteParams(params: RouteParams): ValidationResult {
       });
     }
 
-    if (poi.intervalDistance <= 0 || poi.intervalDistance > 100) {
+    if (poi.distanceKm <= 0 || poi.distanceKm > 500) {
       errors.push({
-        field: `pointsOfInterest[${index}].intervalDistance`,
-        message: 'POI interval distance must be between 1 and 100 km',
+        field: `pointsOfInterest[${index}].distanceKm`,
+        message: 'POI distance must be between 1 and 500 km',
         code: 'INVALID_RANGE'
       });
     }

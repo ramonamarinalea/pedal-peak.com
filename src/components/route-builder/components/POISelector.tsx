@@ -21,7 +21,8 @@ const POISelector: React.FC<POISelectorProps> = ({
   const addPOI = (type: POIPreference['type']) => {
     const newPOI: POIPreference = {
       type,
-      intervalDistance: 25 // Default interval
+      distanceKm: 25, // Default distance
+      name: ''
     };
     
     onPOIChange([...selectedPOIs, newPOI]);
@@ -115,32 +116,32 @@ const POISelector: React.FC<POISelectorProps> = ({
                     <div className="space-y-3">
                       <div>
                         <label className="block text-xs font-medium text-gray-600 mb-1">
-                          Stop Interval
+                          Stop Distance
                         </label>
                         <div className="flex items-center gap-2">
                           <input
                             type="range"
-                            min="5"
-                            max="100"
+                            min="1"
+                            max="500"
                             step="5"
-                            value={poi.intervalDistance}
-                            onChange={(e) => updatePOI(index, 'intervalDistance', parseInt(e.target.value))}
+                            value={poi.distanceKm}
+                            onChange={(e) => updatePOI(index, 'distanceKm', parseInt(e.target.value))}
                             className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                           />
                           <div className="flex items-center gap-1 min-w-[60px]">
                             <input
                               type="number"
-                              min="5"
-                              max="100"
-                              value={poi.intervalDistance}
-                              onChange={(e) => updatePOI(index, 'intervalDistance', parseInt(e.target.value) || 25)}
+                              min="1"
+                              max="500"
+                              value={poi.distanceKm}
+                              onChange={(e) => updatePOI(index, 'distanceKm', parseInt(e.target.value) || 20)}
                               className="w-12 px-1 py-1 text-xs border border-gray-300 rounded text-center"
                             />
                             <span className="text-xs text-gray-500">km</span>
                           </div>
                         </div>
                         <p className="text-xs text-gray-500 mt-1">
-                          Look for {poiTypeInfo?.label.toLowerCase()}s every {poi.intervalDistance}km
+                          Add {poiTypeInfo?.label.toLowerCase()} at {poi.distanceKm}km
                         </p>
                       </div>
 

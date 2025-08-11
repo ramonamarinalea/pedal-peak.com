@@ -5,34 +5,40 @@ export async function POST(request: NextRequest) {
   try {
     const { start, end, profile } = await request.json();
 
-    // Try multiple routing services in order of preference
+    // Prioritize OSRM since it works reliably and doesn't require API keys
     try {
-      // First try OpenRouteService (better cycling support)
-      const orsRoute = await getOpenRouteServiceRoute(start, end, profile);
-      if (orsRoute) return NextResponse.json(orsRoute);
-    } catch (orsError) {
-      console.warn('OpenRouteService failed:', orsError);
-    }
-
-    try {
-      // Fallback to GraphHopper (good cycling support)
-      const ghRoute = await getGraphHopperRoute(start, end, profile);
-      if (ghRoute) return NextResponse.json(ghRoute);
-    } catch (ghError) {
-      console.warn('GraphHopper failed:', ghError);
-    }
-
-    try {
-      // Final fallback to OSRM (basic but reliable)
       const osrmRoute = await getOSRMRoute(start, end, profile);
-      if (osrmRoute) return NextResponse.json(osrmRoute);
+      if (osrmRoute) {
+        console.log('✅ Successfully generated route using OSRM');
+        return NextResponse.json(osrmRoute);
+      }
     } catch (osrmError) {
       console.warn('OSRM failed:', osrmError);
     }
 
-    // Only use mock data if all real routing services fail
-    console.warn('All routing services failed, using mock route');
-    return NextResponse.json(generateFallbackRoute(start, end));
+    // Try GraphHopper as backup (sometimes works without key)
+    try {
+      const ghRoute = await getGraphHopperRoute(start, end, profile);
+      if (ghRoute) {
+        console.log('✅ Successfully generated route using GraphHopper');
+        return NextResponse.json(ghRoute);
+      }
+    } catch (ghError) {
+      console.warn('GraphHopper failed:', ghError);
+    }
+
+    // OpenRouteService requires API key, skip for now
+    console.warn('All reliable routing services failed');
+    
+    // Return error instead of fallback to mock data
+    return NextResponse.json(
+      { 
+        error: 'Routing services unavailable',
+        message: 'Unable to generate street-following route. Please try again later.',
+        fallback: false
+      },
+      { status: 503 }
+    );
 
   } catch (error) {
     console.error('Route generation error:', error);

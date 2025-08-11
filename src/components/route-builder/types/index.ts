@@ -18,7 +18,8 @@ export interface RouteParams {
 
 export interface POIPreference {
   type: 'bakery' | 'restaurant' | 'cafe' | 'bike_shop' | 'viewpoint';
-  intervalDistance: number; // km
+  distanceKm: number; // specific distance along route where stop should be placed
+  name?: string; // optional custom name for the stop
 }
 
 export interface GeneratedRoute {

@@ -56,7 +56,7 @@ export class ExternalAPIService {
   private ridewithgpsLimiter = new RateLimiter({ maxRequests: 500, windowMs: 60 * 60 * 1000 }); // 500 per hour
   private placesLimiter = new RateLimiter({ maxRequests: 1000, windowMs: 24 * 60 * 60 * 1000 }); // 1000 per day
 
-  async getStravaHeatmap(bounds: LatLngBounds, activity: 'cycling'): Promise<HeatmapData> {
+  async getStravaHeatmap(bounds: LatLngBounds, _activity: 'cycling'): Promise<HeatmapData> {
     const key = 'strava-heatmap';
     
     if (!this.stravaLimiter.canMakeRequest(key)) {
@@ -136,7 +136,7 @@ export class ExternalAPIService {
     }
   }
 
-  async getOpeningHours(placeId: string): Promise<OpeningHours> {
+  async getOpeningHours(_placeId: string): Promise<OpeningHours> {
     const key = 'places-opening-hours';
     
     if (!this.placesLimiter.canMakeRequest(key)) {
@@ -196,15 +196,24 @@ export class ExternalAPIService {
     }
   }
 
-  private parseKomootResponse(data: any): RouteData {
+  private parseKomootResponse(data: unknown): RouteData {
     // Parse Komoot/OpenRouteService response format
-    const coordinates = data.features?.[0]?.geometry?.coordinates || [];
+    const dataObj = data as { 
+      features?: Array<{ 
+        geometry?: { coordinates?: number[][] };
+        properties?: { 
+          segments?: Array<{ distance?: number }>;
+          ascent?: number;
+        };
+      }>
+    };
+    const coordinates = dataObj.features?.[0]?.geometry?.coordinates || [];
     const path: LatLng[] = coordinates.map((coord: number[]) => ({
       lng: coord[0],
       lat: coord[1]
     }));
 
-    const properties = data.features?.[0]?.properties || {};
+    const properties = dataObj.features?.[0]?.properties || {};
     
     return {
       path,
@@ -215,15 +224,15 @@ export class ExternalAPIService {
     };
   }
 
-  private parseElevationResponse(data: any, path: LatLng[]): ElevationData {
-    const elevations = data.results || [];
-    const points = elevations.map((result: any, index: number) => ({
+  private parseElevationResponse(data: unknown, path: LatLng[]): ElevationData {
+    const elevations = (data as { results?: unknown[] }).results || [];
+    const points = elevations.map((result: unknown, index: number) => ({
       location: path[index] || { lat: 0, lng: 0 },
-      elevation: result.elevation || 0,
+      elevation: (result as { elevation?: number }).elevation || 0,
       distance: index * (this.calculatePathDistance(path) / path.length)
     }));
 
-    const elevationValues = points.map((p: any) => p.elevation);
+    const elevationValues = points.map((p: { elevation: number }) => p.elevation);
     const totalGain = this.calculateElevationGain(elevationValues);
     const totalLoss = this.calculateElevationLoss(elevationValues);
 
@@ -236,19 +245,20 @@ export class ExternalAPIService {
     };
   }
 
-  private parseOpeningHoursResponse(data: any): OpeningHours {
-    const periods = data.result?.opening_hours?.periods || [];
+  private parseOpeningHoursResponse(data: unknown): OpeningHours {
+    const periods = (data as { result?: { opening_hours?: { periods?: unknown[] } } }).result?.opening_hours?.periods || [];
     const openingHours: OpeningHours = {};
 
     const dayMap = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-    periods.forEach((period: any) => {
-      if (period.open && period.close) {
-        const dayName = dayMap[period.open.day] as keyof OpeningHours;
+    periods.forEach((period: unknown) => {
+      const p = period as { open?: { day: number; time: string }; close?: { time: string } };
+      if (p.open && p.close) {
+        const dayName = dayMap[p.open.day] as keyof OpeningHours;
         if (dayName && dayName !== 'isOpen24Hours' && dayName !== 'isClosed') {
-          (openingHours as any)[dayName] = {
-            open: this.formatTime(period.open.time),
-            close: this.formatTime(period.close.time)
+          (openingHours as Record<string, { open: string; close: string }>)[dayName] = {
+            open: this.formatTime(p.open.time),
+            close: this.formatTime(p.close.time)
           };
         }
       }
@@ -257,15 +267,16 @@ export class ExternalAPIService {
     return openingHours;
   }
 
-  private parseOSMResponse(data: any): RouteData {
+  private parseOSMResponse(data: unknown): RouteData {
     // Parse OpenStreetMap routing response
-    const coordinates = data.routes?.[0]?.geometry?.coordinates || [];
+    const dataObj = data as { routes?: Array<{ geometry?: { coordinates?: number[][] }; distance?: number; ascent?: number }> };
+    const coordinates = dataObj.routes?.[0]?.geometry?.coordinates || [];
     const path: LatLng[] = coordinates.map((coord: number[]) => ({
       lng: coord[0],
       lat: coord[1]
     }));
 
-    const route = data.routes?.[0] || {};
+    const route = dataObj.routes?.[0] || {};
     
     return {
       path,
@@ -354,7 +365,7 @@ export class ExternalAPIService {
     };
   }
 
-  private createNetworkError(message: string, originalError: any): RouteBuilderError {
+  private createNetworkError(message: string, originalError: unknown): RouteBuilderError {
     return {
       type: RouteBuilderErrorType.NETWORK_ERROR,
       message,
