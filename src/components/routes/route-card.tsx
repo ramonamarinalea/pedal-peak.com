@@ -128,12 +128,6 @@ export function RouteCard({ route }: RouteCardProps) {
           </div>
         </div>
 
-        {/* Coordinates (for technical users) */}
-        <div className="mb-4 rounded bg-gray-50 px-3 py-2 text-xs text-gray-600">
-          <strong>Start:</strong> {route.startLat.toFixed(4)},{" "}
-          {route.startLng.toFixed(4)}
-        </div>
-
         {/* Action Button */}
         <a
           href={route.stravaUrl}
