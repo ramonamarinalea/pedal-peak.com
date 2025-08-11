@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, ExternalLink, MapPin, Mountain, Route } from "lucide-react";
+import { Calendar, ExternalLink, MapPin, TrendingUp, Route } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { SwissRoute } from "@/lib/swiss-routes-data";
@@ -121,7 +121,7 @@ export function RouteCard({ route }: RouteCardProps) {
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center gap-1 font-semibold">
-              <Mountain className="h-3 w-3" />
+              <TrendingUp className="h-3 w-3" />
               {route.elevation.toLocaleString()}m
             </div>
             <div className="text-xs text-gray-500">Elevation</div>
