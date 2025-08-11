@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "d3nn82uaxijpm6.cloudfront.net", // Strava route images
       },
+      {
+        protocol: "https",
+        hostname: "staticmap.co", // Static map service for route previews
+      },
     ],
   },
 };

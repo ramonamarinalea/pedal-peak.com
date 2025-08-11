@@ -45,17 +45,50 @@ export function RouteCard({ route }: RouteCardProps) {
     }
   };
 
-  const getRouteImageUrl = (route: SwissRoute) => {
-    // For now, use type-based images while we work on Strava integration
-    // TODO: Implement proper Strava route preview integration
-    switch (route.type) {
-      case "gravel":
-        return "/images/gravel.jpeg";
-      case "mtb":
-        return "/images/bikepacking.jpeg";
-      default:
-        return "/images/tarmac.jpeg";
+  const getStravaRouteId = (stravaUrl: string): string | null => {
+    const match = stravaUrl.match(/routes\/(\d+)/);
+    return match ? match[1] : null;
+  };
+
+  const StravaRoutePreview = ({ stravaUrl, routeName }: { stravaUrl: string; routeName: string }) => {
+    const routeId = getStravaRouteId(stravaUrl);
+    
+    if (!routeId) {
+      // Fallback to generic image if no route ID
+      return (
+        <Image
+          src={getRouteImageUrl(route)}
+          alt={`${routeName} - ${route.type} route`}
+          fill
+          className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+        />
+      );
     }
+
+    return (
+      <div className="relative h-full w-full">
+        <iframe
+          src={`https://www.strava.com/routes/${routeId}/embed`}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          className="absolute inset-0 h-full w-full rounded-t-lg"
+          title={`${routeName} Strava Route`}
+          loading="lazy"
+        />
+      </div>
+    );
+  };
+
+  const getRouteImageUrl = (route: SwissRoute) => {
+    // Fallback image for non-iframe cases
+    const fallbackImage = route.type === "gravel" 
+      ? "/images/gravel.jpeg" 
+      : route.type === "mtb" 
+        ? "/images/bikepacking.jpeg" 
+        : "/images/tarmac.jpeg";
+        
+    return fallbackImage;
   };
 
   const getTypeIcon = (type?: string) => {
@@ -96,14 +129,9 @@ export function RouteCard({ route }: RouteCardProps) {
 
   return (
     <div className="group overflow-hidden rounded-lg border border-gray-200 transition-all hover:shadow-lg">
-      {/* Route Image */}
+      {/* Route Preview */}
       <div className="relative h-48 overflow-hidden">
-        <Image
-          src={getRouteImageUrl(route)}
-          alt={`${route.name} - ${route.type} route`}
-          fill
-          className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
-        />
+        <StravaRoutePreview stravaUrl={route.stravaUrl} routeName={route.name} />
 
         {/* Overlays */}
         <div className="absolute left-4 top-4 flex gap-2">
