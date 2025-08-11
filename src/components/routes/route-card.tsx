@@ -62,7 +62,12 @@ export function RouteCard({ route }: RouteCardProps) {
   };
 
   return (
-    <div className="group overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:shadow-lg">
+    <a
+      href={route.stravaUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:shadow-lg"
+    >
       {/* Route Header with City */}
       <div className="border-b bg-gray-50 p-6">
         <div className="flex items-center justify-between">
@@ -106,7 +111,7 @@ export function RouteCard({ route }: RouteCardProps) {
         </div>
 
         {/* Key Stats */}
-        <div className="mb-4 grid grid-cols-3 gap-4 text-sm">
+        <div className="grid grid-cols-3 gap-4 text-sm">
           <div className="text-center">
             <div className="flex items-center justify-center gap-1 font-semibold">
               <Route className="h-3 w-3" />
@@ -129,22 +134,7 @@ export function RouteCard({ route }: RouteCardProps) {
             <div className="text-xs text-gray-500">Duration</div>
           </div>
         </div>
-
-        {/* Action Button */}
-        <a
-          href={route.stravaUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonVariants({
-            className: "group w-full bg-black text-white hover:bg-gray-800",
-          })}
-        >
-          <span className="flex items-center justify-center gap-2">
-            View on Strava
-            <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </span>
-        </a>
       </div>
-    </div>
+    </a>
   );
 }
