@@ -100,18 +100,10 @@ export class ExternalAPIService {
     try {
       this.komootLimiter.recordRequest(key);
       
-      // For static deployment, generate mock route data
-      const mockRouteData: RouteData = {
-        path: this.generateMockRoutePath(start, end),
-        distance: this.calculateDistance(start, end),
-        elevationProfile: [],
-        surface: profile === 'road' ? 'paved' : 'gravel',
-        difficulty: 2
-      };
-      
-      return mockRouteData;
+      // Use our routing API which tries multiple services
+      return await this.getOSMRoute(start, end, profile);
     } catch (error) {
-      throw this.createNetworkError('Failed to fetch Komoot route data', error);
+      throw this.createNetworkError('Failed to fetch route data', error);
     }
   }
 
@@ -169,7 +161,7 @@ export class ExternalAPIService {
     }
   }
 
-  // Fallback routing using OpenStreetMap data
+  // Real routing using multiple services via our API
   async getOSMRoute(start: LatLng, end: LatLng, profile: 'road' | 'gravel'): Promise<RouteData> {
     try {
       const response = await fetch('/api/route-builder/osm-route', {
@@ -181,17 +173,26 @@ export class ExternalAPIService {
           start,
           end,
           profile
-        })
+        }),
+        signal: AbortSignal.timeout(15000) // 15 second timeout for routing
       });
 
       if (!response.ok) {
-        throw new Error(`OSM routing error: ${response.status}`);
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(`Routing API error: ${response.status} - ${errorData.error || 'Failed to generate route'}`);
       }
 
       const data = await response.json();
+      
+      // Check if we got an error response
+      if (data.error) {
+        throw new Error(`Routing service error: ${data.error}`);
+      }
+      
       return this.parseOSMResponse(data);
     } catch (error) {
-      throw this.createNetworkError('Failed to fetch OSM route data', error);
+      console.error('OSM Route API failed:', error);
+      throw this.createNetworkError('Failed to fetch route data from routing services', error);
     }
   }
 

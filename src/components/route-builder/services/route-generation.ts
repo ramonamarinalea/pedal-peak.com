@@ -169,30 +169,22 @@ export class RouteGenerationService {
     surface: string;
   }> {
     try {
-      // Try Komoot first
-      const komootRoute = await this.externalAPI.getKomootRoute(start, end, rideType);
+      // Use our improved routing API which tries multiple real routing services
+      const osmRoute = await this.externalAPI.getOSMRoute(start, end, rideType);
       return {
-        path: komootRoute.path,
-        distance: komootRoute.distance,
-        surface: komootRoute.surface
+        path: osmRoute.path,
+        distance: osmRoute.distance,
+        surface: osmRoute.surface
       };
     } catch (error) {
-      console.warn('Komoot route failed, trying OSM fallback:', error);
+      console.error('All real routing services failed:', error);
       
-      try {
-        // Fallback to OSM routing
-        const osmRoute = await this.externalAPI.getOSMRoute(start, end, rideType);
-        return {
-          path: osmRoute.path,
-          distance: osmRoute.distance,
-          surface: 'mixed'
-        };
-      } catch (osmError) {
-        console.warn('OSM route failed, generating simple route:', osmError);
-        
-        // Final fallback: generate a simple direct route
-        return this.generateSimpleRoute(start, end);
-      }
+      // Only use simple route as absolute last resort
+      throw new Error(
+        'Unable to generate route: All routing services are currently unavailable. ' +
+        'Please check your internet connection and try again. ' +
+        `(Error: ${error instanceof Error ? error.message : 'Unknown error'})`
+      );
     }
   }
 
