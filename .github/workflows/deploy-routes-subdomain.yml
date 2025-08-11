@@ -1,0 +1,61 @@
+name: Deploy Routes Subdomain
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout main branch
+      uses: actions/checkout@v4
+      with:
+        ref: main
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build Next.js site
+      run: npm run build
+      
+    - name: Prepare routes subdomain
+      run: |
+        # Create a temp directory for routes subdomain
+        mkdir -p routes-deploy
+        
+        # Copy routes page and assets
+        cp -r out/routes/* routes-deploy/ 2>/dev/null || true
+        cp -r out/_next routes-deploy/
+        cp -r public/images routes-deploy/
+        cp -r public/fonts routes-deploy/
+        
+        # Create CNAME for routes subdomain
+        echo "routes.pedal-peak.com" > routes-deploy/CNAME
+        
+        # Fix asset paths
+        if [ -f routes-deploy/index.html ]; then
+          sed -i 's|/_next/|_next/|g' routes-deploy/index.html
+          sed -i 's|/images/|images/|g' routes-deploy/index.html
+          sed -i 's|/fonts/|fonts/|g' routes-deploy/index.html
+        fi
+        
+    - name: Deploy to gh-pages-routes branch
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages-routes
+        folder: routes-deploy
+        clean: true

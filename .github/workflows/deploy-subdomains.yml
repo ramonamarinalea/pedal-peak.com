@@ -43,6 +43,16 @@ jobs:
         # Next.js already creates directories with index.html files
         # Just add assets and CNAME files to existing directories
         
+        # Ensure routes directory exists
+        mkdir -p out/routes
+        
+        # Copy the routes page to routes subdomain
+        if [ -f out/routes/index.html ]; then
+          echo "Routes page exists"
+        else
+          echo "Warning: Routes page not found"
+        fi
+        
         # Copy assets to piedmont directory
         cp -r out/_next out/piedmont/
         cp -r public/images out/piedmont/
