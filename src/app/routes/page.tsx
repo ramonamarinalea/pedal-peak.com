@@ -1,18 +1,18 @@
 "use client";
 
-import { MapPin, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useCallback } from "react";
+import { useCallback, useState } from "react";
 
 import { Logo } from "@/components/logo";
-import { buttonVariants } from "@/components/ui/button";
 import { IntelligentSearch } from "@/components/routes/intelligent-search";
 import { RouteCard } from "@/components/routes/route-card";
-import { swissRoutesData, SwissRoute } from "@/lib/swiss-routes-data";
+import { buttonVariants } from "@/components/ui/button";
+import { SwissRoute, swissRoutesData } from "@/lib/swiss-routes-data";
 
 const RoutesPage = () => {
-  const [filteredRoutes, setFilteredRoutes] = useState<SwissRoute[]>(swissRoutesData);
+  const [filteredRoutes, setFilteredRoutes] =
+    useState<SwissRoute[]>(swissRoutesData);
 
   const handleSearchResults = useCallback((results: SwissRoute[]) => {
     setFilteredRoutes(results);
@@ -81,12 +81,13 @@ const RoutesPage = () => {
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
-        <div className="relative z-10 container text-center">
+        <div className="container relative z-10 text-center">
           <h1 className="mb-4 text-5xl font-bold tracking-tighter text-white md:text-7xl">
             Our Routes
           </h1>
           <p className="mx-auto max-w-2xl text-xl text-white/90">
-            Discover {swissRoutesData.length}+ curated cycling routes around Switzerland
+            Discover {swissRoutesData.length}+ curated cycling routes around
+            Switzerland
           </p>
         </div>
       </section>
@@ -94,8 +95,8 @@ const RoutesPage = () => {
       {/* Intelligent Search Section */}
       <section className="sticky top-20 z-40 border-b border-gray-200 bg-white">
         <div className="container py-6">
-          <IntelligentSearch 
-            routes={swissRoutesData} 
+          <IntelligentSearch
+            routes={swissRoutesData}
             onResults={handleSearchResults}
           />
         </div>
@@ -107,32 +108,6 @@ const RoutesPage = () => {
           {filteredRoutes.map((route) => (
             <RouteCard key={route.id} route={route} />
           ))}
-        </div>
-      </section>
-
-      {/* Strava Embed Section */}
-      <section className="bg-gray-50 py-24">
-        <div className="container">
-          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
-            Featured Route: Zurich to Nice
-          </h2>
-          <div className="mx-auto max-w-4xl">
-            <div className="rounded-lg bg-white p-8 shadow-lg">
-              <div className="mb-6 text-center">
-                <p className="text-lg text-gray-600">
-                  Our most epic route: 683km across Switzerland and France with 9,724m of climbing
-                </p>
-              </div>
-              <iframe
-                title="Featured Strava Route: Zurich to Nice"
-                src="https://www.strava.com/routes/3300825769620724428/embed"
-                width="100%"
-                height="600"
-                frameBorder="0"
-                className="rounded"
-              ></iframe>
-            </div>
-          </div>
         </div>
       </section>
 

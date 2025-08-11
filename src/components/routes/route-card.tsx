@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Calendar,
-  Car,
-  ExternalLink,
-  MapPin,
-  Mountain,
-  Route,
-  TreePine,
-} from "lucide-react";
-import Image from "next/image";
+import { Calendar, ExternalLink, MapPin, Mountain, Route } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { SwissRoute } from "@/lib/swiss-routes-data";
@@ -45,65 +36,6 @@ export function RouteCard({ route }: RouteCardProps) {
     }
   };
 
-  const getStravaRouteId = (stravaUrl: string): string | null => {
-    const match = stravaUrl.match(/routes\/(\d+)/);
-    return match ? match[1] : null;
-  };
-
-  const StravaRoutePreview = ({ stravaUrl, routeName }: { stravaUrl: string; routeName: string }) => {
-    const routeId = getStravaRouteId(stravaUrl);
-    
-    if (!routeId) {
-      // Fallback to generic image if no route ID
-      return (
-        <Image
-          src={getRouteImageUrl(route)}
-          alt={`${routeName} - ${route.type} route`}
-          fill
-          className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
-        />
-      );
-    }
-
-    return (
-      <div className="relative h-full w-full">
-        <iframe
-          src={`https://www.strava.com/routes/${routeId}/embed`}
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          className="absolute inset-0 h-full w-full rounded-t-lg"
-          title={`${routeName} Strava Route`}
-          loading="lazy"
-        />
-      </div>
-    );
-  };
-
-  const getRouteImageUrl = (route: SwissRoute) => {
-    // Fallback image for non-iframe cases
-    const fallbackImage = route.type === "gravel" 
-      ? "/images/gravel.jpeg" 
-      : route.type === "mtb" 
-        ? "/images/bikepacking.jpeg" 
-        : "/images/tarmac.jpeg";
-        
-    return fallbackImage;
-  };
-
-  const getTypeIcon = (type?: string) => {
-    switch (type) {
-      case "road":
-        return <Car className="mr-1 h-3 w-3" />;
-      case "gravel":
-        return <Mountain className="mr-1 h-3 w-3" />;
-      case "mtb":
-        return <TreePine className="mr-1 h-3 w-3" />;
-      default:
-        return <Route className="mr-1 h-3 w-3" />;
-    }
-  };
-
   const getEstimatedDuration = (distance: number, elevation: number) => {
     // Rough estimate: 25km/h average speed + 10 minutes per 100m elevation
     const baseTime = distance / 25; // hours
@@ -129,34 +61,32 @@ export function RouteCard({ route }: RouteCardProps) {
 
   return (
     <div className="group overflow-hidden rounded-lg border border-gray-200 transition-all hover:shadow-lg">
-      {/* Route Preview */}
-      <div className="relative h-48 overflow-hidden">
-        <StravaRoutePreview stravaUrl={route.stravaUrl} routeName={route.name} />
-
-        {/* Overlays */}
-        <div className="absolute left-4 top-4 flex gap-2">
-          {route.difficulty && (
-            <span
-              className={`rounded-full px-3 py-1 text-xs font-semibold ${getDifficultyColor(route.difficulty)}`}
-            >
-              {route.difficulty}
-            </span>
-          )}
+      {/* Route Header with City */}
+      <div className="border-b bg-gray-50 p-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="mb-1 text-sm text-gray-500">Starting in</div>
+            <div className="text-2xl font-bold text-gray-900">
+              {route.city || "Switzerland"}
+            </div>
+          </div>
+          <div className="flex gap-2">
+            {route.difficulty && (
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-semibold ${getDifficultyColor(route.difficulty)}`}
+              >
+                {route.difficulty}
+              </span>
+            )}
+            {route.type && (
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${getTypeColor(route.type)}`}
+              >
+                {route.type}
+              </span>
+            )}
+          </div>
         </div>
-
-        <div className="absolute right-4 top-4">
-          {route.type && (
-            <span
-              className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${getTypeColor(route.type)} flex items-center`}
-            >
-              {getTypeIcon(route.type)}
-              {route.type}
-            </span>
-          )}
-        </div>
-
-        {/* Gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </div>
 
       {/* Route Details */}
