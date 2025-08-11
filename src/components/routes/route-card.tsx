@@ -13,24 +13,24 @@ export function RouteCard({ route }: RouteCardProps) {
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
       case "easy":
-        return "bg-green-100 text-green-800";
+        return "bg-gray-100 text-gray-900";
       case "medium":
-        return "bg-yellow-100 text-yellow-800";
+        return "bg-gray-200 text-gray-900";
       case "hard":
-        return "bg-red-100 text-red-800";
+        return "bg-black text-white";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100 text-gray-900";
     }
   };
 
   const getTypeColor = (type?: string) => {
     switch (type) {
       case "road":
-        return "bg-blue-500";
+        return "bg-black";
       case "gravel":
-        return "bg-orange-500";
+        return "bg-gray-800";
       case "mtb":
-        return "bg-green-500";
+        return "bg-gray-600";
       default:
         return "bg-gray-500";
     }
@@ -60,7 +60,7 @@ export function RouteCard({ route }: RouteCardProps) {
   };
 
   return (
-    <div className="group overflow-hidden rounded-lg border border-gray-200 transition-all hover:shadow-lg">
+    <div className="group overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:shadow-lg">
       {/* Route Header with City */}
       <div className="border-b bg-gray-50 p-6">
         <div className="flex items-center justify-between">
@@ -132,11 +132,6 @@ export function RouteCard({ route }: RouteCardProps) {
         <div className="mb-4 rounded bg-gray-50 px-3 py-2 text-xs text-gray-600">
           <strong>Start:</strong> {route.startLat.toFixed(4)},{" "}
           {route.startLng.toFixed(4)}
-        </div>
-
-        {/* Creation Date */}
-        <div className="mb-4 text-xs text-gray-500">
-          Added: {formatDate(route.createdDate)}
         </div>
 
         {/* Action Button */}
