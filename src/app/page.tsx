@@ -58,7 +58,7 @@ const HomePage = () => {
             </Link>
           </nav>
           <Link
-            href="https://www.strava.com/clubs/pedal-peak"
+            href="https://www.strava.com/clubs/Pedalpeak"
             target="_blank"
             className={buttonVariants({
               size: "sm",
@@ -104,7 +104,7 @@ const HomePage = () => {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
             <Link
-              href="https://www.strava.com/clubs/pedal-peak"
+              href="https://www.strava.com/clubs/Pedalpeak"
               target="_blank"
               className={buttonVariants({
                 variant: "outline",
@@ -180,7 +180,8 @@ const HomePage = () => {
               updates.
             </p>
             <Link
-              href="#signup"
+              href="https://chat.whatsapp.com/H0h8ywIh0eP2uAm1ibWMiu?mode=ems_copy_c"
+              target="_blank"
               className={buttonVariants({
                 variant: "outline",
                 className:
@@ -319,7 +320,7 @@ const HomePage = () => {
                 Track rides and join challenges
               </p>
               <Link
-                href="https://www.strava.com/clubs/pedal-peak"
+                href="https://www.strava.com/clubs/Pedalpeak"
                 target="_blank"
                 className="font-semibold text-black transition-colors hover:text-gray-600"
               >
@@ -335,7 +336,7 @@ const HomePage = () => {
                 Real-time ride coordination
               </p>
               <Link
-                href="https://chat.whatsapp.com/pedal-peak"
+                href="https://chat.whatsapp.com/H0h8ywIh0eP2uAm1ibWMiu?mode=ems_copy_c"
                 target="_blank"
                 className="font-semibold text-black transition-colors hover:text-gray-600"
               >
@@ -407,7 +408,7 @@ const HomePage = () => {
                 Bike Box
               </Link>
               <Link
-                href="https://www.strava.com/clubs/pedal-peak"
+                href="https://www.strava.com/clubs/Pedalpeak"
                 target="_blank"
                 className="text-gray-600 transition-colors hover:text-black"
               >
