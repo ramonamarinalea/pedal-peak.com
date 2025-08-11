@@ -29,8 +29,10 @@ export function RouteCard({ route }: RouteCardProps) {
         return "bg-black";
       case "gravel":
         return "bg-amber-700"; // Clay earth tone for gravel
+      case "bikepacking":
+        return "bg-green-700"; // Sage earth tone for bikepacking
       case "mtb":
-        return "bg-green-700"; // Sage earth tone for mountain
+        return "bg-gray-300 text-gray-900"; // Medium Gray #E5E7EB from design system
       default:
         return "bg-gray-600";
     }
