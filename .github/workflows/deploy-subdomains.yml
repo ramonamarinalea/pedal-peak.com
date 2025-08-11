@@ -40,24 +40,22 @@ jobs:
       
     - name: Create subdomain structure
       run: |
-        # Create subdomain directories in out folder (routes already exists)
-        mkdir -p out/piedmont out/crete
+        # Next.js already creates directories with index.html files
+        # Just add assets and CNAME files to existing directories
         
-        # Copy piedmont page and assets
-        cp out/piedmont.html out/piedmont/index.html
+        # Copy assets to piedmont directory
         cp -r out/_next out/piedmont/
         cp -r public/images out/piedmont/
         cp -r public/fonts out/piedmont/
         echo "piedmont.pedal-peak.com" > out/piedmont/CNAME
         
-        # Copy crete page and assets
-        cp out/crete.html out/crete/index.html
+        # Copy assets to crete directory  
         cp -r out/_next out/crete/
         cp -r public/images out/crete/
         cp -r public/fonts out/crete/
         echo "crete.pedal-peak.com" > out/crete/CNAME
         
-        # Copy routes page and assets (routes already exists as directory)
+        # Copy assets to routes directory
         cp -r out/_next out/routes/
         cp -r public/images out/routes/
         cp -r public/fonts out/routes/
