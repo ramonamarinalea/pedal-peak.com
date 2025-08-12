@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Search } from "lucide-react";
+import { Filter, MapPin, Menu, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -57,6 +57,8 @@ const RoutesPage = () => {
   const [selectedType, setSelectedType] = useState("all");
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [sortBy, setSortBy] = useState("distance");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Filter and sort routes
   const filteredRoutes = useMemo(() => {
@@ -110,12 +112,12 @@ const RoutesPage = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
-        <div className="container flex h-20 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between md:h-20">
           <Link
             href="/"
-            className="flex items-center gap-3 text-2xl font-bold tracking-tight"
+            className="flex items-center gap-2 text-xl font-bold tracking-tight md:gap-3 md:text-2xl"
           >
-            <Logo className="h-8 w-8 text-black" />
+            <Logo className="h-6 w-6 text-black md:h-8 md:w-8" />
             <span className="lowercase">pedal peak</span>
           </Link>
           <nav className="hidden items-center gap-8 md:flex">
@@ -149,16 +151,75 @@ const RoutesPage = () => {
             target="_blank"
             className={buttonVariants({
               size: "sm",
-              className: "bg-black text-white transition-all hover:bg-gray-800",
+              className:
+                "hidden bg-black text-white transition-all hover:bg-gray-800 md:inline-flex",
             })}
           >
             join strava club
           </Link>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 md:hidden"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
         </div>
       </header>
 
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-white pt-16 md:hidden">
+          <nav className="flex flex-col gap-4 p-6">
+            <Link
+              href="/routes"
+              className="text-lg font-semibold text-black"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              routes
+            </Link>
+            <Link
+              href="/#rides"
+              className="text-lg text-gray-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              rides
+            </Link>
+            <Link
+              href="/bikebox"
+              className="text-lg text-gray-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              bike box
+            </Link>
+            <Link
+              href="/#community"
+              className="text-lg text-gray-900"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              community
+            </Link>
+            <Link
+              href="https://www.strava.com/clubs/pedal-peak"
+              target="_blank"
+              className={buttonVariants({
+                className: "mt-4 bg-black text-white hover:bg-gray-800",
+              })}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              join strava club
+            </Link>
+          </nav>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="relative mt-20 flex h-[40vh] items-center justify-center">
+      <section className="relative mt-16 flex h-[30vh] items-center justify-center md:mt-20 md:h-[40vh]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/tarmac.jpeg"
@@ -169,11 +230,11 @@ const RoutesPage = () => {
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
-        <div className="relative z-10 container text-center">
-          <h1 className="mb-4 text-5xl font-bold tracking-tighter text-white md:text-7xl">
+        <div className="container relative z-10 text-center">
+          <h1 className="mb-4 text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-7xl">
             Our Routes
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-white/90">
+          <p className="mx-auto max-w-2xl px-4 text-base text-white/90 sm:text-lg md:text-xl">
             Discover {routesData.length}+ curated cycling routes around Zurich
             and beyond
           </p>
@@ -181,23 +242,82 @@ const RoutesPage = () => {
       </section>
 
       {/* Filters Section */}
-      <section className="sticky top-20 z-40 border-b border-gray-200 bg-white">
-        <div className="container py-4">
-          <div className="flex flex-col items-center gap-4 lg:flex-row">
-            {/* Search */}
-            <div className="relative w-full flex-1">
-              <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+      <section className="sticky top-16 z-30 border-b border-gray-200 bg-white md:top-20">
+        <div className="container py-3 md:py-4">
+          {/* Mobile filter layout */}
+          <div className="flex flex-col gap-3 md:hidden">
+            <div className="flex gap-2">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search routes..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full rounded-lg border border-gray-200 py-2.5 pl-10 pr-4 text-sm transition-colors focus:border-black focus:outline-none"
+                />
+              </div>
+              <button
+                onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
+                className="flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2.5 text-sm font-medium transition-colors hover:bg-gray-50"
+              >
+                <Filter className="h-4 w-4" />
+                Filters
+              </button>
+            </div>
+
+            {/* Mobile filters dropdown */}
+            {mobileFiltersOpen && (
+              <div className="flex flex-col gap-2 rounded-lg border border-gray-200 bg-gray-50 p-3">
+                <select
+                  value={selectedType}
+                  onChange={(e) => setSelectedType(e.target.value)}
+                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm transition-colors focus:border-black focus:outline-none"
+                >
+                  <option value="all">All Types</option>
+                  <option value="road">Road</option>
+                  <option value="gravel">Gravel</option>
+                  <option value="mtb">Mountain</option>
+                </select>
+
+                <select
+                  value={selectedDifficulty}
+                  onChange={(e) => setSelectedDifficulty(e.target.value)}
+                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm transition-colors focus:border-black focus:outline-none"
+                >
+                  <option value="all">All Levels</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm transition-colors focus:border-black focus:outline-none"
+                >
+                  <option value="distance">Sort by Distance</option>
+                  <option value="elevation">Sort by Elevation</option>
+                  <option value="difficulty">Sort by Difficulty</option>
+                </select>
+              </div>
+            )}
+          </div>
+
+          {/* Desktop filter layout */}
+          <div className="hidden items-center gap-4 md:flex">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search routes by name, location..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-lg border border-gray-200 py-2 pr-4 pl-10 transition-colors focus:border-black focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 py-2 pl-10 pr-4 transition-colors focus:border-black focus:outline-none"
               />
             </div>
 
-            {/* Filters */}
-            <div className="flex w-full gap-4 lg:w-auto">
+            <div className="flex gap-4">
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
@@ -242,20 +362,20 @@ const RoutesPage = () => {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {filteredRoutes.map((route) => (
             <div
               key={route.id}
-              className="group overflow-hidden rounded-lg border border-gray-200 transition-all hover:shadow-lg"
+              className="group touch-manipulation overflow-hidden rounded-lg border border-gray-200 transition-all hover:shadow-lg"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 overflow-hidden sm:h-48">
                 <Image
                   src={`/images/${route.type === "road" ? "tarmac" : route.type === "gravel" ? "gravel" : "bikepacking"}.jpeg`}
                   alt={route.name}
                   fill
                   className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
                 />
-                <div className="absolute top-4 left-4">
+                <div className="absolute left-4 top-4">
                   <span
                     className={`rounded-full px-3 py-1 text-xs font-semibold ${
                       route.difficulty === "easy"
@@ -268,20 +388,22 @@ const RoutesPage = () => {
                     {route.difficulty}
                   </span>
                 </div>
-                <div className="absolute top-4 right-4">
+                <div className="absolute right-4 top-4">
                   <span className="rounded-full bg-black px-3 py-1 text-xs font-semibold text-white">
                     {route.type}
                   </span>
                 </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="mb-2 text-xl font-bold">{route.name}</h3>
-                <p className="mb-4 text-sm text-gray-600">
+              <div className="p-4 sm:p-6">
+                <h3 className="mb-2 text-lg font-bold sm:text-xl">
+                  {route.name}
+                </h3>
+                <p className="mb-3 text-sm text-gray-600 sm:mb-4">
                   {route.description}
                 </p>
 
-                <div className="mb-4 grid grid-cols-3 gap-4 text-sm">
+                <div className="mb-3 grid grid-cols-3 gap-2 text-sm sm:mb-4 sm:gap-4">
                   <div className="text-center">
                     <div className="font-semibold">{route.distance}km</div>
                     <div className="text-xs text-gray-500">Distance</div>
@@ -296,18 +418,18 @@ const RoutesPage = () => {
                   </div>
                 </div>
 
-                <div className="mb-4 flex items-center gap-2">
+                <div className="mb-3 flex items-center gap-2 sm:mb-4">
                   <MapPin className="h-4 w-4 text-gray-400" />
                   <span className="text-sm text-gray-600">
                     {route.location}
                   </span>
                 </div>
 
-                <div className="mb-4 flex gap-2">
+                <div className="mb-3 flex flex-wrap gap-1 sm:mb-4 sm:gap-2">
                   {route.highlights.map((highlight, idx) => (
                     <span
                       key={idx}
-                      className="rounded bg-gray-100 px-2 py-1 text-xs"
+                      className="rounded bg-gray-100 px-2 py-0.5 text-xs sm:py-1"
                     >
                       {highlight}
                     </span>
@@ -349,20 +471,20 @@ const RoutesPage = () => {
       </section>
 
       {/* Strava Embed Section */}
-      <section className="bg-gray-50 py-24">
+      <section className="bg-gray-50 py-12 sm:py-16 md:py-24">
         <div className="container">
-          <h2 className="mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:mb-12 sm:text-4xl md:mb-16 md:text-5xl">
             Featured Route
           </h2>
           <div className="mx-auto max-w-4xl">
-            <div className="rounded-lg bg-white p-8 shadow-lg">
+            <div className="rounded-lg bg-white p-4 shadow-lg sm:p-6 md:p-8">
               <iframe
                 title="Featured Strava Route"
                 src="https://www.strava.com/routes/3375029400452300034/embed"
                 width="100%"
-                height="600"
+                height="400"
+                className="rounded md:h-[600px]"
                 frameBorder="0"
-                className="rounded"
               ></iframe>
             </div>
           </div>
@@ -370,12 +492,12 @@ const RoutesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container py-24">
-        <div className="rounded-lg bg-black p-12 text-center text-white">
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+      <section className="container py-12 sm:py-16 md:py-24">
+        <div className="rounded-lg bg-black p-8 text-center text-white sm:p-10 md:p-12">
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
             Want to suggest a route?
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80">
+          <p className="mx-auto mb-6 max-w-2xl text-base text-white/80 sm:mb-8 sm:text-lg">
             Join our Strava club to share your favorite routes and discover new
             adventures with the community.
           </p>
