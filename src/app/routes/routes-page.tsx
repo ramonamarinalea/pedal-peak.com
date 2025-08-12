@@ -358,6 +358,7 @@ const RoutesPage = () => {
                   value={selectedType}
                   onChange={(e) => {
                     console.log('Type filter changed:', e.target.value);
+                    alert(`Type changed to: ${e.target.value}`);
                     setSelectedType(e.target.value);
                   }}
                   className="rounded border border-gray-200 bg-white px-2 py-1.5 text-xs transition-colors focus:border-black focus:outline-none"
@@ -370,7 +371,10 @@ const RoutesPage = () => {
 
                 <select
                   value={selectedDifficulty}
-                  onChange={(e) => setSelectedDifficulty(e.target.value)}
+                  onChange={(e) => {
+                    console.log('Difficulty filter changed:', e.target.value);
+                    setSelectedDifficulty(e.target.value);
+                  }}
                   className="rounded border border-gray-200 bg-white px-2 py-1.5 text-xs transition-colors focus:border-black focus:outline-none"
                 >
                   <option value="all">All Levels</option>
@@ -381,7 +385,10 @@ const RoutesPage = () => {
 
                 <select
                   value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
+                  onChange={(e) => {
+                    console.log('Sort filter changed:', e.target.value);
+                    setSortBy(e.target.value);
+                  }}
                   className="rounded border border-gray-200 bg-white px-2 py-1.5 text-xs transition-colors focus:border-black focus:outline-none"
                 >
                   <option value="distance">Distance</option>
