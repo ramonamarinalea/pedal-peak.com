@@ -49,6 +49,84 @@ const routesData = [
     highlights: ["River path", "City views", "Coffee stops"],
     stravaUrl: "https://www.strava.com/routes/3374710894042626816",
   },
+  {
+    id: "3375029400452300035",
+    name: "Swiss Alpine Challenge",
+    distance: 200,
+    elevation: 3500,
+    duration: "8-10 hours",
+    difficulty: "hard",
+    type: "road",
+    location: "Swiss Alps",
+    description: "Epic 200km alpine adventure through multiple mountain passes",
+    highlights: ["Furka Pass", "Grimsel Pass", "Susten Pass"],
+    stravaUrl: "https://www.strava.com/routes/3375029400452300035",
+  },
+  {
+    id: "3375029400452300036",
+    name: "Century Classic",
+    distance: 160,
+    elevation: 1800,
+    duration: "6-7 hours",
+    difficulty: "medium",
+    type: "road",
+    location: "Zurich",
+    description: "Classic century ride through rolling countryside",
+    highlights: ["Rolling hills", "Vineyard views", "Lake shores"],
+    stravaUrl: "https://www.strava.com/routes/3375029400452300036",
+  },
+  {
+    id: "3375029400452300037",
+    name: "Gravel Epic 200",
+    distance: 200,
+    elevation: 2800,
+    duration: "9-11 hours",
+    difficulty: "hard",
+    type: "gravel",
+    location: "Graubünden",
+    description: "Ultimate gravel challenge through remote mountain trails",
+    highlights: ["Remote valleys", "Mountain passes", "Alpine meadows"],
+    stravaUrl: "https://www.strava.com/routes/3375029400452300037",
+  },
+  {
+    id: "3375029400452300038",
+    name: "Lake to Lake 200",
+    distance: 205,
+    elevation: 2200,
+    duration: "8-9 hours",
+    difficulty: "hard",
+    type: "road",
+    location: "Central Switzerland",
+    description: "Scenic route connecting major Swiss lakes",
+    highlights: ["Lake Zurich", "Lake Lucerne", "Lake Zug"],
+    stravaUrl: "https://www.strava.com/routes/3375029400452300038",
+  },
+  {
+    id: "3375029400452300039",
+    name: "Endurance 250",
+    distance: 250,
+    elevation: 4000,
+    duration: "10-12 hours",
+    difficulty: "hard",
+    type: "road",
+    location: "Eastern Switzerland",
+    description: "Ultimate endurance challenge for experienced riders",
+    highlights: ["Multiple climbs", "Scenic valleys", "Mountain views"],
+    stravaUrl: "https://www.strava.com/routes/3375029400452300039",
+  },
+  {
+    id: "3375029400452300040",
+    name: "Morning Loop",
+    distance: 60,
+    elevation: 500,
+    duration: "2-3 hours",
+    difficulty: "easy",
+    type: "road",
+    location: "Zurich",
+    description: "Popular morning training loop",
+    highlights: ["Quiet roads", "Coffee stop", "Lake views"],
+    stravaUrl: "https://www.strava.com/routes/3375029400452300040",
+  },
   // Add more routes as needed - this is a sample set
 ];
 
@@ -62,6 +140,7 @@ const RoutesPage = () => {
 
   // Filter and sort routes
   const filteredRoutes = useMemo(() => {
+    console.log('Filter state:', { searchTerm, selectedType, selectedDifficulty, sortBy });
     let filtered = routesData;
 
     // Search filter
@@ -70,7 +149,12 @@ const RoutesPage = () => {
         (route) =>
           route.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           route.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          route.description.toLowerCase().includes(searchTerm.toLowerCase()),
+          route.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          `${route.distance}km`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          `${route.distance}`.includes(searchTerm) ||
+          route.duration.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          route.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          route.difficulty.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
 
@@ -105,6 +189,7 @@ const RoutesPage = () => {
       }
     });
 
+    console.log('Filtered routes:', filtered.length);
     return filtered;
   }, [searchTerm, selectedType, selectedDifficulty, sortBy]);
 
@@ -271,7 +356,10 @@ const RoutesPage = () => {
               <div className="flex flex-col gap-2 rounded-lg border border-gray-200 bg-gray-50 p-3">
                 <select
                   value={selectedType}
-                  onChange={(e) => setSelectedType(e.target.value)}
+                  onChange={(e) => {
+                    console.log('Type filter changed:', e.target.value);
+                    setSelectedType(e.target.value);
+                  }}
                   className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm transition-colors focus:border-black focus:outline-none"
                 >
                   <option value="all">All Types</option>
