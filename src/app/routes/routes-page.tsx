@@ -328,9 +328,9 @@ const RoutesPage = () => {
 
       {/* Filters Section */}
       <section className="sticky top-16 z-30 border-b border-gray-200 bg-white md:top-20">
-        <div className="container py-3 md:py-4">
+        <div className="container py-2 md:py-4">
           {/* Mobile filter layout */}
-          <div className="flex flex-col gap-3 md:hidden">
+          <div className="flex flex-col gap-2 md:hidden">
             <div className="flex gap-2">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
@@ -339,28 +339,28 @@ const RoutesPage = () => {
                   placeholder="Search routes..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 py-2.5 pl-10 pr-4 text-sm transition-colors focus:border-black focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 py-2 pl-10 pr-4 text-sm transition-colors focus:border-black focus:outline-none"
                 />
               </div>
               <button
                 onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-                className="flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2.5 text-sm font-medium transition-colors hover:bg-gray-50"
+                className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
               >
                 <Filter className="h-4 w-4" />
-                Filters
+                <span className="hidden xs:inline">Filters</span>
               </button>
             </div>
 
-            {/* Mobile filters dropdown */}
+            {/* Mobile filters dropdown - more compact */}
             {mobileFiltersOpen && (
-              <div className="flex flex-col gap-2 rounded-lg border border-gray-200 bg-gray-50 p-3">
+              <div className="grid grid-cols-3 gap-2">
                 <select
                   value={selectedType}
                   onChange={(e) => {
                     console.log('Type filter changed:', e.target.value);
                     setSelectedType(e.target.value);
                   }}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm transition-colors focus:border-black focus:outline-none"
+                  className="rounded border border-gray-200 bg-white px-2 py-1.5 text-xs transition-colors focus:border-black focus:outline-none"
                 >
                   <option value="all">All Types</option>
                   <option value="road">Road</option>
@@ -371,7 +371,7 @@ const RoutesPage = () => {
                 <select
                   value={selectedDifficulty}
                   onChange={(e) => setSelectedDifficulty(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm transition-colors focus:border-black focus:outline-none"
+                  className="rounded border border-gray-200 bg-white px-2 py-1.5 text-xs transition-colors focus:border-black focus:outline-none"
                 >
                   <option value="all">All Levels</option>
                   <option value="easy">Easy</option>
@@ -382,11 +382,11 @@ const RoutesPage = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm transition-colors focus:border-black focus:outline-none"
+                  className="rounded border border-gray-200 bg-white px-2 py-1.5 text-xs transition-colors focus:border-black focus:outline-none"
                 >
-                  <option value="distance">Sort by Distance</option>
-                  <option value="elevation">Sort by Elevation</option>
-                  <option value="difficulty">Sort by Difficulty</option>
+                  <option value="distance">Distance</option>
+                  <option value="elevation">Elevation</option>
+                  <option value="difficulty">Difficulty</option>
                 </select>
               </div>
             )}
