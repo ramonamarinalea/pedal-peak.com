@@ -1,13 +1,8 @@
 "use client";
 
 import { Mountain, Route, Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import {
-  getCitiesFromRoutes,
-  searchRoutes,
-  SwissRoute,
-} from "@/lib/swiss-routes-data";
 import {
   Select,
   SelectContent,
@@ -15,6 +10,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  getCitiesFromRoutes,
+  searchRoutes,
+  SwissRoute,
+} from "@/lib/swiss-routes-data";
 
 interface IntelligentSearchProps {
   routes: SwissRoute[];
@@ -26,34 +26,60 @@ export function IntelligentSearch({
   onResults,
 }: IntelligentSearchProps) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [selectedCity, setSelectedCity] = useState("all");
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
   const [sortBy, setSortBy] = useState("distance");
 
+  // Debounce search term to improve performance
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
   const getTypeColorBadge = (type?: string) => {
     switch (type) {
       case "road":
-        return <span className="inline-block h-3 w-3 rounded-full bg-black"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-black"></span>
+        );
       case "gravel":
-        return <span className="inline-block h-3 w-3 rounded-full bg-[#8B8680]"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-[#8B8680]"></span>
+        );
       case "mtb":
-        return <span className="inline-block h-3 w-3 rounded-full bg-[#E5E7EB]"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-[#E5E7EB]"></span>
+        );
       default:
-        return <span className="inline-block h-3 w-3 rounded-full bg-gray-600"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-gray-600"></span>
+        );
     }
   };
 
   const getDifficultyColorBadge = (difficulty?: string) => {
     switch (difficulty) {
       case "easy":
-        return <span className="inline-block h-3 w-3 rounded-full bg-green-500"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-green-500"></span>
+        );
       case "medium":
-        return <span className="inline-block h-3 w-3 rounded-full bg-yellow-500"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-yellow-500"></span>
+        );
       case "hard":
-        return <span className="inline-block h-3 w-3 rounded-full bg-red-500"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-red-500"></span>
+        );
       default:
-        return <span className="inline-block h-3 w-3 rounded-full bg-gray-400"></span>;
+        return (
+          <span className="inline-block h-3 w-3 rounded-full bg-gray-400"></span>
+        );
     }
   };
 
@@ -63,9 +89,9 @@ export function IntelligentSearch({
   const filteredRoutes = useMemo(() => {
     let filtered = routes;
 
-    // Apply intelligent text search
-    if (searchTerm.trim()) {
-      filtered = searchRoutes(filtered, searchTerm);
+    // Apply intelligent text search (using debounced term)
+    if (debouncedSearchTerm.trim()) {
+      filtered = searchRoutes(filtered, debouncedSearchTerm);
     }
 
     // City filter
@@ -113,7 +139,7 @@ export function IntelligentSearch({
     return filtered;
   }, [
     routes,
-    searchTerm,
+    debouncedSearchTerm,
     selectedCity,
     selectedDifficulty,
     selectedType,
@@ -121,12 +147,13 @@ export function IntelligentSearch({
   ]);
 
   // Update parent component with filtered results
-  useMemo(() => {
+  useEffect(() => {
     onResults(filteredRoutes);
   }, [filteredRoutes, onResults]);
 
   const clearAllFilters = () => {
     setSearchTerm("");
+    setDebouncedSearchTerm("");
     setSelectedCity("all");
     setSelectedDifficulty("all");
     setSelectedType("all");
@@ -142,7 +169,12 @@ export function IntelligentSearch({
           type="text"
           placeholder="Search routes... Try 'gravel in Zurich', 'under 200km', 'hard climbs', or just a city name"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            console.log("Search input changing to:", e.target.value);
+            setSearchTerm(e.target.value);
+          }}
+          onFocus={() => console.log("Search input focused")}
+          onBlur={() => console.log("Search input blurred")}
           className="w-full rounded-lg border border-gray-200 py-3 pl-12 pr-4 text-base transition-colors focus:border-black focus:outline-none"
         />
         {searchTerm && (
@@ -196,7 +228,10 @@ export function IntelligentSearch({
         </Select>
 
         {/* Difficulty Filter */}
-        <Select value={selectedDifficulty} onValueChange={setSelectedDifficulty}>
+        <Select
+          value={selectedDifficulty}
+          onValueChange={setSelectedDifficulty}
+        >
           <SelectTrigger>
             <SelectValue placeholder="All Levels" />
           </SelectTrigger>
