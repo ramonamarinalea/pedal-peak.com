@@ -489,12 +489,12 @@ export default function CreteTrainingCamp() {
             Ready to Join Us?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-xl opacity-90">
-            Secure your spot with the €220 guiding fee. Limited spaces
+            Secure your spot with the CHF 250 guiding fee. Limited spaces
             available.
           </p>
 
           <div className="mx-auto mb-8 max-w-md border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
-            <div className="mb-2 text-6xl font-bold">€220</div>
+            <div className="mb-2 text-6xl font-bold">CHF 250</div>
             <div className="mb-4 text-lg uppercase tracking-wide">
               Guiding & Organization Fee
             </div>
