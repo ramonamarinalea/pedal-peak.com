@@ -260,7 +260,7 @@ const BikeBoxPage = () => {
               </div>
               <div>
                 <h4 className="mb-1 font-semibold">Contact</h4>
-                <p className="text-gray-600">ramona@pedal-peak.com</p>
+                <p className="text-gray-600">ramona.furter@icloud.com</p>
               </div>
               <div>
                 <h4 className="mb-1 font-semibold">Deposit</h4>

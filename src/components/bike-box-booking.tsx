@@ -27,7 +27,7 @@ Dropoff Date: [Please specify]
 
 Thank you!`;
 
-    const mailtoLink = `mailto:box@pedal-peak.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:ramona.furter@icloud.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
   };
 

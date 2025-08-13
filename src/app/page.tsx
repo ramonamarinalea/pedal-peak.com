@@ -266,7 +266,7 @@ const HomePage = () => {
                 Questions or suggestions?
               </p>
               <Link
-                href="mailto:hello@pedal-peak.com"
+                href="mailto:ramona.furter@icloud.com"
                 className="font-semibold text-black transition-colors hover:text-gray-600"
               >
                 Email Us →

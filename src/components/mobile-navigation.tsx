@@ -165,7 +165,7 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
             <div className="mt-8 border-t border-gray-200 pt-8">
               <div className="flex flex-col space-y-4">
                 <Link
-                  href="mailto:hello@pedal-peak.com"
+                  href="mailto:ramona.furter@icloud.com"
                   className="text-sm text-gray-600 transition-colors hover:text-black"
                   onClick={closeMenu}
                 >
