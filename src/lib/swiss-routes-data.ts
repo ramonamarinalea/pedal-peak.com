@@ -4709,10 +4709,17 @@ export const swissRoutesData: SwissRoute[] = [
 
 // Utility functions for route analysis
 export function getCitiesFromRoutes(): string[] {
-  const cities = swissRoutesData
-    .map((route) => route.city)
-    .filter((city): city is string => city !== undefined);
-  return [...new Set(cities)].sort();
+  try {
+    if (!swissRoutesData || !Array.isArray(swissRoutesData)) return [];
+    
+    const cities = swissRoutesData
+      .map((route) => route?.city)
+      .filter((city): city is string => city !== undefined && typeof city === 'string');
+    return [...new Set(cities)].sort();
+  } catch (error) {
+    console.error("Error getting cities from routes:", error);
+    return [];
+  }
 }
 
 export function getRegionsFromRoutes(): string[] {
@@ -4764,13 +4771,18 @@ export function searchRoutes(
   routes: SwissRoute[],
   searchTerm: string,
 ): SwissRoute[] {
-  if (!searchTerm.trim()) return routes;
+  try {
+    if (!routes || !Array.isArray(routes)) return [];
+    if (!searchTerm || !searchTerm.trim()) return routes;
 
-  const term = searchTerm.toLowerCase().trim();
+    const term = searchTerm.toLowerCase().trim();
 
-  return routes.filter((route) => {
-    // Search in route name
-    if (route.name.toLowerCase().includes(term)) return true;
+    return routes.filter((route) => {
+      try {
+        if (!route || typeof route !== 'object') return false;
+        
+        // Search in route name
+        if (route.name && typeof route.name === 'string' && route.name.toLowerCase().includes(term)) return true;
 
     // Search in city
     if (route.city?.toLowerCase().includes(term)) return true;
@@ -4873,6 +4885,14 @@ export function searchRoutes(
     )
       return true;
 
-    return false;
-  });
+        return false;
+      } catch (error) {
+        console.error("Error filtering route:", error, route);
+        return false;
+      }
+    });
+  } catch (error) {
+    console.error("Error in searchRoutes:", error);
+    return routes || [];
+  }
 }

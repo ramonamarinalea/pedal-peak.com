@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { ErrorBoundary } from "@/components/error-boundary";
 import { MobileNavigation } from "@/components/mobile-navigation";
@@ -13,13 +13,25 @@ import { SwissRoute, swissRoutesData } from "@/lib/swiss-routes-data";
 import { safeLoadRoutes } from "@/lib/validate-routes";
 
 const RoutesPage = () => {
-  // Validate routes data on load
-  const validatedRoutes = safeLoadRoutes(swissRoutesData);
+  // Validate routes data on load with error handling
+  const validatedRoutes = useMemo(() => {
+    try {
+      return safeLoadRoutes(swissRoutesData);
+    } catch (error) {
+      console.error("Error loading routes data:", error);
+      return [];
+    }
+  }, []);
+  
   const [filteredRoutes, setFilteredRoutes] =
     useState<SwissRoute[]>(validatedRoutes);
 
   const handleSearchResults = useCallback((results: SwissRoute[]) => {
-    setFilteredRoutes(results);
+    try {
+      setFilteredRoutes(results || []);
+    } catch (error) {
+      console.error("Error updating filtered routes:", error);
+    }
   }, []);
 
   return (
@@ -52,10 +64,12 @@ const RoutesPage = () => {
       {/* Intelligent Search Section */}
       <section className="sticky top-20 z-40 border-b border-gray-200 bg-white">
         <div className="container py-6">
-          <IntelligentSearch
-            routes={validatedRoutes}
-            onResults={handleSearchResults}
-          />
+          <ErrorBoundary>
+            <IntelligentSearch
+              routes={validatedRoutes}
+              onResults={handleSearchResults}
+            />
+          </ErrorBoundary>
         </div>
       </section>
 

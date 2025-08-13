@@ -10,6 +10,15 @@ interface RouteCardProps {
 }
 
 export function RouteCard({ route }: RouteCardProps) {
+  // Safety check for route data
+  if (!route || !route.id) {
+    return (
+      <div className="rounded-lg border border-gray-200 bg-white p-6">
+        <p className="text-gray-500">Route data unavailable</p>
+      </div>
+    );
+  }
+
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
       case "easy":
@@ -39,26 +48,42 @@ export function RouteCard({ route }: RouteCardProps) {
   };
 
   const getEstimatedDuration = (distance: number, elevation: number) => {
-    // Rough estimate: 25km/h average speed + 10 minutes per 100m elevation
-    const baseTime = distance / 25; // hours
-    const elevationTime = (elevation / 100) * (10 / 60); // convert to hours
-    const totalHours = baseTime + elevationTime;
+    try {
+      // Safety checks for numeric values
+      const safeDistance = typeof distance === 'number' && !isNaN(distance) ? distance : 0;
+      const safeElevation = typeof elevation === 'number' && !isNaN(elevation) ? elevation : 0;
+      
+      // Rough estimate: 25km/h average speed + 10 minutes per 100m elevation
+      const baseTime = safeDistance / 25; // hours
+      const elevationTime = (safeElevation / 100) * (10 / 60); // convert to hours
+      const totalHours = baseTime + elevationTime;
 
-    if (totalHours < 1.5) return "1-2 hours";
-    if (totalHours < 3) return "2-3 hours";
-    if (totalHours < 4.5) return "3-5 hours";
-    if (totalHours < 6) return "5-6 hours";
-    if (totalHours < 8) return "6-8 hours";
-    return "8+ hours";
+      if (totalHours < 1.5) return "1-2 hours";
+      if (totalHours < 3) return "2-3 hours";
+      if (totalHours < 4.5) return "3-5 hours";
+      if (totalHours < 6) return "5-6 hours";
+      if (totalHours < 8) return "6-8 hours";
+      return "8+ hours";
+    } catch (error) {
+      console.error("Error calculating duration:", error);
+      return "Unknown duration";
+    }
   };
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
+    try {
+      if (!dateString) return "Unknown date";
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return "Invalid date";
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+    } catch (error) {
+      console.error("Error formatting date:", error);
+      return "Unknown date";
+    }
   };
 
   return (

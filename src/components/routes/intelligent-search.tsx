@@ -83,60 +83,78 @@ export function IntelligentSearch({
     }
   };
 
-  const cities = useMemo(() => getCitiesFromRoutes(), []);
+  const cities = useMemo(() => {
+    try {
+      return getCitiesFromRoutes();
+    } catch (error) {
+      console.error("Error loading cities:", error);
+      return [];
+    }
+  }, []);
 
   // Intelligent search with multiple filters
   const filteredRoutes = useMemo(() => {
-    let filtered = routes;
+    try {
+      let filtered = routes || [];
 
-    // Apply intelligent text search (using debounced term)
-    if (debouncedSearchTerm.trim()) {
-      filtered = searchRoutes(filtered, debouncedSearchTerm);
-    }
-
-    // City filter
-    if (selectedCity !== "all") {
-      filtered = filtered.filter((route) => route.city === selectedCity);
-    }
-
-    // Difficulty filter
-    if (selectedDifficulty !== "all") {
-      filtered = filtered.filter(
-        (route) => route.difficulty === selectedDifficulty,
-      );
-    }
-
-    // Type filter
-    if (selectedType !== "all") {
-      filtered = filtered.filter((route) => route.type === selectedType);
-    }
-
-    // Sort routes
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case "distance":
-          return a.distance - b.distance;
-        case "elevation":
-          return b.elevation - a.elevation;
-        case "difficulty":
-          const diffOrder = { easy: 1, medium: 2, hard: 3 };
-          return (
-            diffOrder[a.difficulty || "medium"] -
-            diffOrder[b.difficulty || "medium"]
-          );
-        case "city":
-          return (a.city || "").localeCompare(b.city || "");
-        case "recent":
-          return (
-            new Date(b.createdDate).getTime() -
-            new Date(a.createdDate).getTime()
-          );
-        default:
-          return 0;
+      // Apply intelligent text search (using debounced term)
+      if (debouncedSearchTerm?.trim()) {
+        filtered = searchRoutes(filtered, debouncedSearchTerm);
       }
-    });
 
-    return filtered;
+      // City filter
+      if (selectedCity && selectedCity !== "all") {
+        filtered = filtered.filter((route) => route?.city === selectedCity);
+      }
+
+      // Difficulty filter
+      if (selectedDifficulty && selectedDifficulty !== "all") {
+        filtered = filtered.filter(
+          (route) => route?.difficulty === selectedDifficulty,
+        );
+      }
+
+      // Type filter
+      if (selectedType && selectedType !== "all") {
+        filtered = filtered.filter((route) => route?.type === selectedType);
+      }
+
+      // Sort routes safely
+      if (filtered.length > 0) {
+        filtered.sort((a, b) => {
+          try {
+            switch (sortBy) {
+              case "distance":
+                return (a?.distance || 0) - (b?.distance || 0);
+              case "elevation":
+                return (b?.elevation || 0) - (a?.elevation || 0);
+              case "difficulty":
+                const diffOrder = { easy: 1, medium: 2, hard: 3 };
+                return (
+                  diffOrder[a?.difficulty || "medium"] -
+                  diffOrder[b?.difficulty || "medium"]
+                );
+              case "city":
+                return (a?.city || "").localeCompare(b?.city || "");
+              case "recent":
+                const dateA = new Date(a?.createdDate || "").getTime();
+                const dateB = new Date(b?.createdDate || "").getTime();
+                return dateB - dateA;
+              default:
+                return 0;
+            }
+          } catch (error) {
+            console.error("Error sorting routes:", error);
+            return 0;
+          }
+        });
+      }
+
+      return filtered;
+    } catch (error) {
+      console.error("Error filtering routes:", error);
+      return routes || [];
+    }
   }, [
     routes,
     debouncedSearchTerm,
@@ -170,11 +188,12 @@ export function IntelligentSearch({
           placeholder="Search routes... Try 'gravel in Zurich', 'under 200km', 'hard climbs', or just a city name"
           value={searchTerm}
           onChange={(e) => {
-            console.log("Search input changing to:", e.target.value);
-            setSearchTerm(e.target.value);
+            try {
+              setSearchTerm(e.target.value);
+            } catch (error) {
+              console.error("Error updating search term:", error);
+            }
           }}
-          onFocus={() => console.log("Search input focused")}
-          onBlur={() => console.log("Search input blurred")}
           className="w-full rounded-lg border border-gray-200 py-3 pl-12 pr-4 text-base transition-colors focus:border-black focus:outline-none"
         />
         {searchTerm && (
