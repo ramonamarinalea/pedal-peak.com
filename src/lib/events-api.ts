@@ -51,7 +51,7 @@ export async function fetchEvents(params?: {
   if (params?.country) searchParams.append('country', params.country)
   if (params?.limit) searchParams.append('limit', params.limit.toString())
   
-  const url = `https://cycling-events-platform-fqme9nv27-ramonas-projects-30eebf44.vercel.app/api/events?${searchParams}`
+  const url = `https://cycling-events-platform-9tbgw2i4i-ramonas-projects-30eebf44.vercel.app/api/events?${searchParams}`
   
   const response = await fetch(url, {
     next: { revalidate: 3600 } // Cache for 1 hour
