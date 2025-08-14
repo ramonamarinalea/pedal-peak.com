@@ -14,7 +14,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'EVOC Bike Travel Bag',
     description: 'Premium padded bike travel case for safe airline transport. Perfect for cycling adventures worldwide.',
     category: 'bike-transport',
-    imageUrl: '/images/gear/evoc-bike-bag.jpg',
+    imageUrl: '/images/bikeboxreal.jpeg',
     estimatedPrice: '$299.99'
   },
   {
@@ -22,7 +22,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Thule RoundTrip Transition',
     description: 'Hard case bike transport solution with integrated wheels and robust protection.',
     category: 'bike-transport',
-    imageUrl: '/images/gear/thule-bike-case.jpg',
+    imageUrl: '/images/bikeboxreal.jpeg',
     estimatedPrice: '$699.99'
   },
   
@@ -32,7 +32,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Pearl Izumi Cycling Shorts',
     description: 'Premium padded cycling shorts for long-distance comfort on mountain and road rides.',
     category: 'cycling-gear',
-    imageUrl: '/images/gear/pearl-izumi-shorts.jpg',
+    imageUrl: '/images/IMG_2289.jpeg',
     estimatedPrice: '$89.99'
   },
   {
@@ -40,7 +40,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'GIRO Register MIPS Helmet',
     description: 'Lightweight cycling helmet with MIPS technology for enhanced safety on all terrain.',
     category: 'cycling-gear',
-    imageUrl: '/images/gear/giro-helmet.jpg',
+    imageUrl: '/images/IMG_8151.jpeg',
     estimatedPrice: '$49.99'
   },
   {
@@ -48,7 +48,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Castelli Cycling Jersey',
     description: 'Professional-grade cycling jersey with moisture-wicking fabric and aerodynamic fit.',
     category: 'cycling-gear',
-    imageUrl: '/images/gear/castelli-jersey.jpg',
+    imageUrl: '/images/gravel.jpeg',
     estimatedPrice: '$129.99'
   },
   
@@ -58,7 +58,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Park Tool PCS-10 Repair Stand',
     description: 'Professional bike repair stand for home mechanics. Essential for proper bike maintenance.',
     category: 'maintenance',
-    imageUrl: '/images/gear/park-tool-stand.jpg',
+    imageUrl: '/images/IMG_5945.jpeg',
     estimatedPrice: '$199.99'
   },
   {
@@ -66,7 +66,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Park Tool Bike Tool Kit',
     description: 'Complete bike tool set for on-the-go repairs and home maintenance.',
     category: 'maintenance',
-    imageUrl: '/images/gear/park-tool-kit.jpg',
+    imageUrl: '/images/IMG_0224.jpeg',
     estimatedPrice: '$79.99'
   },
   
@@ -76,7 +76,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Garmin Edge 130 Plus',
     description: 'GPS cycling computer with navigation and performance tracking for serious cyclists.',
     category: 'accessories',
-    imageUrl: '/images/gear/garmin-edge.jpg',
+    imageUrl: '/images/tarmac.jpeg',
     estimatedPrice: '$199.99'
   },
   {
@@ -84,7 +84,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Topeak Midloader Bike Bag',
     description: 'Frame bag for bikepacking adventures. Perfect for long-distance cycling trips.',
     category: 'accessories',
-    imageUrl: '/images/gear/topeak-frame-bag.jpg',
+    imageUrl: '/images/bikepacking.jpeg',
     estimatedPrice: '$49.99'
   },
   {
@@ -92,7 +92,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'Wahoo KICKR Core',
     description: 'Smart indoor bike trainer for year-round training. Compatible with training apps.',
     category: 'accessories',
-    imageUrl: '/images/gear/wahoo-trainer.jpg',
+    imageUrl: '/images/IMG_8031.jpeg',
     estimatedPrice: '$899.99'
   },
   
@@ -102,7 +102,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'CamelBak Podium Bottle',
     description: 'Professional cycling water bottle with easy-squeeze design for hydration on the go.',
     category: 'nutrition',
-    imageUrl: '/images/gear/camelbak-bottle.jpg',
+    imageUrl: '/images/IMG_3149.jpeg',
     estimatedPrice: '$12.99'
   },
   {
@@ -110,7 +110,7 @@ export const cyclingProducts: AmazonProduct[] = [
     title: 'GU Energy Gel Variety Pack',
     description: 'Energy gels for endurance cycling. Essential fuel for long rides and races.',
     category: 'nutrition',
-    imageUrl: '/images/gear/gu-energy-gels.jpg',
+    imageUrl: '/images/FullSizeRender.jpeg',
     estimatedPrice: '$24.99'
   }
 ];

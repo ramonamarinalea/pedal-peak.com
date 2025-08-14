@@ -54,11 +54,15 @@ export async function fetchEvents(params?: {
   const url = `https://cycling-events-platform-9tbgw2i4i-ramonas-projects-30eebf44.vercel.app/api/events?${searchParams}`
   
   const response = await fetch(url, {
-    next: { revalidate: 3600 } // Cache for 1 hour
+    next: { revalidate: 3600 }, // Cache for 1 hour
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
   })
   
   if (!response.ok) {
-    throw new Error('Failed to fetch events')
+    throw new Error(`Failed to fetch events: ${response.status} ${response.statusText}`)
   }
   
   return response.json()
