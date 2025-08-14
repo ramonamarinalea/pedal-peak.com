@@ -19,6 +19,23 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "staticmap.co", // Static map service for route previews
       },
+      // Cycling events platform image domains
+      {
+        protocol: "https",
+        hostname: "images.squarespace-cdn.com",
+      },
+      {
+        protocol: "https",
+        hostname: "alpenbrevet.ch",
+      },
+      {
+        protocol: "https",
+        hostname: "sunvelo.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ridegravel.ch",
+      },
     ],
   },
 };

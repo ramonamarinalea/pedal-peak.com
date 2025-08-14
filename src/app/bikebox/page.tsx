@@ -4,8 +4,10 @@ import Link from "next/link";
 
 import { BikeBoxBooking } from "@/components/bike-box-booking";
 import { BikeBoxContact } from "@/components/bike-box-contact";
+import { GearRecommendations } from "@/components/gear";
 import { MobileNavigation } from "@/components/mobile-navigation";
 import { buttonVariants } from "@/components/ui/button";
+import { getBikeTransportProducts } from "@/lib/cycling-products";
 
 const BikeBoxPage = () => {
   return (
@@ -282,6 +284,15 @@ const BikeBoxPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Alternative Transport Solutions */}
+      <GearRecommendations 
+        products={getBikeTransportProducts()}
+        title="Alternative Transport Solutions"
+        description="Looking for your own bike transport case? Check out these professional-grade options used by cyclists worldwide."
+        columns={2}
+        className="bg-white"
+      />
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-gray-50">

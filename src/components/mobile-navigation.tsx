@@ -39,6 +39,12 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
             routes
           </Link>
           <Link
+            href="/events"
+            className="text-sm text-gray-900 transition-colors hover:text-black"
+          >
+            events
+          </Link>
+          <Link
             href="/#adventures"
             className="text-sm text-gray-900 transition-colors hover:text-black"
           >
@@ -115,6 +121,13 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
                 onClick={closeMenu}
               >
                 routes
+              </Link>
+              <Link
+                href="/events"
+                className="text-lg font-semibold text-gray-900 transition-colors hover:text-black"
+                onClick={closeMenu}
+              >
+                events
               </Link>
               <Link
                 href="/#adventures"

@@ -2,8 +2,10 @@ import { Bike, Mail, MessageCircle, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { GearRecommendations } from "@/components/gear";
 import { MobileNavigation } from "@/components/mobile-navigation";
 import { buttonVariants } from "@/components/ui/button";
+import { getFeaturedProducts } from "@/lib/cycling-products";
 
 const HomePage = () => {
   return (
@@ -188,6 +190,15 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Featured Cycling Gear */}
+      <GearRecommendations 
+        products={getFeaturedProducts()}
+        title="Essential Cycling Gear"
+        description="Discover the equipment we recommend for your cycling adventures. Quality gear that enhances every ride."
+        columns={4}
+        className="bg-gray-50"
+      />
+
       {/* Full Width Image Section */}
       <section className="relative h-96">
         <Image
@@ -290,6 +301,12 @@ const HomePage = () => {
                 className="text-gray-600 transition-colors hover:text-black"
               >
                 Routes
+              </Link>
+              <Link
+                href="/events"
+                className="text-gray-600 transition-colors hover:text-black"
+              >
+                Events
               </Link>
               <Link
                 href="/piedmont"
