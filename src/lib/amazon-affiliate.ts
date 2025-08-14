@@ -16,6 +16,7 @@ export interface AmazonProduct {
   category: 'bike-transport' | 'cycling-gear' | 'maintenance' | 'accessories' | 'nutrition';
   imageUrl: string;
   estimatedPrice: string;
+  customLink?: string;
 }
 
 /**

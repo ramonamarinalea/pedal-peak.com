@@ -10,22 +10,24 @@ import { AmazonProduct } from "./amazon-affiliate";
 export const cyclingProducts: AmazonProduct[] = [
   // Bike Transport & Travel
   {
-    asin: "B07D5F8L9K",
+    asin: "45E9Rm9",
     title: "EVOC Bike Travel Bag",
     description:
       "Premium padded bike travel case for safe airline transport. Perfect for cycling adventures worldwide.",
     category: "bike-transport",
-    imageUrl: "https://m.media-amazon.com/images/I/81hKz2mPOCL._AC_SL1500_.jpg",
+    imageUrl: "https://m.media-amazon.com/images/I/71XnNZ8DfDL._AC_SL1500_.jpg",
     estimatedPrice: "$299.99",
+    customLink: "https://amzn.to/45E9Rm9",
   },
   {
-    asin: "B01N4QZ8H8",
+    asin: "45E9Rm9",
     title: "Thule RoundTrip Transition",
     description:
       "Hard case bike transport solution with integrated wheels and robust protection.",
     category: "bike-transport",
     imageUrl: "https://m.media-amazon.com/images/I/71fE1mJdMLLS1500_.jpg",
     estimatedPrice: "$699.99",
+    customLink: "https://amzn.to/45E9Rm9",
   },
 
   // Cycling Gear & Clothing

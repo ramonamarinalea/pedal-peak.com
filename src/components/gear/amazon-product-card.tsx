@@ -16,7 +16,7 @@ export function AmazonProductCard({
   showCategory = false, 
   className = '' 
 }: AmazonProductCardProps) {
-  const affiliateLink = generateAmazonAffiliateLink(product.asin);
+  const affiliateLink = product.customLink || generateAmazonAffiliateLink(product.asin);
   
   const handleClick = () => {
     window.open(affiliateLink, '_blank', 'noopener,noreferrer');
