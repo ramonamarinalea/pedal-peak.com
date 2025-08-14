@@ -47,6 +47,7 @@ export default function EventsPage() {
       setEvents(data.events)
     } catch (error) {
       console.error("Error fetching events:", error)
+      setEvents([]) // Set empty array on error
     } finally {
       setLoading(false)
     }
@@ -59,6 +60,7 @@ export default function EventsPage() {
       setPastEvents(data.events)
     } catch (error) {
       console.error("Error fetching past events:", error)
+      setPastEvents([]) // Set empty array on error
     } finally {
       setLoadingPast(false)
     }

@@ -11,8 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  getCitiesFromRoutes,
-  searchRoutes,
+  // getCitiesFromRoutes,
+  // searchRoutes,
   SwissRoute,
 } from "@/lib/swiss-routes-data";
 
@@ -85,7 +85,7 @@ export function IntelligentSearch({
 
   const cities = useMemo(() => {
     try {
-      return getCitiesFromRoutes();
+      return []; // getCitiesFromRoutes();
     } catch (error) {
       console.error("Error loading cities:", error);
       return [];
@@ -99,7 +99,7 @@ export function IntelligentSearch({
 
       // Apply intelligent text search (using debounced term)
       if (debouncedSearchTerm?.trim()) {
-        filtered = searchRoutes(filtered, debouncedSearchTerm);
+        // filtered = searchRoutes(filtered, debouncedSearchTerm);
       }
 
       // City filter
