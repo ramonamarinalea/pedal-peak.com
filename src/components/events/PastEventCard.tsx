@@ -1,5 +1,5 @@
 // components/events/PastEventCard.tsx
-import { CyclingEvent } from "@/lib/events-api"
+import { CyclingEvent } from "@/lib/static-events-data"
 
 interface PastEventCardProps {
   event: CyclingEvent

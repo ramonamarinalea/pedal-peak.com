@@ -1,10 +1,10 @@
 // app/events/page.tsx
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { EventCard } from "@/components/events/EventCard"
 import { PastEventCard } from "@/components/events/PastEventCard"
-import { fetchEvents, CyclingEvent } from "@/lib/events-api"
+import { CyclingEvent, getFutureEvents, getPastEvents } from "@/lib/static-events-data"
 
 const eventTypes = [
   { value: "", label: "All Events" },
@@ -23,53 +23,37 @@ const difficulties = [
 ]
 
 export default function EventsPage() {
-  const [events, setEvents] = useState<CyclingEvent[]>([])
-  const [pastEvents, setPastEvents] = useState<CyclingEvent[]>([])
-  const [loading, setLoading] = useState(true)
-  const [loadingPast, setLoadingPast] = useState(false)
   const [filters, setFilters] = useState({
     type: "",
     difficulty: "",
     country: "",
   })
 
-  const fetchEventsData = useCallback(async () => {
-    setLoading(true)
-    try {
-      const params: Record<string, string> = {}
-      
-      // Add filters to params
-      Object.entries(filters).forEach(([key, value]) => {
-        if (value) params[key] = value
-      })
-      
-      const data = await fetchEvents(params)
-      setEvents(data.events)
-    } catch (error) {
-      console.error("Error fetching events:", error)
-      setEvents([]) // Set empty array on error
-    } finally {
-      setLoading(false)
+  // Get static events data and apply filters
+  const events = useMemo(() => {
+    let filteredEvents = getFutureEvents()
+    
+    if (filters.type) {
+      filteredEvents = filteredEvents.filter(event => event.type === filters.type)
     }
+    
+    if (filters.difficulty) {
+      filteredEvents = filteredEvents.filter(event => event.difficulty === filters.difficulty)
+    }
+    
+    if (filters.country) {
+      filteredEvents = filteredEvents.filter(event => 
+        event.country.toLowerCase().includes(filters.country.toLowerCase())
+      )
+    }
+    
+    return filteredEvents
   }, [filters])
 
-  const fetchPastEventsData = useCallback(async () => {
-    setLoadingPast(true)
-    try {
-      const data = await fetchEvents({ past: true, limit: 10 })
-      setPastEvents(data.events)
-    } catch (error) {
-      console.error("Error fetching past events:", error)
-      setPastEvents([]) // Set empty array on error
-    } finally {
-      setLoadingPast(false)
-    }
+  // Get past events (static data)
+  const pastEvents = useMemo(() => {
+    return getPastEvents().slice(0, 10) // Limit to 10 past events
   }, [])
-
-  useEffect(() => {
-    fetchEventsData()
-    fetchPastEventsData()
-  }, [fetchEventsData, fetchPastEventsData])
 
   const handleFilterChange = (key: string, value: string) => {
     setFilters(prev => ({ ...prev, [key]: value }))
@@ -134,17 +118,7 @@ export default function EventsPage() {
         </div>
 
         {/* Events Grid */}
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="animate-pulse">
-                <div className="aspect-[4/3] bg-gray-200 mb-4"></div>
-                <div className="h-4 bg-gray-200 mb-2"></div>
-                <div className="h-4 bg-gray-200 w-2/3"></div>
-              </div>
-            ))}
-          </div>
-        ) : events.length > 0 ? (
+        {events.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {events.map((event) => (
               <EventCard key={event.id} event={event} />
@@ -158,26 +132,18 @@ export default function EventsPage() {
         )}
 
         {/* Past Events Section */}
-        {(pastEvents.length > 0 || loadingPast) && (
+        {pastEvents.length > 0 && (
           <div className="mt-24">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tight text-black mb-4" style={{ fontFamily: 'Satoshi, sans-serif' }}>Past Events</h2>
               <p className="text-gray-600">Previous cycling adventures for reference</p>
             </div>
             
-            {loadingPast ? (
-              <div className="space-y-2 max-w-4xl mx-auto">
-                {[...Array(3)].map((_, i) => (
-                  <div key={i} className="h-16 bg-gray-100 animate-pulse"></div>
-                ))}
-              </div>
-            ) : (
-              <div className="space-y-2 max-w-4xl mx-auto">
-                {pastEvents.map((event) => (
-                  <PastEventCard key={event.id} event={event} />
-                ))}
-              </div>
-            )}
+            <div className="space-y-2 max-w-4xl mx-auto">
+              {pastEvents.map((event) => (
+                <PastEventCard key={event.id} event={event} />
+              ))}
+            </div>
           </div>
         )}
 

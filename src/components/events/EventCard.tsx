@@ -1,6 +1,6 @@
 // components/events/EventCard.tsx
 import Image from "next/image"
-import { CyclingEvent, formatPrice } from "@/lib/events-api"
+import { CyclingEvent, formatPrice } from "@/lib/static-events-data"
 
 interface EventCardProps {
   event: CyclingEvent
