@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { AmazonProduct, generateAmazonAffiliateLink, formatPrice } from '@/lib/amazon-affiliate';
 import { buttonVariants } from '@/components/ui/button';
@@ -28,14 +28,14 @@ export function AmazonProductCard({
       onClick={handleClick}
     >
       <div className="aspect-square relative overflow-hidden">
-        <Image
+        <img
           src={product.imageUrl}
           alt={product.title}
-          fill
-          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+          className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
           onError={(e) => {
+            console.log('Image error:', product.imageUrl);
             const target = e.target as HTMLImageElement;
-            target.src = '/images/placeholder-product.jpg';
+            target.src = '/images/IMG_8151.jpeg';
           }}
         />
         {showCategory && (
