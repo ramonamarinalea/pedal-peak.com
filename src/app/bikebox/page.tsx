@@ -292,6 +292,7 @@ const BikeBoxPage = () => {
         description="Looking for your own bike transport case? Check out these professional-grade options used by cyclists worldwide."
         columns={2}
         className="bg-white"
+        cardSize="small"
       />
 
       {/* Footer */}

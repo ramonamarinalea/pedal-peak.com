@@ -9,12 +9,14 @@ interface AmazonProductCardProps {
   product: AmazonProduct;
   showCategory?: boolean;
   className?: string;
+  cardSize?: 'normal' | 'small';
 }
 
 export function AmazonProductCard({ 
   product, 
   showCategory = false, 
-  className = '' 
+  className = '',
+  cardSize = 'normal'
 }: AmazonProductCardProps) {
   const affiliateLink = product.customLink || generateAmazonAffiliateLink(product.asin);
   
@@ -22,12 +24,16 @@ export function AmazonProductCard({
     window.open(affiliateLink, '_blank', 'noopener,noreferrer');
   };
 
+  const isSmall = cardSize === 'small';
+  const aspectRatio = isSmall ? 'aspect-[4/3]' : 'aspect-square';
+  const padding = isSmall ? 'p-3' : 'p-4';
+
   return (
     <div 
       className={`group bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer ${className}`}
       onClick={handleClick}
     >
-      <div className="aspect-square relative overflow-hidden">
+      <div className={`${aspectRatio} relative overflow-hidden`}>
         <img
           src={product.imageUrl}
           alt={product.title}
@@ -45,29 +51,29 @@ export function AmazonProductCard({
         )}
       </div>
       
-      <div className="p-4">
-        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
+      <div className={padding}>
+        <h3 className={`font-semibold text-gray-900 mb-2 line-clamp-2 ${isSmall ? 'text-sm' : ''}`}>
           {product.title}
         </h3>
         
-        <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+        <p className={`text-gray-600 mb-3 line-clamp-2 ${isSmall ? 'text-xs' : 'text-sm'}`}>
           {product.description}
         </p>
         
         <div className="flex items-center justify-between">
-          <span className="text-lg font-bold text-gray-900">
+          <span className={`font-bold text-gray-900 ${isSmall ? 'text-base' : 'text-lg'}`}>
             {formatPrice(product.estimatedPrice)}
           </span>
           
           <button 
-            className={`${buttonVariants({ size: 'sm' })} flex items-center gap-1`}
+            className={`${buttonVariants({ size: 'sm' })} flex items-center gap-1 ${isSmall ? 'text-xs px-2 h-6' : ''}`}
             onClick={(e) => {
               e.stopPropagation();
               handleClick();
             }}
           >
-            View on Amazon
-            <ExternalLink className="h-3 w-3" />
+            {isSmall ? 'View' : 'View on Amazon'}
+            <ExternalLink className={`${isSmall ? 'h-2.5 w-2.5' : 'h-3 w-3'}`} />
           </button>
         </div>
       </div>

@@ -10,6 +10,7 @@ interface GearRecommendationsProps {
   showCategory?: boolean;
   columns?: 2 | 3 | 4;
   className?: string;
+  cardSize?: 'normal' | 'small';
 }
 
 export function GearRecommendations({ 
@@ -18,7 +19,8 @@ export function GearRecommendations({
   description,
   showCategory = false,
   columns = 3,
-  className = ''
+  className = '',
+  cardSize = 'normal'
 }: GearRecommendationsProps) {
   if (products.length === 0) return null;
 
@@ -48,6 +50,7 @@ export function GearRecommendations({
               key={product.asin}
               product={product}
               showCategory={showCategory}
+              cardSize={cardSize}
             />
           ))}
         </div>
