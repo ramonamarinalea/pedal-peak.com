@@ -42,7 +42,7 @@ const HomePage = () => {
                   "border-black bg-white px-8 transition-all hover:bg-black hover:text-white",
               })}
             >
-              Join the Community
+              Join our rides
             </Link>
           </div>
         </div>
@@ -133,7 +133,6 @@ const HomePage = () => {
         </div>
       </section>
 
-
       {/* Bike Box Section with Image */}
       <section id="bikebox" className="py-24">
         <div className="container">
@@ -173,21 +172,33 @@ const HomePage = () => {
                   <p className="text-sm text-gray-600">Affordable prices</p>
                 </div>
               </div>
-              <Link
-                href="/bikebox"
-                className={buttonVariants({
-                  size: "lg",
-                  className:
-                    "bg-black px-8 text-white transition-all hover:bg-gray-800",
-                })}
-              >
-                Book the Box
-              </Link>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link
+                  href="/bikebox"
+                  className={buttonVariants({
+                    size: "lg",
+                    className:
+                      "bg-black px-8 text-white transition-all hover:bg-gray-800",
+                  })}
+                >
+                  Book the Box
+                </Link>
+                <Link
+                  href="mailto:ramona.furter@icloud.com?subject=Bike Box Inquiry"
+                  className={buttonVariants({
+                    size: "lg",
+                    variant: "outline",
+                    className:
+                      "border-black px-8 text-black transition-all hover:bg-black hover:text-white",
+                  })}
+                >
+                  Ask Questions
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Full Width Image Section */}
       <section className="relative h-96">

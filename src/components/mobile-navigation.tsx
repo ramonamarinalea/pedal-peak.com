@@ -19,7 +19,9 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className={`fixed top-0 z-50 w-full border-b border-gray-200 bg-white ${className}`}>
+    <header
+      className={`fixed top-0 z-50 w-full border-b border-gray-200 bg-white ${className}`}
+    >
       <div className="container flex h-20 items-center justify-between">
         <Link
           href="/"
@@ -39,7 +41,7 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
             routes
           </Link>
           <Link
-            href="/events"
+            href="https://cycling-events-platform.vercel.app/events"
             className="text-sm text-gray-900 transition-colors hover:text-black"
           >
             events
@@ -76,7 +78,8 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
           target="_blank"
           className={buttonVariants({
             size: "sm",
-            className: "hidden bg-black text-white transition-all hover:bg-gray-800 md:flex",
+            className:
+              "hidden bg-black text-white transition-all hover:bg-gray-800 md:flex",
           })}
         >
           join strava club
@@ -104,7 +107,14 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
 
         {/* Mobile Menu Overlay */}
         {isOpen && (
-          <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden" onClick={closeMenu} />
+          <div
+            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+            onClick={closeMenu}
+            onKeyDown={(e) => e.key === "Escape" && closeMenu()}
+            role="button"
+            tabIndex={0}
+            aria-label="Close menu"
+          />
         )}
 
         {/* Mobile Menu */}
@@ -123,7 +133,7 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
                 routes
               </Link>
               <Link
-                href="/events"
+                href="https://cycling-events-platform.vercel.app/events"
                 className="text-lg font-semibold text-gray-900 transition-colors hover:text-black"
                 onClick={closeMenu}
               >
@@ -166,7 +176,8 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
                 target="_blank"
                 className={buttonVariants({
                   size: "lg",
-                  className: "w-full bg-black text-white transition-all hover:bg-gray-800",
+                  className:
+                    "w-full bg-black text-white transition-all hover:bg-gray-800",
                 })}
                 onClick={closeMenu}
               >
