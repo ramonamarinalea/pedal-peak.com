@@ -12,21 +12,20 @@ export const cyclingProducts: AmazonProduct[] = [
   {
     asin: "B095KB8CGF",
     title: "EVOC Bike Bag Pro",
-    description:
-      "Premium padded bike travel case for safe airline transport. Perfect for cycling adventures worldwide.",
+    description: "Premium padded bike travel case for safe airline transport.",
     category: "bike-transport",
     imageUrl: "https://m.media-amazon.com/images/I/71XnNZ8DfDL._AC_SL1500_.jpg",
-    estimatedPrice: "$299.99",
-    customLink: "https://www.amazon.de/-/en/Bike-Bag-Pro-Black-Bicycle/dp/B095KB8CGF/ref=sr_1_2?crid=1JXOEU4ZYV2I1&dib=eyJ2IjoiMSJ9.W3NQb69vG__nZ8bZyQjRgWjA6LhfoQWY_K2O-K2IrKV6gEpJU6VlmxlFK4_9SCeIYTOxwAkZ5PgU8ozshsi2qDz_tLE0xoD10lXvBWl7vg6HndEPx-2_JLkj4MugvX2ShD2on9xoClxCPeXISlG11iWFlDO2sU_QGqnFHJGmA9rZ7iAQNS0ffPx3G7TFGp2h7XONY7p73myxkz68Y1r2zdVpDeIHFr_6nHIsELO-aAndCbboouNgnzVYgUo2NWLOewVl95kbBdQHHQMtpa5cK8nXmbJB_teymRLo-F6DXvM.Z_ecsrUzCVvYAxtQizIgbA5SEjBj4TklxW8nWOdibuk&dib_tag=se&keywords=evoc+bike+pro&qid=1755242484&sprefix=evoc+bike+pro%2Caps%2C197&sr=8-2",
+    estimatedPrice: "€419.95",
+    customLink:
+      "https://www.amazon.de/-/en/Bike-Bag-Pro-Black-Bicycle/dp/B095KB8CGF/ref=sr_1_2?crid=1JXOEU4ZYV2I1&dib=eyJ2IjoiMSJ9.W3NQb69vG__nZ8bZyQjRgWjA6LhfoQWY_K2O-K2IrKV6gEpJU6VlmxlFK4_9SCeIYTOxwAkZ5PgU8ozshsi2qDz_tLE0xoD10lXvBWl7vg6HndEPx-2_JLkj4MugvX2ShD2on9xoClxCPeXISlG11iWFlDO2sU_QGqnFHJGmA9rZ7iAQNS0ffPx3G7TFGp2h7XONY7p73myxkz68Y1r2zdVpDeIHFr_6nHIsELO-aAndCbboouNgnzVYgUo2NWLOewVl95kbBdQHHQMtpa5cK8nXmbJB_teymRLo-F6DXvM.Z_ecsrUzCVvYAxtQizIgbA5SEjBj4TklxW8nWOdibuk&dib_tag=se&keywords=evoc+bike+pro&qid=1755242484&sprefix=evoc+bike+pro%2Caps%2C197&sr=8-2",
   },
   {
     asin: "4fzqbsI",
     title: "Scicon AeroComfort Road 3.0",
-    description:
-      "Professional bike travel case with aerodynamic design and superior protection for road bikes.",
+    description: "Professional bike travel case with aerodynamic design.",
     category: "bike-transport",
     imageUrl: "https://m.media-amazon.com/images/I/71fE1mJdMLLS1500_.jpg",
-    estimatedPrice: "$599.99",
+    estimatedPrice: "€549.00",
     customLink: "https://amzn.to/4fzqbsI",
   },
 
