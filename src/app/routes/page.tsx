@@ -22,7 +22,7 @@ const RoutesPage = () => {
       return [];
     }
   }, []);
-  
+
   const [filteredRoutes, setFilteredRoutes] =
     useState<SwissRoute[]>(validatedRoutes);
 
@@ -83,7 +83,9 @@ const RoutesPage = () => {
               ))
             ) : (
               <div className="col-span-full py-20 text-center">
-                <p className="text-gray-600">No routes found matching your criteria.</p>
+                <p className="text-gray-600">
+                  No routes found matching your criteria.
+                </p>
               </div>
             )}
           </div>
@@ -92,11 +94,11 @@ const RoutesPage = () => {
 
       {/* CTA Section */}
       <section className="container py-24">
-        <div className="rounded-lg bg-black p-12 text-center text-white">
+        <div className="rounded-lg border-2 border-white bg-black p-12 text-center text-white shadow-2xl">
           <h2 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
             Want to suggest a route?
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80">
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/90">
             Join our Strava club to share your favorite routes and discover new
             adventures with the community.
           </p>
@@ -105,7 +107,8 @@ const RoutesPage = () => {
             target="_blank"
             className={buttonVariants({
               size: "lg",
-              className: "bg-white text-black hover:bg-gray-100",
+              className:
+                "transform border-2 border-white bg-black font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-white hover:text-black",
             })}
           >
             Join Strava Club
