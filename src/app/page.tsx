@@ -88,7 +88,7 @@ const HomePage = () => {
                     "w-fit bg-black text-white transition-all hover:bg-gray-800",
                 })}
               >
-                Book Your Spot - €220
+                Book Your Spot - CHF 250
               </div>
             </Link>
           </div>

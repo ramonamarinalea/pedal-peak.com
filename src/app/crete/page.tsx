@@ -147,7 +147,7 @@ export default function CreteTrainingCamp() {
               variant="secondary"
               onClick={() => setBookingOpen(true)}
             >
-              Book Your Spot - €220
+              Book Your Spot - CHF 250
             </Button>
             <Button
               size="lg"
@@ -167,11 +167,11 @@ export default function CreteTrainingCamp() {
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
             <div className="card p-8 text-center transition-all duration-300 hover:shadow-lg">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-black text-white">
-                <span className="text-2xl font-bold">€</span>
+                <span className="text-2xl font-bold">CHF</span>
               </div>
-              <h3 className="mb-2 text-4xl font-bold text-black">220</h3>
+              <h3 className="mb-2 text-4xl font-bold text-black">250</h3>
               <p className="text-sm font-medium uppercase tracking-wide text-gray-600">
-                Guiding Fee
+                Guiding & Organization Fee
               </p>
               <p className="mt-2 text-sm text-gray-500">
                 Professional guiding and support included
