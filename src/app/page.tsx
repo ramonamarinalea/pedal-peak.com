@@ -11,7 +11,7 @@ const HomePage = () => {
       <MobileNavigation />
 
       {/* Hero Section with Image */}
-      <section className="relative mt-20 flex min-h-screen items-center justify-center px-4">
+      <section className="relative mt-20 flex h-[70vh] items-center justify-center px-4">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/IMG_8151.jpeg"
