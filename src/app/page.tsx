@@ -17,7 +17,8 @@ const HomePage = () => {
             src="/images/IMG_8151.jpeg"
             alt="Cyclists on mountain road"
             fill
-            className="object-cover grayscale"
+            className="object-cover object-center grayscale"
+            style={{ objectPosition: '50% 40%' }}
             priority
             sizes="100vw"
             quality={75}
