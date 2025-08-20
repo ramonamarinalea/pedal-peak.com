@@ -179,7 +179,7 @@ const HomePage = () => {
                   className={buttonVariants({
                     size: "lg",
                     className:
-                      "bg-black px-8 text-white transition-all hover:bg-gray-800",
+                      "w-full bg-black px-8 text-white transition-all hover:bg-gray-800 sm:w-auto",
                   })}
                 >
                   Book Now
@@ -190,7 +190,7 @@ const HomePage = () => {
                     size: "lg",
                     variant: "outline",
                     className:
-                      "border-black px-8 text-black transition-all hover:bg-black hover:text-white",
+                      "w-full border-black px-8 text-black transition-all hover:bg-black hover:text-white sm:w-auto",
                   })}
                 >
                   Ask Questions
