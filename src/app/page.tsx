@@ -176,11 +176,7 @@ const HomePage = () => {
               <div className="flex justify-center sm:justify-start">
                 <Link
                   href="/bikebox"
-                  className={buttonVariants({
-                    size: "lg",
-                    className:
-                      "w-full bg-black px-8 text-white transition-all hover:bg-gray-800 sm:w-auto",
-                  })}
+                  className="inline-flex items-center justify-center rounded-md bg-black px-8 py-3 text-lg font-medium text-white transition-all hover:bg-gray-800 w-full sm:w-auto"
                 >
                   Book Now
                 </Link>
