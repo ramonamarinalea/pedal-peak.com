@@ -27,6 +27,11 @@ export default function Footer() {
       { name: "Press Kit", href: "#press" },
       { name: "Blog", href: "#blog" },
     ],
+    blog: [
+      { name: "EVOC Hydro Pro Review", href: "/blog/evoc-hydro-pro-review" },
+      { name: "Best Gravel Bikes 2024", href: "/blog/best-gravel-bikes-2024" },
+      { name: "Swiss Alpine Passes Guide", href: "/blog/swiss-alpine-passes-cycling-guide" },
+    ],
     legal: [
       { name: "Privacy Policy", href: "#privacy" },
       { name: "Terms of Service", href: "#terms" },
@@ -196,6 +201,24 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Blog Section */}
+        <div className="mt-8 border-t border-gray-800 pt-8">
+          <h4 className="body-regular font-semibold text-white mb-4">Featured Articles</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {footerLinks.blog.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="block p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                <p className="body-small text-gray-300 hover:text-white transition-colors">
+                  {link.name}
+                </p>
+              </a>
+            ))}
           </div>
         </div>
       </div>

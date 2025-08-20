@@ -173,7 +173,7 @@ const HomePage = () => {
                   <p className="text-sm text-gray-600">Affordable prices</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="flex justify-center sm:justify-start">
                 <Link
                   href="/bikebox"
                   className={buttonVariants({
@@ -183,17 +183,6 @@ const HomePage = () => {
                   })}
                 >
                   Book Now
-                </Link>
-                <Link
-                  href="mailto:ramona.furter@icloud.com?subject=Bike Box Inquiry"
-                  className={buttonVariants({
-                    size: "lg",
-                    variant: "outline",
-                    className:
-                      "w-full border-black px-8 text-black transition-all hover:bg-black hover:text-white sm:w-auto",
-                  })}
-                >
-                  Ask Questions
                 </Link>
               </div>
             </div>
