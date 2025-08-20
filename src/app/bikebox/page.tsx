@@ -1,6 +1,27 @@
 import { ArrowRight, Check, Shield, Truck, Zap } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Bike Box Rental - Professional Bike Transport Case",
+  description:
+    "Rent our professional Bike Box Alan for safe bike travel. Perfect for flying with your bike to cycling destinations. Includes all necessary accessories and protection.",
+  keywords: [
+    "bike box rental",
+    "bike transport case",
+    "cycling travel",
+    "bike box alan",
+    "bike shipping",
+    "cycling equipment rental",
+  ],
+  openGraph: {
+    title: "Bike Box Rental - Professional Bike Transport | Pedal Peak",
+    description:
+      "Rent our professional Bike Box Alan for safe bike travel to cycling destinations worldwide.",
+    images: ["/images/bikeboxreal.jpeg"],
+  },
+};
 
 import { BikeBoxBooking } from "@/components/bike-box-booking";
 import { BikeBoxContact } from "@/components/bike-box-contact";

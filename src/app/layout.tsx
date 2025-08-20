@@ -4,6 +4,11 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
 
+import {
+  organizationSchema,
+  StructuredData,
+  websiteSchema,
+} from "@/components/structured-data";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -55,6 +60,10 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <StructuredData data={organizationSchema} />
+        <StructuredData data={websiteSchema} />
+      </head>
       <body
         className={cn("min-h-screen", satoshi.variable)}
         style={{ fontFamily: "var(--font-satoshi), system-ui, sans-serif" }}
