@@ -53,12 +53,6 @@ jobs:
           echo "Warning: Routes page not found"
         fi
         
-        # Copy assets to piedmont directory
-        cp -r out/_next out/piedmont/
-        cp -r public/images out/piedmont/
-        cp -r public/fonts out/piedmont/
-        echo "piedmont.pedal-peak.com" > out/piedmont/CNAME
-        
         # Copy assets to crete directory  
         cp -r out/_next out/crete/
         cp -r public/images out/crete/
@@ -72,10 +66,6 @@ jobs:
         echo "routes.pedal-peak.com" > out/routes/CNAME
         
         # Fix asset paths in HTML files
-        sed -i 's|/_next/|_next/|g' out/piedmont/index.html
-        sed -i 's|/images/|images/|g' out/piedmont/index.html
-        sed -i 's|/fonts/|fonts/|g' out/piedmont/index.html
-        
         sed -i 's|/_next/|_next/|g' out/crete/index.html
         sed -i 's|/images/|images/|g' out/crete/index.html
         sed -i 's|/fonts/|fonts/|g' out/crete/index.html

@@ -296,12 +296,6 @@ const HomePage = () => {
                 Events
               </Link>
               <Link
-                href="/piedmont"
-                className="text-gray-600 transition-colors hover:text-black"
-              >
-                Piedmont
-              </Link>
-              <Link
                 href="/crete"
                 className="text-gray-600 transition-colors hover:text-black"
               >
