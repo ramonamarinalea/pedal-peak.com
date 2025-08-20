@@ -41,6 +41,12 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
             routes
           </Link>
           <Link
+            href="/blog"
+            className="text-sm text-gray-900 transition-colors hover:text-black"
+          >
+            blog
+          </Link>
+          <Link
             href="https://cycling-events-platform.vercel.app/events"
             className="text-sm text-gray-900 transition-colors hover:text-black"
           >
@@ -131,6 +137,13 @@ export const MobileNavigation = ({ className }: MobileNavigationProps) => {
                 onClick={closeMenu}
               >
                 routes
+              </Link>
+              <Link
+                href="/blog"
+                className="text-lg font-semibold text-gray-900 transition-colors hover:text-black"
+                onClick={closeMenu}
+              >
+                blog
               </Link>
               <Link
                 href="https://cycling-events-platform.vercel.app/events"
