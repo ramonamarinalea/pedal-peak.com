@@ -48,7 +48,7 @@ export default function EvocHydroProReview() {
         </header>
 
         {/* Quick Verdict */}
-        <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-12">
+        <div className="bg-gray-50 dark:bg-gray-800 border-l-4 border-gray-500 p-6 mb-12">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Quick Verdict</h2>
           <p className="text-gray-700 dark:text-gray-300">
             After 6 months of abuse on gravel races and technical MTB trails, the EVOC Hydro Pro 6L has proven itself as an exceptional hydration pack. 
@@ -145,6 +145,7 @@ export default function EvocHydroProReview() {
               alt="Gravel racing action shot with hydration pack"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              style={{ objectPosition: '50% 25%' }}
               sizes="(max-width: 768px) 100vw, 800px"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
@@ -250,7 +251,7 @@ export default function EvocHydroProReview() {
           </p>
 
           {/* Call to Action */}
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-8 mt-12 text-white">
+          <div className="bg-gray-900 rounded-lg p-8 mt-12 text-white">
             <h3 className="text-2xl font-bold mb-4">Ready to Upgrade Your Hydration Game?</h3>
             <p className="mb-6">
               The EVOC Hydro Pro 6L is available through various retailers. I recommend checking current prices and availability on Amazon for the best deals.
@@ -259,7 +260,7 @@ export default function EvocHydroProReview() {
               href="https://amzn.to/3Va3Mc4"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               View on Amazon →
             </Link>
@@ -273,7 +274,7 @@ export default function EvocHydroProReview() {
                 <span className="font-semibold">Comfort</span>
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
+                    <span key={i} className="text-gray-900 dark:text-white">★</span>
                   ))}
                 </div>
               </div>
@@ -281,7 +282,7 @@ export default function EvocHydroProReview() {
                 <span className="font-semibold">Stability</span>
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
+                    <span key={i} className="text-gray-900 dark:text-white">★</span>
                   ))}
                 </div>
               </div>
@@ -289,7 +290,7 @@ export default function EvocHydroProReview() {
                 <span className="font-semibold">Storage</span>
                 <div className="flex gap-1">
                   {[...Array(4)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
+                    <span key={i} className="text-gray-900 dark:text-white">★</span>
                   ))}
                   <span className="text-gray-300">★</span>
                 </div>
@@ -298,7 +299,7 @@ export default function EvocHydroProReview() {
                 <span className="font-semibold">Durability</span>
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
+                    <span key={i} className="text-gray-900 dark:text-white">★</span>
                   ))}
                 </div>
               </div>
@@ -306,14 +307,14 @@ export default function EvocHydroProReview() {
                 <span className="font-semibold">Value</span>
                 <div className="flex gap-1">
                   {[...Array(4)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
+                    <span key={i} className="text-gray-900 dark:text-white">★</span>
                   ))}
                   <span className="text-gray-300">★</span>
                 </div>
               </div>
               <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                 <span className="text-xl font-bold">Overall</span>
-                <span className="text-2xl font-bold text-green-600">4.6/5</span>
+                <span className="text-2xl font-bold text-gray-900 dark:text-white">4.6/5</span>
               </div>
             </div>
           </div>

@@ -227,7 +227,7 @@ export default function SwissAlpinePassesGuide() {
             It's not about being fast. It's about being there.
           </p>
 
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-8 mt-12 text-white">
+          <div className="bg-gray-900 rounded-lg p-8 mt-12 text-white">
             <h3 className="text-2xl font-bold mb-4">Ready to Ride the Alps?</h3>
             <p className="mb-6">
               Explore our collection of Swiss Alpine routes, complete with GPS files, 
@@ -235,7 +235,7 @@ export default function SwissAlpinePassesGuide() {
             </p>
             <Link 
               href="/routes"
-              className="inline-flex items-center px-6 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               View Alpine Routes →
             </Link>
