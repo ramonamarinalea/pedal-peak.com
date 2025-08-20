@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -25,6 +26,23 @@ export default function BestGravelBikes2024() {
             <time dateTime="2024-08-20">August 20, 2024</time>
             <span>•</span>
             <span>15 min read</span>
+          </div>
+          <div className="aspect-video relative rounded-lg overflow-hidden">
+            <Image
+              src="/images/gravel.jpeg"
+              alt="Gravel bike on scenic mountain road"
+              fill
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute bottom-6 left-6 text-white">
+              <div className="mb-2 inline-block bg-white px-3 py-1 text-xs font-medium uppercase tracking-wider text-black">
+                BUYER'S GUIDE 2024
+              </div>
+              <h2 className="text-2xl font-bold">Best Gravel Bikes</h2>
+            </div>
           </div>
         </header>
 
@@ -55,6 +73,20 @@ export default function BestGravelBikes2024() {
           </p>
 
           <h2 className="text-3xl font-bold mt-12 mb-6">Top Picks by Category</h2>
+
+          <div className="relative h-64 md:h-80 rounded-lg overflow-hidden mb-8">
+            <Image
+              src="/images/bikepacking.jpeg"
+              alt="Various gravel bikes on different terrains"
+              fill
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              sizes="(max-width: 768px) 100vw, 800px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white max-w-md">
+              <p className="text-lg font-medium">From race-ready speed machines to adventure-capable explorers - find your perfect gravel companion</p>
+            </div>
+          </div>
 
           <h3 className="text-2xl font-semibold mt-8 mb-4">Best Overall: Canyon Grizl CF SL 8</h3>
           <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-6">

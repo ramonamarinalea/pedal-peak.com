@@ -28,9 +28,21 @@ export default function EvocHydroProReview() {
             <span>•</span>
             <span>12 min read</span>
           </div>
-          <div className="aspect-video relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-gray-500 dark:text-gray-400">EVOC Hydro Pro 6L on trail</span>
+          <div className="aspect-video relative rounded-lg overflow-hidden">
+            <Image
+              src="/images/gravel.jpeg"
+              alt="Cyclist with EVOC Hydro Pro backpack on gravel trail"
+              fill
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute bottom-6 left-6 text-white">
+              <div className="mb-2 inline-block bg-white px-3 py-1 text-xs font-medium uppercase tracking-wider text-black">
+                GEAR REVIEW
+              </div>
+              <h2 className="text-2xl font-bold">EVOC Hydro Pro 6L</h2>
             </div>
           </div>
         </header>
@@ -126,6 +138,20 @@ export default function EvocHydroProReview() {
             Getting the fit dialed takes time. The adjustment system offers tons of customization, but it's not immediately intuitive. 
             Plan to spend 30 minutes on your first ride getting everything perfect.
           </p>
+
+          <div className="relative h-64 md:h-80 rounded-lg overflow-hidden my-12">
+            <Image
+              src="/images/IMG_8151.jpeg"
+              alt="Mountain biking with hydration pack"
+              fill
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              sizes="(max-width: 768px) 100vw, 800px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white max-w-md">
+              <p className="text-lg font-medium">6 months of testing across gravel races, technical MTB trails, and Alpine adventures</p>
+            </div>
+          </div>
 
           <h2 className="text-3xl font-bold mt-12 mb-6">Performance in Different Conditions</h2>
 
