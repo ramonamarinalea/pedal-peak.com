@@ -182,7 +182,7 @@ export default function BestGravelBikes2024() {
             Focus on fit, intended use, and long-term upgrade potential. The adventure starts when you stop shopping and start riding.
           </p>
 
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-8 mt-12 text-white">
+          <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg p-8 mt-12 text-white">
             <h3 className="text-2xl font-bold mb-4">Ready to Join the Gravel Revolution?</h3>
             <p className="mb-6">
               Check out our curated routes perfect for testing your new gravel bike, 
@@ -190,7 +190,7 @@ export default function BestGravelBikes2024() {
             </p>
             <Link 
               href="/routes"
-              className="inline-flex items-center px-6 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               Explore Gravel Routes →
             </Link>

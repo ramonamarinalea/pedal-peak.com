@@ -30,8 +30,8 @@ export default function EvocHydroProReview() {
           </div>
           <div className="aspect-video relative rounded-lg overflow-hidden">
             <Image
-              src="/images/gravel.jpeg"
-              alt="Cyclist with EVOC Hydro Pro backpack on gravel trail"
+              src="/images/gear/EVOC_HydroPro6_1.5LBladderHydrationBag_BladderIncluded_DustyPink_1080x.jpg"
+              alt="EVOC Hydro Pro 6L hydration pack in dusty pink color"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
               priority
@@ -48,7 +48,7 @@ export default function EvocHydroProReview() {
         </header>
 
         {/* Quick Verdict */}
-        <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-12">
+        <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-12">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Quick Verdict</h2>
           <p className="text-gray-700 dark:text-gray-300">
             After 6 months of abuse on gravel races and technical MTB trails, the EVOC Hydro Pro 6L has proven itself as an exceptional hydration pack. 
@@ -59,7 +59,7 @@ export default function EvocHydroProReview() {
               href="https://amzn.to/3Va3Mc4"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors"
+              className="inline-flex items-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-lg transition-colors"
             >
               Check Price on Amazon →
             </Link>
@@ -141,8 +141,8 @@ export default function EvocHydroProReview() {
 
           <div className="relative h-64 md:h-80 rounded-lg overflow-hidden my-12">
             <Image
-              src="/images/IMG_8151.jpeg"
-              alt="Mountain biking with hydration pack"
+              src="/images/gear/thetraka_2025_chemavelascophoto-504 Large.jpeg"
+              alt="Gravel racing action shot with hydration pack"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
               sizes="(max-width: 768px) 100vw, 800px"
@@ -250,7 +250,7 @@ export default function EvocHydroProReview() {
           </p>
 
           {/* Call to Action */}
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-8 mt-12 text-white">
+          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-8 mt-12 text-white">
             <h3 className="text-2xl font-bold mb-4">Ready to Upgrade Your Hydration Game?</h3>
             <p className="mb-6">
               The EVOC Hydro Pro 6L is available through various retailers. I recommend checking current prices and availability on Amazon for the best deals.
@@ -259,7 +259,7 @@ export default function EvocHydroProReview() {
               href="https://amzn.to/3Va3Mc4"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               View on Amazon →
             </Link>
@@ -313,7 +313,7 @@ export default function EvocHydroProReview() {
               </div>
               <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                 <span className="text-xl font-bold">Overall</span>
-                <span className="text-2xl font-bold text-blue-600">4.6/5</span>
+                <span className="text-2xl font-bold text-green-600">4.6/5</span>
               </div>
             </div>
           </div>

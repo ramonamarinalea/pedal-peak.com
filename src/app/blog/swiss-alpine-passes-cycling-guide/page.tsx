@@ -46,7 +46,7 @@ export default function SwissAlpinePassesGuide() {
           </div>
         </header>
 
-        <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-12">
+        <div className="bg-gray-50 dark:bg-gray-800 border-l-4 border-gray-500 p-6 mb-12">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Essential Info</h2>
           <p className="text-gray-700 dark:text-gray-300">
             The Swiss Alps offer some of the world's most iconic cycling climbs. This guide covers everything 
