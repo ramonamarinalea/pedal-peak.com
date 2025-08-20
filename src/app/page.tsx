@@ -18,7 +18,7 @@ const HomePage = () => {
             alt="Cyclists on mountain road"
             fill
             className="object-cover object-center grayscale"
-            style={{ objectPosition: '50% 40%' }}
+            style={{ objectPosition: "50% 40%" }}
             priority
             sizes="100vw"
             quality={75}
@@ -182,7 +182,7 @@ const HomePage = () => {
                       "bg-black px-8 text-white transition-all hover:bg-gray-800",
                   })}
                 >
-                  Book the Box
+                  Book Now
                 </Link>
                 <Link
                   href="mailto:ramona.furter@icloud.com?subject=Bike Box Inquiry"
