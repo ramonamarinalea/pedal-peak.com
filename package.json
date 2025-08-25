@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "validate": "node scripts/validate-build.js",
-    "build": "npm run validate && next build",
+    "build": "npm run validate && next build && node scripts/post-build.js",
     "start": "next start",
     "lint": "next lint -c config/eslint.config.mjs",
     "preview": "next build && next start",
