@@ -4,7 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface BikeBoxBookingProps {
-  type: "daily" | "weekly";
+  type: "daily" | "weekly" | "2weeks" | "3weeks" | "4weeks";
   variant?: "outline" | "default";
 }
 
@@ -13,14 +13,19 @@ export function BikeBoxBooking({
   variant = "default",
 }: BikeBoxBookingProps) {
   const handleBooking = () => {
-    const subject =
-      type === "daily"
-        ? "Bike Box Daily Rental Request"
-        : "Bike Box Weekly Rental Request";
+    const rentalTypeText = {
+      daily: "Daily",
+      weekly: "Weekly (1 Week)",
+      "2weeks": "2 Weeks",
+      "3weeks": "3 Weeks",
+      "4weeks": "4 Weeks",
+    };
+
+    const subject = `Bike Box ${rentalTypeText[type]} Rental Request`;
 
     const body = `Hello,
 
-I would like to rent the Bike Box Alan for the following dates:
+I would like to rent the Bike Box Alan for ${rentalTypeText[type].toLowerCase()}.
 
 Pickup Date: [Please specify]
 Dropoff Date: [Please specify]
@@ -29,6 +34,23 @@ Thank you!`;
 
     const mailtoLink = `mailto:ramona.furter@icloud.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
+  };
+
+  const getButtonText = () => {
+    switch (type) {
+      case "daily":
+        return "Book Daily Rental";
+      case "weekly":
+        return "Book Weekly Rental";
+      case "2weeks":
+        return "Book 2 Weeks";
+      case "3weeks":
+        return "Book 3 Weeks";
+      case "4weeks":
+        return "Book 4 Weeks";
+      default:
+        return "Book Rental";
+    }
   };
 
   return (
@@ -44,7 +66,7 @@ Thank you!`;
           : "bg-black text-white hover:bg-gray-800",
       )}
     >
-      Book {type === "daily" ? "Daily" : "Weekly"} Rental
+      {getButtonText()}
     </button>
   );
 }

@@ -172,56 +172,134 @@ const BikeBoxPage = () => {
         <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:mb-16 sm:text-4xl md:text-5xl">
           Rental Pricing
         </h2>
-        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
-          <div className="rounded-lg border border-gray-200 p-8">
-            <h3 className="mb-4 text-2xl font-bold">Daily Rental</h3>
-            <div className="mb-6 text-4xl font-bold">
-              CHF 15
-              <span className="text-lg font-normal text-gray-600">/day</span>
+        <div className="mx-auto max-w-5xl">
+          {/* Daily and Weekly Pricing */}
+          <div className="mb-8 grid gap-8 md:grid-cols-2">
+            <div className="rounded-lg border border-gray-200 p-8">
+              <h3 className="mb-4 text-2xl font-bold">Daily Rental</h3>
+              <div className="mb-6 text-4xl font-bold">
+                CHF 15
+                <span className="text-lg font-normal text-gray-600">
+                  {" "}
+                  pro Tag
+                </span>
+              </div>
+              <ul className="mb-8 space-y-3">
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-black" />
+                  <span>Perfect for short trips</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-black" />
+                  <span>Flexible duration</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-black" />
+                  <span>CHF 200 deposit</span>
+                </li>
+              </ul>
+              <BikeBoxBooking type="daily" variant="outline" />
             </div>
-            <ul className="mb-8 space-y-3">
-              <li className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-black" />
-                <span>Perfect for short trips</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-black" />
-                <span>Flexible duration</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-black" />
-                <span>CHF 200 deposit</span>
-              </li>
-            </ul>
-            <BikeBoxBooking type="daily" variant="outline" />
+
+            <div className="relative rounded-lg border-2 border-black p-8">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="rounded bg-black px-3 py-1 text-sm font-semibold text-white">
+                  POPULAR
+                </span>
+              </div>
+              <h3 className="mb-4 text-2xl font-bold">Weekly Rental</h3>
+              <div className="mb-6 text-4xl font-bold">
+                CHF 80
+                <span className="text-lg font-normal text-gray-600">
+                  {" "}
+                  pro Woche
+                </span>
+              </div>
+              <ul className="mb-8 space-y-3">
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-black" />
+                  <span>Best value for week-long trips</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-black" />
+                  <span>Ideal for cycling holidays</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-black" />
+                  <span>CHF 200 deposit</span>
+                </li>
+              </ul>
+              <BikeBoxBooking type="weekly" />
+            </div>
           </div>
 
-          <div className="relative rounded-lg border-2 border-black p-8">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="rounded bg-black px-3 py-1 text-sm font-semibold text-white">
-                POPULAR
-              </span>
+          {/* Extended Rental Options */}
+          <div className="grid gap-8 sm:grid-cols-3">
+            <div className="rounded-lg border border-gray-200 p-6">
+              <h3 className="mb-3 text-xl font-bold">2 Weeks</h3>
+              <div className="mb-4 text-3xl font-bold">
+                CHF 140
+                <span className="text-sm font-normal text-gray-600">
+                  {" "}
+                  für 2 Wochen
+                </span>
+              </div>
+              <ul className="mb-6 space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="h-4 w-4 text-black" />
+                  <span>Extended adventures</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="h-4 w-4 text-black" />
+                  <span>CHF 200 deposit</span>
+                </li>
+              </ul>
+              <BikeBoxBooking type="2weeks" variant="outline" />
             </div>
-            <h3 className="mb-4 text-2xl font-bold">Weekly Rental</h3>
-            <div className="mb-6 text-4xl font-bold">
-              CHF 140
-              <span className="text-lg font-normal text-gray-600">/week</span>
+
+            <div className="rounded-lg border border-gray-200 p-6">
+              <h3 className="mb-3 text-xl font-bold">3 Weeks</h3>
+              <div className="mb-4 text-3xl font-bold">
+                CHF 190
+                <span className="text-sm font-normal text-gray-600">
+                  {" "}
+                  für 3 Wochen
+                </span>
+              </div>
+              <ul className="mb-6 space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="h-4 w-4 text-black" />
+                  <span>Long-term trips</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="h-4 w-4 text-black" />
+                  <span>CHF 200 deposit</span>
+                </li>
+              </ul>
+              <BikeBoxBooking type="3weeks" variant="outline" />
             </div>
-            <ul className="mb-8 space-y-3">
-              <li className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-black" />
-                <span>Best value for longer trips</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-black" />
-                <span>Special rates for extended rentals</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-black" />
-                <span>CHF 200 deposit</span>
-              </li>
-            </ul>
-            <BikeBoxBooking type="weekly" />
+
+            <div className="rounded-lg border border-gray-200 p-6">
+              <h3 className="mb-3 text-xl font-bold">4 Weeks</h3>
+              <div className="mb-4 text-3xl font-bold">
+                CHF 240
+                <span className="text-sm font-normal text-gray-600">
+                  {" "}
+                  für 4 Wochen
+                </span>
+              </div>
+              <ul className="mb-6 space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="h-4 w-4 text-black" />
+                  <span>Month-long journeys</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="h-4 w-4 text-black" />
+                  <span>CHF 200 deposit</span>
+                </li>
+              </ul>
+              <BikeBoxBooking type="4weeks" variant="outline" />
+            </div>
           </div>
         </div>
       </section>
