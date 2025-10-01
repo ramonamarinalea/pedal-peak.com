@@ -74,7 +74,7 @@ export default function EssentialCyclingTools() {
           </div>
           <div className="aspect-video relative rounded-lg overflow-hidden">
             <Image
-              src="/images/IMG_8158.jpeg"
+              src="/images/IMG_8151.jpeg"
               alt="Cyclist performing roadside repair with multi-tool"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
@@ -146,7 +146,7 @@ export default function EssentialCyclingTools() {
 
           <div className="relative h-64 md:h-80 rounded-lg overflow-hidden my-8">
             <Image
-              src="/images/IMG_8134.jpeg"
+              src="/images/IMG_0123.jpeg"
               alt="Organized cycling tool kit laid out"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
@@ -248,7 +248,7 @@ export default function EssentialCyclingTools() {
 
           <div className="relative h-64 md:h-80 rounded-lg overflow-hidden my-8">
             <Image
-              src="/images/IMG_8151.jpeg"
+              src="/images/IMG_8025.jpeg"
               alt="Cyclist fixing bike on mountain pass"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
