@@ -19,44 +19,50 @@ export default function EssentialCyclingTools() {
     {
       name: "Park Tool IB-3 I-Beam Multi-Tool",
       url: "https://amzn.to/4fUICIr",
-      description: "Professional-grade multi-tool with 14 functions",
-      features: ["Hex wrenches 2-8mm", "Chain tool", "Spoke wrenches", "Torx T25"],
-      price: "$34.95"
+      image: "https://m.media-amazon.com/images/I/71dL5Z8rSEL._AC_SL1500_.jpg",
+      description: "The one that actually works when you need it",
+      features: ["Hex wrenches 2-8mm", "Chain tool that won't bend", "Spoke wrenches", "Torx T25"],
+      price: "CHF 32"
     },
     {
       name: "Topeak Mini 20 Pro Multi-Tool",
       url: "https://amzn.to/4fUnRfX",
-      description: "Compact 20-function tool perfect for jersey pockets",
-      features: ["20 essential functions", "CO2 inflator compatible", "Lightweight design", "Chain breaker included"],
-      price: "$39.95"
+      image: "https://m.media-amazon.com/images/I/71rj3PsRIVL._AC_SL1500_.jpg",
+      description: "20 tools, fits in your pocket, doesn't suck",
+      features: ["20 functions that work", "CO2 compatible", "Actually lightweight", "Chain breaker included"],
+      price: "CHF 37"
     },
     {
       name: "Lezyne RAP II 25 CO2 Multi-Tool",
       url: "https://amzn.to/4mzEtwn",
-      description: "All-in-one tool with integrated CO2 inflator",
-      features: ["25 functions total", "Built-in CO2 dispenser", "Tubeless plug tools", "Premium CNC construction"],
-      price: "$89.99"
+      image: "https://m.media-amazon.com/images/I/81kj6M3aYSL._AC_SL1500_.jpg",
+      description: "The fancy one with CO2 built right in",
+      features: ["25 tools", "CO2 inflator built in", "Tubeless plug tools", "Won't break"],
+      price: "CHF 82"
     },
     {
       name: "Genuine Innovations CO2 Inflator Kit",
       url: "https://amzn.to/41KR4V9",
-      description: "Quick and reliable CO2 inflation system",
-      features: ["Trigger control valve", "3x 16g cartridges included", "Works with Presta/Schrader", "Compact storage case"],
-      price: "$24.99"
+      image: "https://m.media-amazon.com/images/I/71pKRvqZL+L._AC_SL1500_.jpg",
+      description: "Instant inflation. No pumping. Done.",
+      features: ["Control valve so you don't waste CO2", "Comes with 3 cartridges", "Works on any valve", "Tiny case"],
+      price: "CHF 23"
     },
     {
       name: "Park Tool VP-1 Vulcanizing Patch Kit",
       url: "https://amzn.to/4oSBAZ1",
-      description: "Professional tube repair patches that last",
-      features: ["6 patches included", "Vulcanizing glue", "Sandpaper for prep", "Compact case"],
-      price: "$5.95"
+      image: "https://m.media-amazon.com/images/I/71bKL4LpuBL._AC_SL1500_.jpg",
+      description: "Old school patches that actually stick",
+      features: ["6 patches", "Real glue, not stickers", "Sandpaper included", "Tiny box"],
+      price: "CHF 6"
     },
     {
       name: "Pedro's Tire Levers (2-Pack)",
       url: "https://amzn.to/4fUaigw",
-      description: "Strong, reliable tire levers that won't snap",
-      features: ["Reinforced plastic", "Ergonomic design", "Won't damage rims", "Lifetime warranty"],
-      price: "$6.00"
+      image: "https://m.media-amazon.com/images/I/81G5t9G9kVL._AC_SL1500_.jpg",
+      description: "The yellow ones that don't break",
+      features: ["Won't snap like cheap ones", "Easy to grip", "Won't scratch your rims", "Lifetime warranty"],
+      price: "CHF 6"
     }
   ];
 
@@ -162,33 +168,47 @@ export default function EssentialCyclingTools() {
           </p>
 
           {products.map((product, index) => (
-            <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {index + 1}. {product.name}
-                </h3>
-                <span className="text-lg font-bold text-green-600 dark:text-green-400">{product.price}</span>
+            <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden mb-6">
+              <div className="md:flex">
+                <div className="md:w-1/3 p-4">
+                  <div className="aspect-square relative bg-white rounded-lg overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="absolute inset-0 w-full h-full object-contain p-4"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <div className="md:w-2/3 p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      {index + 1}. {product.name}
+                    </h3>
+                    <span className="text-lg font-bold text-green-600 dark:text-green-400">{product.price}</span>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{product.description}</p>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Why it's good:</h4>
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                      {product.features.map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <a
+                    href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors"
+                  >
+                    Check it out on Amazon
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">{product.description}</p>
-              <div className="mb-4">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Key Features:</h4>
-                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-                  {product.features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-              <a
-                href={product.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors"
-              >
-                View on Amazon
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
             </div>
           ))}
 
@@ -199,13 +219,13 @@ export default function EssentialCyclingTools() {
             If you're on a budget, start with these absolute essentials:
           </p>
           <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 my-4">
-            <li>Multi-tool with chain breaker ($30ish)</li>
-            <li>Tire levers (like 5 bucks)</li>
-            <li>Patches or spare tube ($10)</li>
-            <li>CO2 inflator and cartridges ($25)</li>
+            <li>Multi-tool with chain breaker (CHF 30ish)</li>
+            <li>Tire levers (CHF 5)</li>
+            <li>Patches or spare tube (CHF 10)</li>
+            <li>CO2 inflator and cartridges (CHF 25)</li>
           </ul>
           <p className="text-gray-700 dark:text-gray-300">
-            Total cost: About 80 bucks. That's two café stops with cake.
+            Total cost: About CHF 70. That's two café stops with cake in Switzerland.
           </p>
 
           <h3 className="text-2xl font-semibold mt-8 mb-4">Upgrade as You Go</h3>
@@ -269,7 +289,7 @@ export default function EssentialCyclingTools() {
 
           <h2 className="text-3xl font-bold mt-12 mb-6">Just Buy The Tools Already</h2>
           <p className="text-gray-700 dark:text-gray-300">
-            Look, mechanicals happen. To everyone. But with 80 bucks of tools and 30 minutes of practice, you're
+            Look, mechanicals happen. To everyone. But with CHF 70 of tools and 30 minutes of practice, you're
             basically unstoppable. You'll ride further because you're not worried about getting stranded. You'll take
             that sketchy gravel shortcut. You'll be the hero helping other riders.
           </p>
