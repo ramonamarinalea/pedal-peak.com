@@ -35,6 +35,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "ridegravel.ch",
       },
+      {
+        protocol: "https",
+        hostname: "m.media-amazon.com", // Amazon product images
+      },
     ],
   },
 };

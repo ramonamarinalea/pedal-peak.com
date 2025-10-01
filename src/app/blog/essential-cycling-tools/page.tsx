@@ -147,19 +147,6 @@ export default function EssentialCyclingTools() {
             chain. Seriously. Do it now, not when you're stuck in the middle of nowhere.
           </p>
 
-          <div className="relative h-64 md:h-80 rounded-lg overflow-hidden my-8">
-            <Image
-              src="/images/IMG_0123.jpeg"
-              alt="Organized cycling tool kit laid out"
-              fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
-              sizes="(max-width: 768px) 100vw, 800px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white max-w-md">
-              <p className="text-lg font-medium">Everything you need fits in a bag smaller than your sandwich</p>
-            </div>
-          </div>
 
           <h2 className="text-3xl font-bold mt-12 mb-6">What I Carry (And Why)</h2>
           <p className="text-gray-700 dark:text-gray-300 mb-8">
@@ -172,11 +159,12 @@ export default function EssentialCyclingTools() {
               <div className="md:flex">
                 <div className="md:w-1/3 p-4">
                   <div className="aspect-square relative bg-white rounded-lg overflow-hidden">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
-                      className="absolute inset-0 w-full h-full object-contain p-4"
-                      loading="lazy"
+                      fill
+                      className="object-contain p-4"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
                 </div>
@@ -260,19 +248,6 @@ export default function EssentialCyclingTools() {
             finish. You know what really weighs you down? Walking 20km in cleats because you wanted to save 250 grams.
           </p>
 
-          <div className="relative h-64 md:h-80 rounded-lg overflow-hidden my-8">
-            <Image
-              src="/images/IMG_8025.jpeg"
-              alt="Cyclist fixing bike on mountain pass"
-              fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
-              sizes="(max-width: 768px) 100vw, 800px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 text-white">
-              <p className="text-lg font-medium">Fix your own bike. Ride anywhere. Simple.</p>
-            </div>
-          </div>
 
           <h2 className="text-3xl font-bold mt-12 mb-6">Extra Stuff for Big Rides</h2>
           <p className="text-gray-700 dark:text-gray-300">
